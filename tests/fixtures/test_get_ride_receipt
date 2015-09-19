@@ -1,0 +1,26 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://sandbox-api.uber.com/v1/requests/rideID-14f1c/receipt
+  response:
+    body: {string: !!python/unicode '{"distance":"1.87","normal_fare":"$10.56","charges":[{"amount":"2.25","type":"base_fare","name":"Base
+        Fare"},{"amount":"2.25","type":"distance","name":"Distance"},{"amount":"2.25","type":"time","name":"Time"}],"charge_adjustments":[{"amount":"2.25","type":"safe_ride_fee","name":"Safe
+        Rides Fee"}],"surge_charge":null,"total_owed":null,"distance_label":"miles","total_charged":"$10.56","request_id":"rideID-14f1c","duration":"00:11:32","subtotal":"$10.56","currency_code":"USD"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['502']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 18:38:24 GMT']
+      etag: ['"7b104ec669a8a12bbba6801d5c712e91d07102e9"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['983']
+      x-rate-limit-reset: ['1441911600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

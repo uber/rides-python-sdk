@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://sandbox-api.uber.com/v1/me
+  response:
+    body: {string: !!python/unicode '{"picture":"userprofile.jpeg","first_name":"User","last_name":"Profile","promo_code":"user-profile","email":"user@profile.com","uuid":"userprofileuuid"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['224']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 19:56:52 GMT']
+      etag: ['"c1591a3187fca88443076db83e5b302ae479adc5"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['995']
+      x-rate-limit-reset: ['1441915200']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

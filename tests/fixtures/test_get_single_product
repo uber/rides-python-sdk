@@ -1,0 +1,48 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://sandbox-api.uber.com/v1/products/d4abaae7-f4d6-4152-91cc-77523e8165a4
+  response:
+    body: {string: !!python/unicode '{"capacity":4,"product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","price_details":{"service_fees":[],"cost_per_minute":0.65,"distance_unit":"mile","minimum":15.0,"cost_per_distance":3.75,"base":8.0,"cancellation_fee":10.0,"currency_code":"USD"},"image":"http:\/\/d1a3f4spazzrp4.cloudfront.net\/car-types\/mono\/mono-black.png","display_name":"UberBLACK","description":"The
+        original Uber"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['388']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 18:07:43 GMT']
+      etag: ['"6e4d68e78ab5368cb54d82219125ee068ef83252"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['998']
+      x-rate-limit-reset: ['1441911600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://api.uber.com/v1/products/d4abaae7-f4d6-4152-91cc-77523e8165a4
+  response:
+    body: {string: !!python/unicode '{"capacity":4,"product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","price_details":{"service_fees":[],"cost_per_minute":0.65,"distance_unit":"mile","minimum":15.0,"cost_per_distance":3.75,"base":8.0,"cancellation_fee":10.0,"currency_code":"USD"},"image":"http:\/\/d1a3f4spazzrp4.cloudfront.net\/car-types\/mono\/mono-black.png","display_name":"UberBLACK","description":"The
+        original Uber"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['388']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 18:07:44 GMT']
+      etag: ['"6e4d68e78ab5368cb54d82219125ee068ef83252"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['998']
+      x-rate-limit-reset: ['1441911600']
+      x-uber-app: [uberex-nonsandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

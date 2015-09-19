@@ -1,0 +1,29 @@
+interactions:
+- request:
+    body: code=authCode-3x734&redirect_uri=https%3A%2F%2Fdeveloper.uber.com%2Fmy-redirect_url&client_id=clientID-28dh1&client_secret=clientSecret-hv783s&grant_type=authorization_code
+    headers:
+      Accept: ['*/*']
+      Connection: [keep-alive]
+      Content-Length: ['225']
+      Content-Type: [application/x-www-form-urlencoded]
+      User-Agent: [python-requests/2.7.0 CPython/2.7.6 Darwin/14.3.0]
+    method: !!python/unicode POST
+    uri: https://login.uber.com/oauth/token
+  response:
+    body: {string: !!python/unicode 
+    '{"last_authenticated":1441746868,"access_token":"accessToken-194jd2","expires_in":2592000,"token_type":"Bearer","scope": "profile history","refresh_token":"refreshToken-14du3n"}'}
+    headers:
+      cache-control: [no-store, max-age=0]
+      connection: [keep-alive]
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 00:20:29 GMT']
+      pragma: [no-cache]
+      server: [nginx]
+      set-cookie: [session=5b5cc3ed3bee4af9_55f0cccd.TIoY_f0L7UK3rYzyU7g_c2_XlY8;
+          Domain=login.uber.com; Secure; HttpOnly; Path=/]
+      strict-transport-security: [max-age=0]
+      x-frame-options: [SAMEORIGIN]
+      x-uber-app: [login]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

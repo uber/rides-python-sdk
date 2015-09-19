@@ -1,0 +1,46 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://sandbox-api.uber.com/v1/promotions?start_longitude=-122.417&end_longitude=-122.416&start_latitude=37.775&end_latitude=37.808
+  response:
+    body: {string: !!python/unicode '{"display_text":"Free ride up to $20","localized_value":"$20","type":"trip_credit","value":20.0,"currency_code":"USD"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['118']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 19:55:07 GMT']
+      etag: ['"849683d47a124d18edbe7ed3588bf5f4cc0c7785"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['997']
+      x-rate-limit-reset: ['1441915200']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://api.uber.com/v1/promotions?start_longitude=-122.417&end_longitude=-122.416&start_latitude=37.775&end_latitude=37.808
+  response:
+    body: {string: !!python/unicode '{"display_text":"Free ride up to $20","localized_value":"$20","type":"trip_credit","value":20.0,"currency_code":"USD"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['118']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 19:55:07 GMT']
+      etag: ['"849683d47a124d18edbe7ed3588bf5f4cc0c7785"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['997']
+      x-rate-limit-reset: ['1441915200']
+      x-uber-app: [uberex-nonsandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

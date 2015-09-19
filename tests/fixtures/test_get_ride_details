@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://sandbox-api.uber.com/v1/requests/rideID-14f1c
+  response:
+    body: {string: !!python/unicode '{"status":"processing","request_id":"rideID-14f1c","driver":null,"eta":10,"location":null,"vehicle":null,"surge_multiplier":1.0}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['152']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 18:35:09 GMT']
+      etag: ['"617e7640029d1464c83a2bc631bc09bc50eb51ef"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['987']
+      x-rate-limit-reset: ['1441911600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

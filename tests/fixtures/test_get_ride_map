@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://sandbox-api.uber.com/v1/requests/rideID-14f1c/map
+  response:
+    body: {string: !!python/unicode '{"href":"https:\/\/trip.uber.com\/-y-HO3YzT","request_id":"rideID-14f1c"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['97']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 18:35:52 GMT']
+      etag: ['"2e52b9024bd7207c719c7e8e8b4ef0a1dfc9174c"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['986']
+      x-rate-limit-reset: ['1441911600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

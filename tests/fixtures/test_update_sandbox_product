@@ -1,0 +1,25 @@
+interactions:
+- request:
+    body: '{"surge_multiplier": 2, "drivers_available": null}'
+    headers:
+      Content-Length: ['50']
+      content-type: [application/json]
+    method: !!python/unicode PUT
+    uri: https://sandbox-api.uber.com/v1/sandbox/products/d4abaae7-f4d6-4152-91cc-77523e8165a4
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['0']
+      content-type: [text/html; charset=UTF-8]
+      date: ['Thu, 10 Sep 2015 18:40:27 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['982']
+      x-rate-limit-reset: ['1441911600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 204, message: No Content}
+version: 1

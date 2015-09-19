@@ -1,0 +1,46 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://sandbox-api.uber.com/v1/estimates/time?start_longitude=-122.417&start_latitude=37.775
+  response:
+    body: {string: !!python/unicode '{"times":[{"localized_display_name":"uberX","estimate":66,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d"},{"localized_display_name":"uberXL","estimate":149,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449"},{"localized_display_name":"UberBLACK","estimate":75,"display_name":"UberBLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4"},{"localized_display_name":"UberSUV","estimate":75,"display_name":"UberSUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0"},{"localized_display_name":"ASSIST","estimate":320,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3"},{"localized_display_name":"uberWAV","estimate":215,"display_name":"uberWAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7"},{"localized_display_name":"uberTAXI","estimate":86,"display_name":"uberTAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['908']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 19:54:07 GMT']
+      etag: ['"6246a10d3e8bb709b68d8506bc4a338404f67195"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['998']
+      x-rate-limit-reset: ['1441915200']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://api.uber.com/v1/estimates/time?start_longitude=-122.417&start_latitude=37.775
+  response:
+    body: {string: !!python/unicode '{"times":[{"localized_display_name":"uberX","estimate":66,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d"},{"localized_display_name":"uberXL","estimate":149,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449"},{"localized_display_name":"UberBLACK","estimate":75,"display_name":"UberBLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4"},{"localized_display_name":"UberSUV","estimate":75,"display_name":"UberSUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0"},{"localized_display_name":"ASSIST","estimate":320,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3"},{"localized_display_name":"uberWAV","estimate":215,"display_name":"uberWAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7"},{"localized_display_name":"uberTAXI","estimate":86,"display_name":"uberTAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['908']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 19:54:07 GMT']
+      etag: ['"6246a10d3e8bb709b68d8506bc4a338404f67195"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['998']
+      x-rate-limit-reset: ['1441915200']
+      x-uber-app: [uberex-nonsandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: '{"end_longitude": -122.416, "product_id": "d4abaae7-f4d6-4152-91cc-77523e8165a4",
+      "surge_confirmation_id": null, "start_longitude": -122.417, "end_latitude":
+      37.808, "start_latitude": 37.775}'
+    headers:
+      Content-Length: ['191']
+      content-type: [application/json]
+    method: !!python/unicode POST
+    uri: https://sandbox-api.uber.com/v1/requests
+  response:
+    body: {string: !!python/unicode '{"meta":{"surge_confirmation":{"href":"https:\/\/sandbox-api.uber.com\/v1\/surge-confirmations\/surgeID-7dgw9","surge_confirmation_id":"surgeID-7dgw9"}},"errors":[{"status":409,"code":"surge","title":"Surge
+        pricing is currently in effect for this product."}]}'}
+    headers:
+      connection: [keep-alive]
+      content-length: ['305']
+      content-type: [application/json]
+      date: ['Thu, 10 Sep 2015 18:42:52 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 409, message: surge}
+version: 1

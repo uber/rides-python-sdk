@@ -1,0 +1,25 @@
+interactions:
+- request:
+    body: '{"status": "accepted"}'
+    headers:
+      Content-Length: ['22']
+      content-type: [application/json]
+    method: !!python/unicode PUT
+    uri: https://sandbox-api.uber.com/v1/sandbox/requests/rideID-14f1c
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['0']
+      content-type: [text/html; charset=UTF-8]
+      date: ['Thu, 10 Sep 2015 18:36:28 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['1000']
+      x-rate-limit-remaining: ['985']
+      x-rate-limit-reset: ['1441911600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 204, message: No Content}
+version: 1
