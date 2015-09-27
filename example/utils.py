@@ -26,7 +26,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from collections import namedtuple
-from yaml import load
+from yaml import safe_load
 
 
 # set your app credentials here
@@ -36,9 +36,9 @@ CREDENTIALS_FILENAME = 'example/config.yaml'
 STORAGE_FILENAME = 'example/oauth2_session_store.yaml'
 
 DEFAULT_CONFIG_VALUES = frozenset([
-    'INSERT CLIENT ID HERE',
-    'INSERT CLIENT SECRET HERE',
-    'INSERT REDIRECT URL HERE',
+    'INSERT_CLIENT_ID_HERE',
+    'INSERT_CLIENT_SECRET_HERE',
+    'INSERT_REDIRECT_URL_HERE',
 ])
 
 Colors = namedtuple('Colors', 'response, success, fail, end')
@@ -104,7 +104,7 @@ def import_app_credentials(filename=CREDENTIALS_FILENAME):
             imported from the configuration file.
     """
     with open(filename, 'r') as config_file:
-        config = load(config_file)
+        config = safe_load(config_file)
 
     client_id = config['client_id']
     client_secret = config['client_secret']
@@ -139,7 +139,7 @@ def import_oauth2_credentials(filename=STORAGE_FILENAME):
             imported from the configuration file.
     """
     with open(filename, 'r') as storage_file:
-        storage = load(storage_file)
+        storage = safe_load(storage_file)
 
     # depending on OAuth 2.0 grant_type, these values may not exist
     client_secret = storage.get('client_secret')

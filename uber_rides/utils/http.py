@@ -42,3 +42,5 @@ ERROR_CODE_DESCRIPTION_DICT = {
     'surge': 'Surge pricing is in effect.',
     'same_pickup_dropoff': 'Pickup and Dropoff can\'t be the same.',
 }
+
+VALID_TOKEN_TYPES = frozenset(['Token', 'Bearer'])

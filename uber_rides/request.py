@@ -26,6 +26,8 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from requests import Session
+from string import ascii_letters
+from string import digits
 
 from uber_rides.errors import UberIllegalState
 from uber_rides.utils import http
@@ -164,6 +166,10 @@ class Request(object):
         Returns
             headers (dict)
                 Dictionary of access headers to attach to request.
+
+        Raises
+            UberIllegalState (ApiError)
+                Raised if headers are invalid.
         """
         token_type = auth_session.token_type
 
@@ -172,9 +178,34 @@ class Request(object):
         else:
             token = auth_session.oauth2credential.access_token
 
+        if not self._authorization_headers_valid(token_type, token):
+            message = 'Invalid token_type or token.'
+            raise UberIllegalState(message)
+
         headers = {'Authorization': ' '.join([token_type, token])}
 
         if method in http.BODY_METHODS:
             headers.update(http.DEFAULT_CONTENT_HEADERS)
 
         return headers
+
+    def _authorization_headers_valid(self, token_type, token):
+        """Verify authorization headers for a request.
+
+        Parameters
+            token_type (str)
+                Type of token to access resources.
+            token (str)
+                Server Token or OAuth 2.0 Access Token.
+
+        Returns
+            (bool)
+                True iff token_type and token are valid.
+        """
+        if token_type not in http.VALID_TOKEN_TYPES:
+            return False
+
+        allowed_chars = ascii_letters + digits + '_' + '-'
+
+        # True if token only contains allowed_chars
+        return all(characters in allowed_chars for characters in token)
