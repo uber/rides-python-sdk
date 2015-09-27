@@ -7,7 +7,7 @@ from __future__ import unicode_literals
 from setuptools import find_packages
 from setuptools import setup
 
-with open('README.md') as f:
+with open('README.rst') as f:
     readme = f.read()
 
 setup(

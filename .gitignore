@@ -1,6 +1,11 @@
 # Local Environment #
 #####################
-.env
+env/
+
+# PyPi Dist Subdirectories #
+############################
+build/
+dist/
 
 # Backup Generated Files #
 ##########################
