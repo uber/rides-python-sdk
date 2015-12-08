@@ -103,10 +103,11 @@ class ClientError(HTTPError):
                 default message is used.
         """
         if not message:
-            message = (
-                'The request contains bad syntax or cannot be filled '
-                'due to a fault from the client sending the request.'
-            )
+            msg = ('The request contains bad syntax or cannot be filled '
+                'due to a fault from the client sending the request.')
+
+            message = response.json().get("message") or msg
+
 
         super(ClientError, self).__init__(message)
         errors, meta = super(ClientError, self)._adapt_response(response)
