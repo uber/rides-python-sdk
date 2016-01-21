@@ -78,7 +78,7 @@ Keep `credentials` information in a secure data store and reuse them to make API
 Example Usage
 -------------
 
-There are example python scripts in the `example` folder.  Before you can run an example, you need to edit the `example/config.yaml` file and add your app credentials.
+Navigate to the `example` folder to access the python scripts examples.  Before you can run an example, you must edit the `example/config.yaml` file and add your app credentials.
 
 To get an UberRidesClient through the Authorization Code flow, run:
 
@@ -86,7 +86,7 @@ To get an UberRidesClient through the Authorization Code flow, run:
 
     $ python example/authorization_code_grant.py
 
-The example above will store user credentials in `example/oauth2_session_store.yaml`. To create an UberRidesClient with these credentials and go through a surge ride request run:
+The example above stores user credentials in `example/oauth2_session_store.yaml`. To create an UberRidesClient with these credentials and go through a surge ride request run:
 
 .. code-block:: bash
 
