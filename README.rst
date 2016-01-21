@@ -111,7 +111,7 @@ Request a Ride
     ride_id = ride_details.get('request_id')
 
 
-This will make a real-world request and send an Uber driver to the specified start location.
+This makes a real-world request and send an Uber driver to the specified start location.
 
 To develop and test against request endpoints in a sandbox environment, make sure to instantiate your UberRidesClient with
 
