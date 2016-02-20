@@ -99,6 +99,7 @@ class UberRidesClient(object):
             handlers=handlers,
             args=args,
         )
+
         return request.execute()
 
     def get_products(self, latitude, longitude):
@@ -168,7 +169,12 @@ class UberRidesClient(object):
 
         return self._api_call('GET', 'v1/estimates/price', args=args)
 
-    def get_pickup_time_estimates(self, start_latitude, start_longitude):
+    def get_pickup_time_estimates(
+        self,
+        start_latitude,
+        start_longitude,
+        product_id=None,
+    ):
         """Get pickup time estimates for products at a given location.
 
         Parameters
@@ -176,6 +182,10 @@ class UberRidesClient(object):
                 The latitude component of a start location.
             start_longitude (float)
                 The longitude component of a start location.
+            product_id (str)
+                The unique ID of the product being requested. If none is
+                provided, it will default to the cheapest product for the
+                given location.
 
         Returns
             (Response)
@@ -184,6 +194,7 @@ class UberRidesClient(object):
         args = {
             'start_latitude': start_latitude,
             'start_longitude': start_longitude,
+            'product_id': product_id,
         }
 
         return self._api_call('GET', 'v1/estimates/time', args=args)
@@ -252,29 +263,39 @@ class UberRidesClient(object):
 
     def estimate_ride(
         self,
-        product_id,
-        start_latitude,
-        start_longitude,
+        product_id=None,
+        start_latitude=None,
+        start_longitude=None,
+        start_place_id=None,
         end_latitude=None,
         end_longitude=None,
+        end_place_id=None,
     ):
         """Estimate ride details given a product, start, and end location.
 
-        Only pickup time estimates and surge pricing information provided
-        if no end location provided.
+        Only pickup time estimates and surge pricing information are provided
+        if no end location is provided.
 
         Parameters
             product_id (str)
-                Unique identifier representing a specific product for a
+                The unique ID of the product being requested. If none is
+                provided, it will default to the cheapest product for the
                 given location.
             start_latitude (float)
                 The latitude component of a start location.
             start_longitude (float)
                 The longitude component of a start location.
+            start_place_id (str)
+                The beginning or pickup place ID. Only "home" or "work"
+                is acceptable.
             end_latitude (float)
                 Optional latitude component of a end location.
             end_longitude (float)
                 Optional longitude component of a end location.
+            end_place_id (str)
+                The final or destination place ID. Only "home" or "work"
+                is acceptable.
+
 
         Returns
             (Response)
@@ -285,37 +306,69 @@ class UberRidesClient(object):
             'product_id': product_id,
             'start_latitude': start_latitude,
             'start_longitude': start_longitude,
+            'start_place_id': start_place_id,
             'end_latitude': end_latitude,
             'end_longitude': end_longitude,
+            'end_place_id': end_place_id,
         }
 
         return self._api_call('POST', 'v1/requests/estimate', args=args)
 
     def request_ride(
         self,
-        product_id,
-        start_latitude,
-        start_longitude,
-        end_latitude,
-        end_longitude,
+        product_id=None,
+        start_latitude=None,
+        start_longitude=None,
+        start_place_id=None,
+        start_address=None,
+        start_nickname=None,
+        end_latitude=None,
+        end_longitude=None,
+        end_place_id=None,
+        end_address=None,
+        end_nickname=None,
         surge_confirmation_id=None,
+        payment_method_id=None,
     ):
         """Request a ride on behalf of an Uber user.
 
+        When specifying pickup and dropoff locations, you can either use
+        latitude/longitude pairs or place ID (but not both).
+
         Parameters
             product_id (str)
-                Unique identifier representing a specific product for a
+                The unique ID of the product being requested. If none is
+                provided, it will default to the cheapest product for the
                 given location.
             start_latitude (float)
-                The latitude component of a start location.
+                Optional latitude component of a start location.
             start_longitude (float)
-                The longitude component of a start location.
+                Optional longitude component of a start location.
+            start_place_id (str)
+                The beginning or pickup place ID. Only "home" or "work"
+                is acceptable.
+            start_address (str)
+                Optional pickup address.
+            start_nickname (str)
+                Optional pickup nickname label.
             end_latitude (float)
-                The latitude component of a end location.
+                Optional latitude component of a end location.
             end_longitude (float)
-                The longitude component of a end location.
+                Optional longitude component of a end location.
+            end_place_id (str)
+                The final or destination place ID. Only "home" or "work"
+                is acceptable.
+            end_address (str)
+                Optional destination address.
+            end_nickname (str)
+                Optional destination nickname label.
             surge_confirmation_id (str)
                 Optional unique identifier of the surge session for a user.
+            payment_method_id (str)
+                Optional unique identifier of the payment method selected
+                by a user. If set, the trip will be requested using this
+                payment method. If not, the trip will be requested with the
+                user's last used payment method.
 
         Returns
             (Response)
@@ -331,9 +384,16 @@ class UberRidesClient(object):
             'product_id': product_id,
             'start_latitude': start_latitude,
             'start_longitude': start_longitude,
+            'start_place_id': start_place_id,
+            'start_address': start_address,
+            'start_nickname': start_nickname,
             'end_latitude': end_latitude,
             'end_longitude': end_longitude,
+            'end_place_id': end_place_id,
+            'end_address': end_address,
+            'end_nickname': end_nickname,
             'surge_confirmation_id': surge_confirmation_id,
+            'payment_method_id': payment_method_id,
         }
 
         return self._api_call('POST', 'v1/requests', args=args)
@@ -353,6 +413,64 @@ class UberRidesClient(object):
         endpoint = 'v1/requests/{}'.format(ride_id)
         return self._api_call('GET', endpoint)
 
+    def get_current_ride_details(self):
+        """Get status details for an ongoing ride.
+
+        This method behaves like get_ride_details by default (only returns
+        details aout trips your app requested). If your app has the `all_trips`
+        scope, however, trip details will be returned for trips irrespective
+        of which application initiated them.
+
+        Returns
+            (Response)
+                A Response object containing details about a user's
+                current trip - if any.
+        """
+        return self._api_call('GET', 'v1/requests/current')
+
+    def update_ride(
+        self,
+        ride_id,
+        end_latitude=None,
+        end_longitude=None,
+        end_place_id=None,
+    ):
+        """Update an ongoing ride's destination.
+
+        To specify a new dropoff location, you can either use a
+        latitude/longitude pair or place ID (but not both).
+
+        Params
+            ride_id (str)
+                The unique ID of the Ride Request.
+            end_latitude (float)
+                The latitude component of a end location.
+            end_longitude (float)
+                The longitude component of a end location.
+            end_place_id (str)
+                The final or destination place ID. This is the name of an
+                Uber saved place. Only "home" or "work" is acceptable.
+            end_address (str)
+                The final or destination address.
+            end_nickname (str)
+                The final or destination nickname label.
+
+        Returns
+            (Response)
+                The Response with successful status_code
+                if the ride's destination was updated.
+        """
+        args = {}
+        if end_latitude is not None:
+            args.update({'end_latitude': end_latitude})
+        if end_longitude is not None:
+            args.update({'end_longitude': end_longitude})
+        if end_place_id is not None:
+            args.update({'end_place_id': end_place_id})
+
+        endpoint = 'v1/requests/{}'.format(ride_id)
+        return self._api_call('PATCH', endpoint, args=args)
+
     def cancel_ride(self, ride_id):
         """Cancel an ongoing ride on behalf of a user.
 
@@ -368,8 +486,25 @@ class UberRidesClient(object):
         endpoint = 'v1/requests/{}'.format(ride_id)
         return self._api_call('DELETE', endpoint)
 
+    def cancel_current_ride(self):
+        """Cancel the user's current trip.
+
+        This method behaves like cancel_ride, except you don't need
+        to specify a request_id.
+
+        Returns
+            (Response)
+                A Response object with successful status_code
+                if ride was canceled.
+        """
+        return self._api_call('DELETE', 'v1/requests/current')
+
     def get_ride_map(self, ride_id):
         """Get a map with a visual representation of a Request.
+
+        Maps are only available after a ride has been accepted by a
+        driver and is in the `accepted` state. Attempting to get a map
+        before that will result in a 404 error.
 
         Params
             ride_id (str)
@@ -448,6 +583,64 @@ class UberRidesClient(object):
 
         endpoint = 'v1/sandbox/products/{}'.format(product_id)
         return self._api_call('PUT', endpoint, args=args)
+
+    def get_home_address(self):
+        """Retrieve the saved home address for an Uber user.
+
+        Returns
+            (Response)
+                A Response object with the home address - if one is set.
+        """
+        return self._api_call('GET', 'v1/places/home')
+
+    def get_work_address(self):
+        """Retrieve the saved work address for an Uber user.
+
+        Returns
+            (Response)
+                A Response object with the work address - if one is set.
+        """
+        return self._api_call('GET', 'v1/places/work')
+
+    def set_home_address(self, address):
+        """Update saved home address for an Uber user.
+
+        Params
+            address (str)
+                The address that should be assigned to "home".
+
+        Returns
+            (Response)
+                A Response object with the updated home address.
+        """
+        args = {'address': address}
+
+        return self._api_call('PUT', 'v1/places/home', args=args)
+
+    def set_work_address(self, address):
+        """Update saved work address for an Uber user.
+
+        Params
+            address (str)
+                The address that should be assigned to "work".
+
+        Returns
+            (Response)
+                A Response object with the updated work address.
+        """
+        args = {'address': address}
+
+        return self._api_call('PUT', 'v1/places/work', args=args)
+
+    def get_payment_methods(self):
+        """Retrieve a list of the user's available payment methods.
+
+        Returns
+            (Response)
+                A Response object containing information about a user's
+                payment methods.
+        """
+        return self._api_call('GET', 'v1/payment-methods')
 
     def refresh_oauth_credential(self):
         """Refresh session's OAuth 2.0 credentials if they are stale."""

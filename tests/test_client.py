@@ -51,11 +51,20 @@ SCOPES = {'profile', 'history'}
 RIDE_ID = 'rideID-14f1c'
 SURGE_ID = 'hsg2k38b'
 
+# addresses to test places
+HOME_ADDRESS = 'Lombard Street, SF'
+FULL_HOME_ADDRESS = 'Lombard St, San Francisco, CA 94133, United States'
+WORK_ADDRESS = '1 Market Street, SF'
+FULL_WORK_ADDRESS = '1 Market St, San Francisco, CA 94105, USA'
+
+# ride details
 EXPIRES_IN_SECONDS = 3000
 START_LAT = 37.775
 START_LNG = -122.417
 END_LAT = 37.808
 END_LNG = -122.416
+UPDATE_LAT = 37.812
+UPDATE_LNG = -122.5
 PRODUCT_ID = 'd4abaae7-f4d6-4152-91cc-77523e8165a4'
 PRODUCTS_AVAILABLE = 5
 SURGE_HREF = 'api.uber.com/v1/surge-confirmations/{}'
@@ -155,6 +164,14 @@ EXPECTED_RECEIPT_KEYS = set([
     'total_owed',
     'total_charged',
     'subtotal',
+])
+
+EXPECTED_PLACE_KEYS = set(['address'])
+
+EXPECTED_PAYMENT_KEYS = set([
+    'payment_method_id',
+    'type',
+    'description',
 ])
 
 
@@ -302,8 +319,8 @@ def test_get_pickup_time_estimates(
         assert len(times) >= PRODUCTS_AVAILABLE
         assert isinstance(times, list)
 
-        for time in times:
-            assert EXPECTED_TIME_KEYS.issubset(time)
+        for pickup_time in times:
+            assert EXPECTED_TIME_KEYS.issubset(pickup_time)
 
 
 @uber_vcr.use_cassette()
@@ -356,11 +373,29 @@ def test_get_user_profile(authorized_sandbox_client):
 def test_estimate_ride(authorized_sandbox_client):
     """Test to fetch ride estimate with access token."""
     response = authorized_sandbox_client.estimate_ride(
-        PRODUCT_ID,
-        START_LAT,
-        START_LNG,
-        END_LAT,
-        END_LNG,
+        product_id=PRODUCT_ID,
+        start_latitude=START_LAT,
+        start_longitude=START_LNG,
+        end_latitude=END_LAT,
+        end_longitude=END_LNG,
+    )
+    assert response.status_code == codes.ok
+
+    # assert response looks like price and time estimates
+    response = response.json
+    price = response.get('price')
+    assert EXPECTED_ESTIMATE_RIDE_PRICE_KEYS.issubset(price)
+    trip = response.get('trip')
+    assert EXPECTED_ESTIMATE_RIDE_TRIP_KEYS.issubset(trip)
+
+
+@uber_vcr.use_cassette()
+def test_estimate_ride_with_places(authorized_sandbox_client):
+    """Test to fetch ride estimate with place ids."""
+    response = authorized_sandbox_client.estimate_ride(
+        product_id=PRODUCT_ID,
+        start_place_id='home',
+        end_place_id='work',
     )
     assert response.status_code == codes.ok
 
@@ -376,11 +411,57 @@ def test_estimate_ride(authorized_sandbox_client):
 def test_request_ride(authorized_sandbox_client):
     """Test to request ride with access token."""
     response = authorized_sandbox_client.request_ride(
-        PRODUCT_ID,
-        START_LAT,
-        START_LNG,
-        END_LAT,
-        END_LNG,
+        product_id=PRODUCT_ID,
+        start_latitude=START_LAT,
+        start_longitude=START_LNG,
+        end_latitude=END_LAT,
+        end_longitude=END_LNG,
+    )
+    assert response.status_code == codes.accepted
+
+    # assert response looks like ride details
+    response = response.json
+    assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
+
+
+@uber_vcr.use_cassette()
+def test_request_ride_without_destination(authorized_sandbox_client):
+    """Test to request ride without a destination."""
+    response = authorized_sandbox_client.request_ride(
+        product_id=PRODUCT_ID,
+        start_latitude=START_LAT,
+        start_longitude=START_LNG,
+    )
+    assert response.status_code == codes.accepted
+
+    # assert response looks like ride details
+    response = response.json
+    assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
+
+
+@uber_vcr.use_cassette()
+def test_request_ride_with_no_default_product(authorized_sandbox_client):
+    """Test to request ride with no default product."""
+    response = authorized_sandbox_client.request_ride(
+        start_latitude=START_LAT,
+        start_longitude=START_LNG,
+        end_latitude=END_LAT,
+        end_longitude=END_LNG,
+    )
+    assert response.status_code == codes.accepted
+
+    # assert response looks like ride details
+    response = response.json
+    assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
+
+
+@uber_vcr.use_cassette()
+def test_request_ride_with_places(authorized_sandbox_client):
+    """Test to request ride with place ids."""
+    response = authorized_sandbox_client.request_ride(
+        product_id=PRODUCT_ID,
+        start_place_id='home',
+        end_place_id='work',
     )
     assert response.status_code == codes.accepted
 
@@ -399,6 +480,39 @@ def test_get_ride_details(authorized_sandbox_client):
     response = response.json
     assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
     assert response.get('status') == 'processing'
+
+
+@uber_vcr.use_cassette()
+def test_get_current_ride_details(authorized_sandbox_client):
+    """Test to fetch current ride details with access token."""
+    response = authorized_sandbox_client.get_current_ride_details()
+    assert response.status_code == codes.ok
+
+    # assert response looks like ride details
+    response = response.json
+    assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
+    assert response.get('status') == 'processing'
+
+
+@uber_vcr.use_cassette()
+def test_update_ride_destination(authorized_sandbox_client):
+    """Test to update the trip destination."""
+    response = authorized_sandbox_client.update_ride(
+        RIDE_ID,
+        end_latitude=UPDATE_LAT,
+        end_longitude=UPDATE_LNG,
+    )
+    assert response.status_code == codes.no_content
+
+
+@uber_vcr.use_cassette()
+def test_update_ride_destination_with_places(authorized_sandbox_client):
+    """Test to update the trip destination with a place ID."""
+    response = authorized_sandbox_client.update_ride(
+        RIDE_ID,
+        end_place_id='work',
+    )
+    assert response.status_code == codes.no_content
 
 
 @uber_vcr.use_cassette()
@@ -424,8 +538,15 @@ def test_update_sandbox_ride(authorized_sandbox_client):
 
 @uber_vcr.use_cassette()
 def test_cancel_ride(authorized_sandbox_client):
-    """Test to cancel ride status with access token."""
+    """Test to cancel ride with access token."""
     response = authorized_sandbox_client.cancel_ride(RIDE_ID)
+    assert response.status_code == codes.no_content
+
+
+@uber_vcr.use_cassette()
+def test_cancel_current_ride(authorized_sandbox_client):
+    """Test to cancel the current ride with access token."""
+    response = authorized_sandbox_client.cancel_current_ride()
     assert response.status_code == codes.no_content
 
 
@@ -486,3 +607,64 @@ def test_surge_error_formation(http_surge_error):
 
     assert surge_error.surge_confirmation_id == SURGE_ID
     assert surge_error.surge_confirmation_href == SURGE_HREF.format(SURGE_ID)
+
+
+@uber_vcr.use_cassette()
+def test_set_home_address(authorized_sandbox_client):
+    """Test to update a user's home address with an access token."""
+    response = authorized_sandbox_client.set_home_address(HOME_ADDRESS)
+    assert response.status_code == codes.ok
+
+    # assert response looks like places details
+    response = response.json
+    assert EXPECTED_PLACE_KEYS.issubset(response)
+    assert response.get('address') == FULL_HOME_ADDRESS
+
+
+@uber_vcr.use_cassette()
+def test_get_home_address(authorized_sandbox_client):
+    """Test to fetch a user's home address with an access token."""
+    response = authorized_sandbox_client.get_home_address()
+    assert response.status_code == codes.ok
+
+    # assert response looks like places details
+    response = response.json
+    assert EXPECTED_PLACE_KEYS.issubset(response)
+    assert response.get('address') == FULL_HOME_ADDRESS
+
+
+@uber_vcr.use_cassette()
+def test_set_work_address(authorized_sandbox_client):
+    """Test to update a user's work address with an access token."""
+    response = authorized_sandbox_client.set_work_address(WORK_ADDRESS)
+    assert response.status_code == codes.ok
+
+    # assert response looks like places details
+    response = response.json
+    assert EXPECTED_PLACE_KEYS.issubset(response)
+    assert response.get('address') == FULL_WORK_ADDRESS
+
+
+@uber_vcr.use_cassette()
+def test_get_work_address(authorized_sandbox_client):
+    """Test to fetch a user's work address with an access token."""
+    response = authorized_sandbox_client.get_work_address()
+    assert response.status_code == codes.ok
+
+    # assert response looks like places details
+    response = response.json
+    assert EXPECTED_PLACE_KEYS.issubset(response)
+    assert response.get('address') == FULL_WORK_ADDRESS
+
+
+@uber_vcr.use_cassette()
+def test_get_payment_methods(authorized_sandbox_client):
+    """Test to get a list of payment methods with an access token."""
+    response = authorized_sandbox_client.get_payment_methods()
+    assert response.status_code == codes.ok
+
+    response = response.json
+    payments = response.get('payment_methods')
+
+    for payment in payments:
+        assert EXPECTED_PAYMENT_KEYS.issubset(payment)

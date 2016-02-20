@@ -40,18 +40,16 @@ from __future__ import unicode_literals
 from urlparse import parse_qs
 from urlparse import urlparse
 
+from example.utils import create_uber_client
 from example.utils import fail_print
+from example.utils import import_oauth2_credentials
 from example.utils import paragraph_print
 from example.utils import response_print
 from example.utils import success_print
-from example.utils import import_oauth2_credentials
 
 from uber_rides.client import SurgeError
-from uber_rides.client import UberRidesClient
 from uber_rides.errors import ClientError
 from uber_rides.errors import ServerError
-from uber_rides.session import OAuth2Credential
-from uber_rides.session import Session
 
 # uberX
 PRODUCT_ID = 'a1111c8c-c720-46c3-8534-2fcdd730040d'
@@ -65,45 +63,20 @@ END_LAT = 37.791
 END_LNG = -122.405
 
 
-def create_uber_client(credentials):
-    """Create an UberRidesClient from OAuth 2.0 credentials.
-
-    Parameters
-        credentials (dict)
-            Dictionary of OAuth 2.0 credentials.
-
-    Returns
-        (UberRidesClient)
-            An authorized UberRidesClient to access API resources.
-    """
-    oauth2credential = OAuth2Credential(
-        client_id=credentials.get('client_id'),
-        access_token=credentials.get('access_token'),
-        expires_in_seconds=credentials.get('expires_in_seconds'),
-        scopes=credentials.get('scopes'),
-        grant_type=credentials.get('grant_type'),
-        redirect_url=credentials.get('redirect_url'),
-        client_secret=credentials.get('client_secret'),
-        refresh_token=credentials.get('refresh_token'),
-    )
-    session = Session(oauth2credential=oauth2credential)
-    return UberRidesClient(session, sandbox_mode=True)
-
-
 def estimate_ride(api_client):
     """Use an UberRidesClient to fetch a ride estimate and print the results.
 
     Parameters
         api_client (UberRidesClient)
-            An authorized UberRidesClient to access API resources.
+            An authorized UberRidesClient with 'request' scope.
     """
     try:
         estimate = api_client.estimate_ride(
-            PRODUCT_ID,
-            START_LAT,
-            START_LNG,
-            END_LAT,
-            END_LNG,
+            product_id=PRODUCT_ID,
+            start_latitude=START_LAT,
+            start_longitude=START_LNG,
+            end_latitude=END_LAT,
+            end_longitude=END_LNG,
         )
 
     except (ClientError, ServerError), error:
@@ -118,7 +91,7 @@ def update_surge(api_client, surge_multiplier):
 
     Parameters
         api_client (UberRidesClient)
-            An authorized UberRidesClient to access API resources.
+            An authorized UberRidesClient with 'request' scope.
         surge_mutliplier (float)
             The surge multiple for a sandbox product. A multiplier greater than
             or equal to 2.0 will require the two stage confirmation screen.
@@ -141,7 +114,7 @@ def update_ride(api_client, ride_status, ride_id):
 
     Parameters
         api_client (UberRidesClient)
-            An authorized UberRidesClient to access API resources.
+            An authorized UberRidesClient with 'request' scope.
         ride_status (str)
             New ride status to update to.
         ride_id (str)
@@ -168,20 +141,20 @@ def request_ride(api_client, surge_confirmation_id=None):
 
     Parameters
         api_client (UberRidesClient)
-            An authorized UberRidesClient to access API resources.
+            An authorized UberRidesClient with 'request' scope.
         surge_confirmation_id (string)
             Unique identifer received after confirming surge.
 
     Returns
-
+        The unique ID of the requested ride.
     """
     try:
         request = api_client.request_ride(
-            PRODUCT_ID,
-            START_LAT,
-            START_LNG,
-            END_LAT,
-            END_LNG,
+            product_id=PRODUCT_ID,
+            start_latitude=START_LAT,
+            start_longitude=START_LNG,
+            end_latitude=END_LAT,
+            end_longitude=END_LNG,
             surge_confirmation_id=surge_confirmation_id,
         )
 
@@ -210,11 +183,11 @@ def request_ride(api_client, surge_confirmation_id=None):
 
 
 def get_ride_details(api_client, ride_id):
-    """Use an UberRidesClient to update ride status and print the results.
+    """Use an UberRidesClient to get ride details and print the results.
 
     Parameters
         api_client (UberRidesClient)
-            An authorized UberRidesClient to access API resources.
+            An authorized UberRidesClient with 'request' scope.
         ride_id (str)
             Unique ride identifier.
     """

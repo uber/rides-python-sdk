@@ -2,7 +2,7 @@
 Uber Rides Python SDK
 *********************
 
-Python SDK (beta) to support the `Uber Rides API <https://developer.uber.com/v1/endpoints/>`_.
+Python SDK (beta) to support the `Uber Rides API <https://developer.uber.com/>`_.
 
 Installation
 ------------
@@ -106,7 +106,13 @@ Request a Ride
 
 .. code-block::
 
-    response = client.request_ride(product_id, 37.77, -122.41, 37.79, -122.41)
+    response = client.request_ride(
+        product_id=product_id,
+        start_latitude=37.77,
+        start_longitude=-122.41,
+        end_latitude=37.79,
+        end_longitude=-122.41,
+    )
     ride_details = response.json
     ride_id = ride_details.get('request_id')
 
@@ -120,7 +126,7 @@ To develop and test against request endpoints in a sandbox environment, make sur
     client = UberRidesClient(session, sandbox_mode=True)
 
 
-The default for `sandbox_mode` is set to `False`. See our `documentation <https://developer.uber.com/v1/sandbox/>`_ to read more about using the Sandbox Environment.
+The default for `sandbox_mode` is set to `False`. See our `documentation <https://developer.uber.com/docs/sandbox>`_ to read more about using the Sandbox Environment.
 
 Update Sandbox Ride
 """""""""""""""""""
@@ -141,7 +147,7 @@ Getting help
 
 Uber developers actively monitor the `Uber Tag <http://stackoverflow.com/questions/tagged/uber-api>`_ on StackOverflow. If you need help installing or using the library, you can ask a question there. Make sure to tag your question with `uber-api` and `python`!
 
-For full documentation about our API, visit our `Developer Site <https://developer.uber.com/v1/endpoints/>`_.
+For full documentation about our API, visit our `Developer Site <https://developer.uber.com/>`_.
 
 Contributing
 ------------

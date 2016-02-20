@@ -1,0 +1,32 @@
+interactions:
+- request:
+    body: '{"end_longitude": -122.416, "surge_confirmation_id": null, "start_address":
+      null, "end_place_id": null, "start_nickname": null, "end_latitude": 37.808,
+      "payment_method_id": null, "product_id": null, "end_address": null, "end_nickname":
+      null, "start_place_id": null, "start_longitude": -122.417, "start_latitude":
+      37.775}'
+    headers:
+      Content-Length: ['320']
+      content-type: [application/json]
+    method: !!python/unicode POST
+    uri: https://sandbox-api.uber.com/v1/requests
+  response:
+    body: {string: !!python/unicode '{"status":"processing","request_id":"rideID-14f1c","driver":null,"eta":null,"location":null,"vehicle":null,"surge_multiplier":1.0}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['154']
+      content-type: [application/json]
+      date: ['Tue, 16 Feb 2016 06:15:09 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-limit-concurrent-trips: ['10']
+      x-rate-limit-remaining: ['1985']
+      x-rate-limit-remaining-concurrent-trips: ['10']
+      x-rate-limit-reset: ['1455606000']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 202, message: Accepted}
+version: 1

@@ -1,0 +1,26 @@
+interactions:
+- request:
+    body: '{"address": "1 Market Street, SF"}'
+    headers:
+      Content-Length: ['34']
+      content-type: [application/json]
+    method: !!python/unicode PUT
+    uri: https://sandbox-api.uber.com/v1/places/work
+  response:
+    body: {string: !!python/unicode '{"address":"1 Market St, San Francisco, CA 94105,
+        USA"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['55']
+      content-type: [application/json]
+      date: ['Tue, 16 Feb 2016 06:13:40 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1989']
+      x-rate-limit-reset: ['1455606000']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

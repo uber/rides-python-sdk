@@ -1,0 +1,25 @@
+interactions:
+- request:
+    body: '{"end_place_id": "work"}'
+    headers:
+      Content-Length: ['24']
+      content-type: [application/json]
+    method: !!python/unicode PATCH
+    uri: https://sandbox-api.uber.com/v1/requests/rideID-14f1c
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['0']
+      content-type: [text/html; charset=UTF-8]
+      date: ['Tue, 16 Feb 2016 06:24:31 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1980']
+      x-rate-limit-reset: ['1455606000']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 204, message: No Content}
+version: 1
