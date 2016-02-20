@@ -1,0 +1,25 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: !!python/unicode GET
+    uri: https://sandbox-api.uber.com/v1/places/home
+  response:
+    body: {string: !!python/unicode '{"address":"Lombard St, San Francisco, CA 94133,
+        United States"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['64']
+      content-type: [application/json]
+      date: ['Tue, 16 Feb 2016 06:13:31 GMT']
+      etag: ['"6570ca7481d7c5e59bde3c3033d777e76755201a"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1991']
+      x-rate-limit-reset: ['1455606000']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

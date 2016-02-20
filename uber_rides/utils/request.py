@@ -55,7 +55,6 @@ def generate_data(method, args):
         data = dumps(args)
     else:
         params = args
-
     return data, params
 
 

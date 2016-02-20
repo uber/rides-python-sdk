@@ -1,0 +1,28 @@
+interactions:
+- request:
+    body: '{"end_longitude": null, "product_id": "d4abaae7-f4d6-4152-91cc-77523e8165a4",
+      "end_place_id": "work", "start_place_id": "home", "start_longitude": null, "end_latitude":
+      null, "start_latitude": null}'
+    headers:
+      Content-Length: ['198']
+      content-type: [application/json]
+    method: !!python/unicode POST
+    uri: https://sandbox-api.uber.com/v1/requests/estimate
+  response:
+    body: {string: !!python/unicode '{"price":{"surge_confirmation_href":null,"high_estimate":26,"surge_confirmation_id":null,"minimum":15,"low_estimate":20,"surge_multiplier":1.0,"display":"$20-26","currency_code":"USD"},"trip":{"distance_unit":"mile","duration_estimate":600,"distance_estimate":2.02},"pickup_estimate":5}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['286']
+      content-type: [application/json]
+      date: ['Tue, 16 Feb 2016 06:17:08 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1982']
+      x-rate-limit-reset: ['1455606000']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1
