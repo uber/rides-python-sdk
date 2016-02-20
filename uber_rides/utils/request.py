@@ -25,9 +25,9 @@ from __future__ import unicode_literals
 
 from json import dumps
 from requests import Request
-from urllib import quote
-from urllib import urlencode
-from urlparse import urljoin
+from urllib.parse import quote
+from urllib.parse import urlencode
+from urllib.parse import urljoin
 
 from uber_rides.utils.handlers import error_handler
 from uber_rides.utils import http

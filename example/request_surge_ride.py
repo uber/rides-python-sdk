@@ -37,8 +37,8 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from urlparse import parse_qs
-from urlparse import urlparse
+from urllib.parse import parse_qs
+from urllib.parse import urlparse
 
 from example.utils import fail_print
 from example.utils import paragraph_print
@@ -106,7 +106,7 @@ def estimate_ride(api_client):
             END_LNG,
         )
 
-    except (ClientError, ServerError), error:
+    except (ClientError, ServerError) as error:
         fail_print(error)
 
     else:
@@ -129,7 +129,7 @@ def update_surge(api_client, surge_multiplier):
             surge_multiplier=surge_multiplier,
         )
 
-    except (ClientError, ServerError), error:
+    except (ClientError, ServerError) as error:
         fail_print(error)
 
     else:
@@ -150,7 +150,7 @@ def update_ride(api_client, ride_status, ride_id):
     try:
         update_product = api_client.update_sandbox_ride(ride_id, ride_status)
 
-    except (ClientError, ServerError), error:
+    except (ClientError, ServerError) as error:
         fail_print(error)
 
     else:
@@ -185,13 +185,13 @@ def request_ride(api_client, surge_confirmation_id=None):
             surge_confirmation_id=surge_confirmation_id,
         )
 
-    except SurgeError, e:
+    except SurgeError as e:
         surge_message = 'Confirm surge by visiting: \n{}\n'
         surge_message = surge_message.format(e.surge_confirmation_href)
         response_print(surge_message)
 
         confirm_url = 'Copy the URL you are redirected to and paste here: \n'
-        result = raw_input(confirm_url).strip()
+        result = input(confirm_url).strip()
 
         querystring = urlparse(result).query
         query_params = parse_qs(querystring)
@@ -200,7 +200,7 @@ def request_ride(api_client, surge_confirmation_id=None):
         # automatically try request again
         return request_ride(api_client, surge_id)
 
-    except (ClientError, ServerError), error:
+    except (ClientError, ServerError) as error:
         fail_print(error)
         return
 
@@ -221,7 +221,7 @@ def get_ride_details(api_client, ride_id):
     try:
         ride_details = api_client.get_ride_details(ride_id)
 
-    except (ClientError, ServerError), error:
+    except (ClientError, ServerError) as error:
         fail_print(error)
 
     else:

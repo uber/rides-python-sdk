@@ -41,8 +41,8 @@ from requests import codes
 from requests import post
 from string import ascii_letters
 from string import digits
-from urlparse import parse_qs
-from urlparse import urlparse
+from urllib.parse import parse_qs
+from urllib.parse import urlparse
 
 from uber_rides.errors import ClientError
 from uber_rides.errors import UberIllegalState
