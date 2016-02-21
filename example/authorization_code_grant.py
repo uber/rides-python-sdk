@@ -80,12 +80,12 @@ def authorization_code_grant_flow(credentials, storage_filename):
     response_print(login_message)
 
     redirect_url = 'Copy the URL you are redirected to and paste here: \n'
-    result = raw_input(redirect_url).strip()
+    result = input(redirect_url).strip()
 
     try:
         session = auth_flow.get_session(result)
 
-    except (ClientError, UberIllegalState), error:
+    except (ClientError, UberIllegalState) as error:
         fail_print(error)
         return
 
@@ -119,7 +119,7 @@ def hello_user(api_client):
     try:
         response = api_client.get_user_profile()
 
-    except (ClientError, ServerError), error:
+    except (ClientError, ServerError) as error:
         fail_print(error)
         return
 

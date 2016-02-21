@@ -25,9 +25,9 @@ from __future__ import unicode_literals
 
 from pytest import fixture
 from pytest import raises
-from urllib import quote
-from urlparse import parse_qs
-from urlparse import urlparse
+from urllib.parse import quote
+from urllib.parse import parse_qs
+from urllib.parse import urlparse
 
 from tests.vcr_config import uber_vcr
 from uber_rides.auth import AuthorizationCodeGrant
