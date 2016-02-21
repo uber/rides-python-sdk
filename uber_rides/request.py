@@ -25,41 +25,17 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from requests import Session
 from string import ascii_letters
 from string import digits
 
+from requests import Session
+
 from uber_rides.errors import UberIllegalState
+from uber_rides.response import Response
 from uber_rides.utils import http
 from uber_rides.utils.request import build_url
 from uber_rides.utils.request import generate_data
 from uber_rides.utils.request import generate_prepared_request
-
-
-class Response(object):
-    """The response from an HTTP request."""
-
-    def __init__(self, response):
-        """Initialize a Response.
-
-        Parameters
-            response (requests.Response)
-                The HTTP response from an API request.
-        """
-        self.status_code = response.status_code
-        self.request = response.request
-        self.rate_limit = response.headers['X-Rate-Limit-Limit']
-        self.rate_remaining = response.headers['X-Rate-Limit-Remaining']
-        self.rate_reset = response.headers['X-Rate-Limit-Reset']
-        self.headers = response.headers
-
-        # (TODO: request_id is not surfaced yet)
-        # self.request_id = response.headers['request_id']
-
-        try:
-            self.json = response.json()
-        except:
-            self.json = None
 
 
 class Request(object):
@@ -71,6 +47,7 @@ class Request(object):
         api_host,
         method,
         path,
+        response_obj,
         handlers=None,
         args=None,
     ):
@@ -94,6 +71,7 @@ class Request(object):
         self.auth_session = auth_session
         self.api_host = api_host
         self.path = path
+        self.response_obj = response_obj
         self.method = method
         self.handlers = handlers or []
         self.args = args
@@ -137,7 +115,7 @@ class Request(object):
         """
         session = Session()
         response = session.send(prepared_request)
-        return Response(response)
+        return Response(response, self.response_obj)
 
     def execute(self):
         """Prepare and send the Request, return a Response.
@@ -209,3 +187,5 @@ class Request(object):
 
         # True if token only contains allowed_chars
         return all(characters in allowed_chars for characters in token)
+
+#todo add reminders endpoints

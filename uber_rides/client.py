@@ -44,7 +44,7 @@ from uber_rides.errors import ClientError
 from uber_rides.errors import UberIllegalState
 from uber_rides.request import Request
 from uber_rides.utils import auth
-
+from uber_rides import response
 
 VALID_PRODUCT_STATUS = frozenset([
     'processing',
@@ -74,7 +74,7 @@ class UberRidesClient(object):
         self.session = session
         self.api_host = SANDBOX_HOST if sandbox_mode else PRODUCTION_HOST
 
-    def _api_call(self, method, target, args=None):
+    def _api_call(self, method, target, response_obj, args=None):
         """Create a Request object and execute the call to the API Server.
 
         Parameters
@@ -96,6 +96,7 @@ class UberRidesClient(object):
             api_host=self.api_host,
             method=method,
             path=target,
+            response_obj=response_obj,
             handlers=handlers,
             args=args,
         )
@@ -120,7 +121,7 @@ class UberRidesClient(object):
             'longitude': longitude,
         }
 
-        return self._api_call('GET', 'v1/products', args=args)
+        return self._api_call('GET', 'v1/products', response.Products, args=args)
 
     def get_product(self, product_id):
         """Get information about a specific Uber product.
@@ -135,7 +136,7 @@ class UberRidesClient(object):
                 A Response containing information about a specific product.
         """
         endpoint = 'v1/products/{}'.format(product_id)
-        return self._api_call('GET', endpoint)
+        return self._api_call('GET', endpoint, response.ProductsID)
 
     def get_price_estimates(
         self,
@@ -167,7 +168,7 @@ class UberRidesClient(object):
             'end_longitude': end_longitude,
         }
 
-        return self._api_call('GET', 'v1/estimates/price', args=args)
+        return self._api_call('GET', 'v1/estimates/price', response.EstimatesPrice, args=args)
 
     def get_pickup_time_estimates(
         self,
@@ -197,7 +198,7 @@ class UberRidesClient(object):
             'product_id': product_id,
         }
 
-        return self._api_call('GET', 'v1/estimates/time', args=args)
+        return self._api_call('GET', 'v1/estimates/time', response.EstimatesTime, args=args)
 
     def get_promotions(
         self,
@@ -229,7 +230,7 @@ class UberRidesClient(object):
             'end_longitude': end_longitude,
         }
 
-        return self._api_call('GET', 'v1/promotions', args=args)
+        return self._api_call('GET', 'v1/promotions', response.Promotions, args=args)
 
     def get_user_activity(self, offset=None, limit=None):
         """Get activity about the user's lifetime activity with Uber.
@@ -250,7 +251,7 @@ class UberRidesClient(object):
             'limit': limit,
         }
 
-        return self._api_call('GET', 'v1.2/history', args=args)
+        return self._api_call('GET', 'v1.2/history', response.History_V1_2, args=args)
 
     def get_user_profile(self):
         """Get information about the authorized Uber user.
@@ -259,7 +260,7 @@ class UberRidesClient(object):
             (Response)
                 A Response object containing account information.
         """
-        return self._api_call('GET', 'v1/me')
+        return self._api_call('GET', 'v1/me', response.Me)
 
     def estimate_ride(
         self,
@@ -312,7 +313,7 @@ class UberRidesClient(object):
             'end_place_id': end_place_id,
         }
 
-        return self._api_call('POST', 'v1/requests/estimate', args=args)
+        return self._api_call('POST', 'v1/requests/estimate', response.RequestsRideEstimate, args=args)
 
     def request_ride(
         self,
@@ -396,7 +397,7 @@ class UberRidesClient(object):
             'payment_method_id': payment_method_id,
         }
 
-        return self._api_call('POST', 'v1/requests', args=args)
+        return self._api_call('POST', 'v1/requests', response.RequestsCreateRide, args=args)
 
     def get_ride_details(self, ride_id):
         """Get status details about an ongoing or past ride.
@@ -411,7 +412,7 @@ class UberRidesClient(object):
                 status, location, driver, and other details.
         """
         endpoint = 'v1/requests/{}'.format(ride_id)
-        return self._api_call('GET', endpoint)
+        return self._api_call('GET', endpoint, response.RequestsRideDetails)
 
     def get_current_ride_details(self):
         """Get status details for an ongoing ride.
@@ -484,7 +485,7 @@ class UberRidesClient(object):
                 if ride was canceled.
         """
         endpoint = 'v1/requests/{}'.format(ride_id)
-        return self._api_call('DELETE', endpoint)
+        return self._api_call('DELETE', endpoint, response.RequestsDelete)
 
     def cancel_current_ride(self):
         """Cancel the user's current trip.
@@ -515,7 +516,7 @@ class UberRidesClient(object):
                 A Response object with a link to a map.
         """
         endpoint = 'v1/requests/{}/map'.format(ride_id)
-        return self._api_call('GET', endpoint)
+        return self._api_call('GET', endpoint, response.RequestsMap)
 
     def get_ride_receipt(self, ride_id):
         """Get receipt information from a completed ride.
@@ -530,7 +531,7 @@ class UberRidesClient(object):
                 the given ride.
         """
         endpoint = 'v1/requests/{}/receipt'.format(ride_id)
-        return self._api_call('GET', endpoint)
+        return self._api_call('GET', endpoint, response.RequestsReceipt)
 
     def update_sandbox_ride(self, ride_id, new_status):
         """Update the status of an ongoing sandbox request.
@@ -552,7 +553,7 @@ class UberRidesClient(object):
 
         args = {'status': new_status}
         endpoint = 'v1/sandbox/requests/{}'.format(ride_id)
-        return self._api_call('PUT', endpoint, args=args)
+        return self._api_call('PUT', endpoint, response.SandboxRideStatus, args=args)
 
     def update_sandbox_product(
         self,
@@ -582,7 +583,7 @@ class UberRidesClient(object):
         }
 
         endpoint = 'v1/sandbox/products/{}'.format(product_id)
-        return self._api_call('PUT', endpoint, args=args)
+        return self._api_call('PUT', endpoint, response.SandboxProducts, args=args)
 
     def get_home_address(self):
         """Retrieve the saved home address for an Uber user.
