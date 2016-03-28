@@ -189,7 +189,7 @@ def test_simple_401_error(simple_401_error):
     """Test Unauthorized Error converted to ClientError correctly."""
     client_error = ClientError(simple_401_error, 'msg')
 
-    assert client_error.message == 'msg'
+    assert str(client_error) == 'msg'
     assert isinstance(client_error.errors, list)
     assert isinstance(client_error.meta, dict)
     assert not client_error.meta
@@ -208,7 +208,7 @@ def test_simple_422_validation_error(simple_422_validation_error):
     """Test Validation Error converted to ClientError correctly."""
     client_error = ClientError(simple_422_validation_error, 'msg')
 
-    assert client_error.message == 'msg'
+    assert str(client_error) == 'msg'
     assert isinstance(client_error.errors, list)
     assert isinstance(client_error.meta, dict)
 
@@ -239,7 +239,7 @@ def test_simple_422_distance_exceeded_error(
     """Test Distance Exceeded Error converted to ClientError correctly."""
     client_error = ClientError(simple_422_distance_exceeded_error, 'msg')
 
-    assert client_error.message == 'msg'
+    assert str(client_error) == 'msg'
     assert isinstance(client_error.errors, list)
     assert isinstance(client_error.meta, dict)
 
@@ -270,7 +270,7 @@ def test_simple_500_error(simple_500_error):
     """Test Internal Server Error converted to ClientError correctly."""
     server_error = ServerError(simple_500_error, 'msg')
 
-    assert server_error.message == 'msg'
+    assert str(server_error) == 'msg'
     assert isinstance(server_error.meta, dict)
     assert not server_error.meta
 
@@ -288,7 +288,7 @@ def test_simple_503_error(simple_503_error):
     """Test Service Unavailable Error converted to ClientError correctly."""
     server_error = ServerError(simple_503_error, 'msg')
 
-    assert server_error.message == 'msg'
+    assert str(server_error) == 'msg'
     assert isinstance(server_error.meta, dict)
     assert not server_error.meta
 
@@ -306,7 +306,7 @@ def test_complex_409_surge_error(complex_409_surge_error):
     """Test Surge Error converted to ClientError correctly."""
     client_error = ClientError(complex_409_surge_error, 'msg')
 
-    assert client_error.message == 'msg'
+    assert str(client_error) == 'msg'
     assert isinstance(client_error.errors, list)
     assert isinstance(client_error.meta, dict)
 
@@ -331,7 +331,7 @@ def test_complex_422_same_pickup_dropoff_error(
     """Test Same Pickup-Dropoff Error converted to ClientError correctly."""
     client_error = ClientError(complex_422_same_pickup_dropoff_error, 'msg')
 
-    assert client_error.message == 'msg'
+    assert str(client_error) == 'msg'
     assert isinstance(client_error.errors, list)
     assert isinstance(client_error.meta, dict)
     assert not client_error.meta

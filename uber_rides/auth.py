@@ -36,13 +36,19 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from collections import OrderedDict
 from random import SystemRandom
 from requests import codes
 from requests import post
 from string import ascii_letters
 from string import digits
-from urlparse import parse_qs
-from urlparse import urlparse
+
+try:
+    from urllib.parse import parse_qs
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import parse_qs
+    from urlparse import urlparse
 
 from uber_rides.errors import ClientError
 from uber_rides.errors import UberIllegalState
@@ -101,13 +107,13 @@ class OAuth2(object):
             message = '{} is not a valid response type.'
             raise UberIllegalState(message.format(response_type))
 
-        args = {
-            'redirect_uri': redirect_url,
-            'state': state,
-            'scope': ' '.join(self.scopes),
-            'response_type': response_type,
-            'client_id': self.client_id,
-        }
+        args = OrderedDict([
+            ('scope', ' '.join(self.scopes)),
+            ('state', state),
+            ('redirect_uri', redirect_url),
+            ('response_type', response_type),
+            ('client_id', self.client_id),
+        ])
 
         return build_url(auth.AUTH_HOST, auth.AUTHORIZE_PATH, args)
 
