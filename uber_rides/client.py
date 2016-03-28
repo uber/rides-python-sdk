@@ -36,6 +36,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from collections import OrderedDict
 from requests import codes
 
 from uber_rides.auth import refresh_access_token
@@ -115,10 +116,10 @@ class UberRidesClient(object):
             (Response)
                 A Response object containing available products information.
         """
-        args = {
-            'latitude': latitude,
-            'longitude': longitude,
-        }
+        args = OrderedDict([
+            ('latitude', latitude),
+            ('longitude', longitude),
+        ])
 
         return self._api_call('GET', 'v1/products', args=args)
 
@@ -160,12 +161,12 @@ class UberRidesClient(object):
             (Response)
                 A Response object containing each product's price estimates.
         """
-        args = {
-            'start_latitude': start_latitude,
-            'start_longitude': start_longitude,
-            'end_latitude': end_latitude,
-            'end_longitude': end_longitude,
-        }
+        args = OrderedDict([
+            ('start_latitude', start_latitude),
+            ('start_longitude', start_longitude),
+            ('end_latitude', end_latitude),
+            ('end_longitude', end_longitude),
+        ])
 
         return self._api_call('GET', 'v1/estimates/price', args=args)
 
@@ -191,11 +192,11 @@ class UberRidesClient(object):
             (Response)
                 A Response containing each product's pickup time estimates.
         """
-        args = {
-            'start_latitude': start_latitude,
-            'start_longitude': start_longitude,
-            'product_id': product_id,
-        }
+        args = OrderedDict([
+            ('start_latitude', start_latitude),
+            ('start_longitude', start_longitude),
+            ('product_id', product_id),
+        ])
 
         return self._api_call('GET', 'v1/estimates/time', args=args)
 
@@ -222,12 +223,13 @@ class UberRidesClient(object):
             (Response)
                 A Response object containing available promotions.
         """
-        args = {
-            'start_latitude': start_latitude,
-            'start_longitude': start_longitude,
-            'end_latitude': end_latitude,
-            'end_longitude': end_longitude,
-        }
+
+        args = OrderedDict([
+            ('start_latitude', start_latitude),
+            ('start_longitude', start_longitude),
+            ('end_latitude', end_latitude),
+            ('end_longitude', end_longitude)
+        ])
 
         return self._api_call('GET', 'v1/promotions', args=args)
 

@@ -592,7 +592,7 @@ def test_surge_error_formation(http_surge_error):
     """Test HTTP surge error response converted to SurgeError correctly."""
     surge_error = SurgeError(http_surge_error, 'msg')
 
-    assert surge_error.message == 'msg'
+    assert str(surge_error) == 'msg'
     assert isinstance(surge_error.errors, list)
     assert isinstance(surge_error.meta, dict)
 

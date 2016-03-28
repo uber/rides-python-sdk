@@ -3,7 +3,7 @@ interactions:
     body: null
     headers: {}
     method: !!python/unicode GET
-    uri: https://sandbox-api.uber.com/v1/promotions?start_longitude=-122.417&end_longitude=-122.416&start_latitude=37.775&end_latitude=37.808
+    uri: https://sandbox-api.uber.com/v1/promotions?start_latitude=37.775&start_longitude=-122.417&end_latitude=37.808&end_longitude=-122.416
   response:
     body: {string: !!python/unicode '{"display_text":"Free ride up to $20","localized_value":"$20","type":"trip_credit","value":20.0,"currency_code":"USD"}'}
     headers:
@@ -25,7 +25,7 @@ interactions:
     body: null
     headers: {}
     method: !!python/unicode GET
-    uri: https://api.uber.com/v1/promotions?start_longitude=-122.417&end_longitude=-122.416&start_latitude=37.775&end_latitude=37.808
+    uri: https://api.uber.com/v1/promotions?start_latitude=37.775&start_longitude=-122.417&end_latitude=37.808&end_longitude=-122.416
   response:
     body: {string: !!python/unicode '{"display_text":"Free ride up to $20","localized_value":"$20","type":"trip_credit","value":20.0,"currency_code":"USD"}'}
     headers:

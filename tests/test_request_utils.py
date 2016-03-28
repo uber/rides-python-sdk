@@ -23,6 +23,8 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from collections import OrderedDict
+
 from pytest import fixture
 
 from uber_rides.utils.request import build_url
@@ -40,10 +42,10 @@ DEFAULT_BASE_URL = 'https://api.uber.com/products'
 
 @fixture
 def default_http_arguments_as_json():
-    return {
-        'latitude': LAT,
-        'longitude': LNG,
-    }
+    return OrderedDict([
+        ('latitude', LAT),
+        ('longitude', LNG),
+    ])
 
 
 @fixture

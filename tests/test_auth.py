@@ -25,9 +25,15 @@ from __future__ import unicode_literals
 
 from pytest import fixture
 from pytest import raises
-from urllib import quote
-from urlparse import parse_qs
-from urlparse import urlparse
+
+try:
+    from urllib.parse import quote
+    from urllib.parse import parse_qs
+    from urllib.parse import urlparse
+except ImportError:
+    from urllib import quote
+    from urlparse import parse_qs
+    from urlparse import urlparse
 
 from tests.vcr_config import uber_vcr
 from uber_rides.auth import AuthorizationCodeGrant
@@ -244,7 +250,7 @@ def test_refresh_implicit_access_token(implicit_oauth2credential):
     with raises(UberIllegalState) as error:
         refresh_access_token(implicit_oauth2credential)
 
-    assert 'Grant Type does not support Refresh Tokens' in error.value[0]
+    assert 'Grant Type does not support Refresh Tokens' in str(error.value)
 
 
 @uber_vcr.use_cassette()

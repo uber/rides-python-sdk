@@ -9,6 +9,7 @@ dist/
 
 # Backup Generated Files #
 ##########################
+__pycache__/
 *.pyo
 *.pyc
 *~
