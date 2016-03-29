@@ -1,4 +1,8 @@
-v0.2.0 - 2/20/2015
+v0.2.1 - 3/29/2016
+------------------
+- Added support for Python 3
+
+v0.2.0 - 2/20/2016
 ------------------
  - Added places support
  - Added payment methods support
