@@ -152,7 +152,14 @@ class AuthorizationCodeGrant(OAuth2):
     access token from Uber.
     """
 
-    def __init__(self, client_id, scopes, client_secret, redirect_url):
+    def __init__(
+        self,
+        client_id,
+        scopes,
+        client_secret,
+        redirect_url,
+        state_token=None,
+    ):
         """Initialize AuthorizationCodeGrant Class.
 
         Parameters
@@ -169,11 +176,17 @@ class AuthorizationCodeGrant(OAuth2):
                 finishing authorization. The redirect must be HTTPS-based and
                 match the URL you registered your application with. Localhost
                 URLs are permitted and can be either HTTP or HTTPS.
+            state_token (str)
+                The CSRF State Token used to create an authorization.
         """
         super(AuthorizationCodeGrant, self).__init__(client_id, scopes)
         self.redirect_url = redirect_url
-        self.state_token = self._generate_state_token()
         self.client_secret = client_secret
+        if state_token is not None:
+            self.state_token = state_token
+        else:
+            self.state_token = self._generate_state_token()
+
 
     def _generate_state_token(self, length=32):
         """Generate CSRF State Token.
