@@ -12,7 +12,7 @@ with open('README.rst') as f:
 
 setup(
     name='uber_rides',
-    version='0.2.1',
+    version='0.2.2',
     packages=find_packages(),
     description='Official Uber Rides API Python SDK',
     long_description=readme,
@@ -21,6 +21,9 @@ setup(
     author='Uber Technologies, Inc.',
     author_email='christinek@uber.com',
     install_requires=['requests', 'pyyaml'],
+    extras_require={
+        ':python_version == "2.7"': ['future'],
+    },
     tests_require=['pytest', 'mock', 'vcrpy'],
     keywords=['uber', 'api', 'sdk', 'rides', 'library'],
 )
