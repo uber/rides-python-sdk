@@ -4,3 +4,4 @@ redirect_url: INSERT_REDIRECT_URL_HERE
 scopes:
     - profile
     - history
+    - request
