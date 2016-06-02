@@ -344,3 +344,13 @@ def test_complex_422_same_pickup_dropoff_error(
     assert error_details.status == http.STATUS_UNPROCESSABLE_ENTITY
     assert error_details.code == expected_code
     assert error_details.title == expected_description
+
+def test_error_details_dump():
+    """Test the object representation repr method for ErrorDetails."""
+    client_error = ErrorDetails(status='status', code=400, title='msg')
+
+    assert str(client_error) == "ErrorDetails: {} {} {}".format(
+        str(client_error.status),
+        str(client_error.code),
+        str(client_error.title)
+    )

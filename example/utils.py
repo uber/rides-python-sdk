@@ -74,14 +74,15 @@ def response_print(message):
     print(COLORS.response, message, COLORS.end)
 
 
-def fail_print(message):
-    """Print a message in red text.
+def fail_print(error):
+    """Print an error in red text.
 
     Parameters
-        message (str)
-            Message to print.
+        error (HTTPError)
+            Error object to print.
     """
-    print(COLORS.fail, message, COLORS.end)
+    print(COLORS.fail, error.message, COLORS.end)
+    print(COLORS.fail, error.errors, COLORS.end)
 
 
 def paragraph_print(message):

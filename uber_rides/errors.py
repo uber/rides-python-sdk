@@ -152,6 +152,13 @@ class ErrorDetails(object):
         self.code = code
         self.title = title
 
+    def __repr__(self):
+        return "ErrorDetails: {} {} {}".format(
+            str(self.status),
+            str(self.code),
+            str(self.title)
+        )
+
 
 class UnknownHttpError(APIError):
     """Throw when an unknown HTTP error occurs.
