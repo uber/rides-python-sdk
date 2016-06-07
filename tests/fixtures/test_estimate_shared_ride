@@ -1,0 +1,29 @@
+interactions:
+- request:
+    body: '{"seat_count": 1, "start_longitude": 77.610969, "end_longitude": 77.64101,
+      "product_id": "3eb15796-edd3-4297-80f1-02605442bb9e", "end_latitude": 12.983619,
+      "end_place_id": null, "start_latitude": 12.935105, "start_place_id": null}'
+    headers:
+      Content-Length: ['230']
+      content-type: [application/json]
+    method: POST
+    uri: https://sandbox-api.uber.com/v1/requests/estimate
+  response:
+    body: {string: !!python/unicode '{"price":{"surge_confirmation_href":null,"high_estimate":106,"fare_id":"80408ff851ab43bc277efa286a2251e5b5106ae68a513f0e2b8a87b8df8d3074","surge_confirmation_id":null,"minimum":null,"expires_at":1465290497,"low_estimate":105,"fare_breakdown":[],"surge_multiplier":1.0,"display":"\u20b9105.73","currency_code":"INR"},"trip":{"distance_unit":"mile","duration_estimate":1560,"distance_estimate":5.74},"pickup_estimate":1}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['418']
+      content-type: [application/json]
+      date: ['Tue, 07 Jun 2016 09:06:17 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1970']
+      x-rate-limit-reset: ['1465293600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

@@ -1,0 +1,34 @@
+interactions:
+- request:
+    body: '{"end_longitude": 77.64101, "surge_confirmation_id": null, "start_address":
+      null, "end_place_id": null, "fare_id": "cd2d16cd3380b39796b53e2c3686d0cf1ef5262e71aaa2f6d8d0f7eacfd8e1a5",
+      "start_nickname": null, "end_latitude": 12.983619, "payment_method_id": null,
+      "product_id": "3eb15796-edd3-4297-80f1-02605442bb9e", "seat_count": 1, "end_address":
+      null, "end_nickname": null, "start_place_id": null, "start_longitude": 77.610969,
+      "start_latitude": 12.935105}'
+    headers:
+      Content-Length: ['457']
+      content-type: [application/json]
+    method: POST
+    uri: https://sandbox-api.uber.com/v1/requests
+  response:
+    body: {string: !!python/unicode '{"status":"processing","product_id":"3eb15796-edd3-4297-80f1-02605442bb9e","request_id":"e7f27b9b-9f0d-476f-bfa4-e8a1ff84f56a","driver":null,"eta":null,"location":null,"vehicle":null,"surge_multiplier":1.0,"shared":true}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['220']
+      content-type: [application/json]
+      date: ['Tue, 07 Jun 2016 09:13:14 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-limit-concurrent-trips: ['10']
+      x-rate-limit-remaining: ['1966']
+      x-rate-limit-remaining-concurrent-trips: ['10']
+      x-rate-limit-reset: ['1465293600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 202, message: Accepted}
+version: 1

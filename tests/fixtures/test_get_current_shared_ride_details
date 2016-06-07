@@ -1,0 +1,26 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://sandbox-api.uber.com/v1/requests/current
+  response:
+    body: {string: !!python/unicode '{"status":"accepted","destination":{"latitude":12.983619,"longitude":77.64101},"product_id":"3eb15796-edd3-4297-80f1-02605442bb9e","request_id":"e7f27b9b-9f0d-476f-bfa4-e8a1ff84f56a","driver":{"phone_number":"(555)555-5555","rating":4.9,"picture_url":"https:\/\/d1a3f4spazzrp4.cloudfront.net\/uberex-sandbox\/images\/driver.jpg","name":"John","sms_number":null},"waypoints":[{"rider_id":null,"latitude":12.9373684868,"type":"dropoff","longitude":77.612309864},{"rider_id":"8PiS468KZkVJhhK6ST4D_CcMV6NwmYKztwth7TV19QQnJmgGeyfTBVKozrELC7vPcYDSx7QIVPodBRI7lq6TG9aA6emOSdRVvoN-V85fFGB5QWktOdinShctEfysPMPwlw==","latitude":12.983619,"type":"dropoff","longitude":77.64101}],"pickup":{"latitude":12.935105,"eta":1,"longitude":77.610969},"eta":1,"location":{"latitude":12.935105,"bearing":-150,"longitude":77.610969},"vehicle":{"make":"Toyota","picture_url":"https:\/\/d1a3f4spazzrp4.cloudfront.net\/uberex-sandbox\/images\/prius.jpg","model":"Prius","license_plate":"UBER-PLATE"},"surge_multiplier":1.0,"shared":true,"riders":[{"rider_id":null,"me":false,"first_name":"Christine"},{"rider_id":"8PiS468KZkVJhhK6ST4D_CcMV6NwmYKztwth7TV19QQnJmgGeyfTBVKozrELC7vPcYDSx7QIVPodBRI7lq6TG9aA6emOSdRVvoN-V85fFGB5QWktOdinShctEfysPMPwlw==","me":true,"first_name":"Mandeep"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['1256']
+      content-type: [application/json]
+      date: ['Tue, 07 Jun 2016 09:20:52 GMT']
+      etag: ['"89bcd0669611f34a205e990ebc5de462a3068c86"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1961']
+      x-rate-limit-reset: ['1465293600']
+      x-uber-app: [uberex-sandbox]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

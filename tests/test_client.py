@@ -66,6 +66,9 @@ END_LNG = -122.416
 UPDATE_LAT = 37.812
 UPDATE_LNG = -122.5
 PRODUCT_ID = 'd4abaae7-f4d6-4152-91cc-77523e8165a4'
+SHARED_PRODUCT_ID = '3eb15796-edd3-4297-80f1-02605442bb9e'
+SHARED_SEAT_COUNT = 1
+SHARED_FARE_ID = 'cd2d16cd3380b39796b53e2c3686d0cf1ef5262e71aaa2f6d8d0f7eacfd8e1a5'
 PRODUCTS_AVAILABLE = 5
 SURGE_HREF = 'api.uber.com/v1/surge-confirmations/{}'
 
@@ -131,7 +134,27 @@ EXPECTED_ESTIMATE_RIDE_PRICE_KEYS = set([
     'surge_multiplier',
 ])
 
+EXPECTED_ESTIMATE_SHARED_RIDE_PRICE_KEYS = set([
+    "surge_confirmation_href",
+    "high_estimate",
+    "fare_id",
+    "surge_confirmation_id",
+    "minimum",
+    "expires_at",
+    "low_estimate",
+    "fare_breakdown",
+    "surge_multiplier",
+    "display",
+    "currency_code"
+])
+
 EXPECTED_ESTIMATE_RIDE_TRIP_KEYS = set([
+    'distance_unit',
+    'duration_estimate',
+    'distance_estimate',
+])
+
+EXPECTED_ESTIMATE_SHARED_RIDE_TRIP_KEYS = set([
     'distance_unit',
     'duration_estimate',
     'distance_estimate',
@@ -146,6 +169,19 @@ EXPECTED_RIDE_DETAILS_KEYS = set([
     'vehicle',
     'surge_multiplier',
 ])
+
+EXPECTED_SHARED_RIDE_DETAILS_KEYS = set([
+    'status',
+    'waypoints',
+    'request_id',
+    'driver',
+    'eta',
+    'location',
+    'vehicle',
+    'surge_multiplier',
+    'riders'
+])
+
 
 EXPECTED_RIDE_MAP_KEYS = set([
     'href',
@@ -368,6 +404,29 @@ def test_get_user_profile(authorized_sandbox_client):
     response = response.json
     assert EXPECTED_PROFILE_KEYS.issubset(response)
 
+@uber_vcr.use_cassette()
+def test_estimate_shared_ride(authorized_sandbox_client):
+    """Test to estimate a shared ride."""
+    try:
+     response = authorized_sandbox_client.estimate_ride(
+            product_id=SHARED_PRODUCT_ID,
+            seat_count=SHARED_SEAT_COUNT,
+            start_latitude=START_LAT,
+            start_longitude=START_LNG,
+            end_latitude=END_LAT,
+            end_longitude=END_LNG,
+     )
+    except Exception as e:
+        print(e.errors[0].__dict__)
+    assert response.status_code == codes.ok
+
+    # assert response looks like price and time estimates
+    response = response.json
+    price = response.get('price')
+    assert EXPECTED_ESTIMATE_SHARED_RIDE_PRICE_KEYS.issubset(price)
+    trip = response.get('trip')
+    assert EXPECTED_ESTIMATE_SHARED_RIDE_TRIP_KEYS.issubset(trip)
+
 
 @uber_vcr.use_cassette()
 def test_estimate_ride(authorized_sandbox_client):
@@ -422,6 +481,24 @@ def test_request_ride(authorized_sandbox_client):
     # assert response looks like ride details
     response = response.json
     assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
+
+@uber_vcr.use_cassette()
+def test_request_shared_ride(authorized_sandbox_client):
+    """Test to request shared ride with access token."""
+    try:
+        response = authorized_sandbox_client.request_ride(
+            product_id=SHARED_PRODUCT_ID,
+            fare_id=SHARED_FARE_ID,
+            seat_count=SHARED_SEAT_COUNT,
+            start_latitude=START_LAT,
+            start_longitude=START_LNG,
+            end_latitude=END_LAT,
+            end_longitude=END_LNG,
+        )
+    except Exception as e:
+        print(e)
+        print(e.errors[0].__dict__)
+    assert response.status_code == codes.accepted
 
 
 @uber_vcr.use_cassette()
@@ -481,7 +558,6 @@ def test_get_ride_details(authorized_sandbox_client):
     assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
     assert response.get('status') == 'processing'
 
-
 @uber_vcr.use_cassette()
 def test_get_current_ride_details(authorized_sandbox_client):
     """Test to fetch current ride details with access token."""
@@ -492,6 +568,17 @@ def test_get_current_ride_details(authorized_sandbox_client):
     response = response.json
     assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
     assert response.get('status') == 'processing'
+
+@uber_vcr.use_cassette()
+def test_get_current_shared_ride_details(authorized_sandbox_client):
+    """Test to fetch current shared ride details with access token."""
+    response = authorized_sandbox_client.get_current_ride_details()
+    assert response.status_code == codes.ok
+
+    # assert response looks like ride details
+    response = response.json
+    assert EXPECTED_SHARED_RIDE_DETAILS_KEYS.issubset(response)
+    assert response.get('status') == 'accepted'
 
 
 @uber_vcr.use_cassette()
