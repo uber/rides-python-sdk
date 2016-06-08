@@ -272,6 +272,7 @@ class UberRidesClient(object):
         end_latitude=None,
         end_longitude=None,
         end_place_id=None,
+        seat_count=None,
     ):
         """Estimate ride details given a product, start, and end location.
 
@@ -297,6 +298,8 @@ class UberRidesClient(object):
             end_place_id (str)
                 The final or destination place ID. Only "home" or "work"
                 is acceptable.
+            seat_count (str)
+                Optional Seat count for shared products. Default is 2.
 
 
         Returns
@@ -312,6 +315,7 @@ class UberRidesClient(object):
             'end_latitude': end_latitude,
             'end_longitude': end_longitude,
             'end_place_id': end_place_id,
+            'seat_count': seat_count
         }
 
         return self._api_call('POST', 'v1/requests/estimate', args=args)
@@ -329,6 +333,8 @@ class UberRidesClient(object):
         end_place_id=None,
         end_address=None,
         end_nickname=None,
+        seat_count=None,
+        fare_id=None,
         surge_confirmation_id=None,
         payment_method_id=None,
     ):
@@ -364,6 +370,10 @@ class UberRidesClient(object):
                 Optional destination address.
             end_nickname (str)
                 Optional destination nickname label.
+            seat_count (int)
+                Optional seat count for shared products.
+            fare_id (str)
+                Optional fare_id for shared products.
             surge_confirmation_id (str)
                 Optional unique identifier of the surge session for a user.
             payment_method_id (str)
@@ -396,6 +406,8 @@ class UberRidesClient(object):
             'end_nickname': end_nickname,
             'surge_confirmation_id': surge_confirmation_id,
             'payment_method_id': payment_method_id,
+            'seat_count': seat_count,
+            'fare_id': fare_id
         }
 
         return self._api_call('POST', 'v1/requests', args=args)
