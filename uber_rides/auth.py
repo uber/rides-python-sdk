@@ -1,4 +1,4 @@
-# Copyright (c) 2015 Uber Technologies, Inc.
+# Copyright (c) 2016 Uber Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -186,7 +186,6 @@ class AuthorizationCodeGrant(OAuth2):
             self.state_token = state_token
         else:
             self.state_token = self._generate_state_token()
-
 
     def _generate_state_token(self, length=32):
         """Generate CSRF State Token.

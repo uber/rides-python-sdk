@@ -1,4 +1,4 @@
-# Copyright (c) 2015 Uber Technologies, Inc.
+# Copyright (c) 2016 Uber Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -68,7 +68,7 @@ UPDATE_LNG = -122.5
 PRODUCT_ID = 'd4abaae7-f4d6-4152-91cc-77523e8165a4'
 SHARED_PRODUCT_ID = '3eb15796-edd3-4297-80f1-02605442bb9e'
 SHARED_SEAT_COUNT = 1
-SHARED_FARE_ID = 'cd2d16cd3380b39796b53e2c3686d0cf1ef5262e71aaa2f6d8d0f7eacfd8e1a5'
+SHARED_FARE_ID = 'cd2d16cd3380b39796b53e2c3686d0cf1ef5262e71aaa2f6d8d0f7eacfd8e1a5'  # noqa
 PRODUCTS_AVAILABLE = 5
 SURGE_HREF = 'api.uber.com/v1/surge-confirmations/{}'
 
@@ -404,18 +404,19 @@ def test_get_user_profile(authorized_sandbox_client):
     response = response.json
     assert EXPECTED_PROFILE_KEYS.issubset(response)
 
+
 @uber_vcr.use_cassette()
 def test_estimate_shared_ride(authorized_sandbox_client):
     """Test to estimate a shared ride."""
     try:
-     response = authorized_sandbox_client.estimate_ride(
+        response = authorized_sandbox_client.estimate_ride(
             product_id=SHARED_PRODUCT_ID,
             seat_count=SHARED_SEAT_COUNT,
             start_latitude=START_LAT,
             start_longitude=START_LNG,
             end_latitude=END_LAT,
             end_longitude=END_LNG,
-     )
+        )
     except Exception as e:
         print(e.errors[0].__dict__)
     assert response.status_code == codes.ok
@@ -481,6 +482,7 @@ def test_request_ride(authorized_sandbox_client):
     # assert response looks like ride details
     response = response.json
     assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
+
 
 @uber_vcr.use_cassette()
 def test_request_shared_ride(authorized_sandbox_client):
@@ -558,6 +560,7 @@ def test_get_ride_details(authorized_sandbox_client):
     assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
     assert response.get('status') == 'processing'
 
+
 @uber_vcr.use_cassette()
 def test_get_current_ride_details(authorized_sandbox_client):
     """Test to fetch current ride details with access token."""
@@ -568,6 +571,7 @@ def test_get_current_ride_details(authorized_sandbox_client):
     response = response.json
     assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
     assert response.get('status') == 'processing'
+
 
 @uber_vcr.use_cassette()
 def test_get_current_shared_ride_details(authorized_sandbox_client):

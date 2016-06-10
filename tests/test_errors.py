@@ -1,4 +1,4 @@
-# Copyright (c) 2015 Uber Technologies, Inc.
+# Copyright (c) 2016 Uber Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -344,6 +344,7 @@ def test_complex_422_same_pickup_dropoff_error(
     assert error_details.status == http.STATUS_UNPROCESSABLE_ENTITY
     assert error_details.code == expected_code
     assert error_details.title == expected_description
+
 
 def test_error_details_dump():
     """Test the object representation repr method for ErrorDetails."""

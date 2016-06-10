@@ -1,4 +1,4 @@
-# Copyright (c) 2015 Uber Technologies, Inc.
+# Copyright (c) 2016 Uber Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,8 @@ from uber_rides.utils import http
 from uber_rides.utils.request import build_url
 from uber_rides.utils.request import generate_data
 from uber_rides.utils.request import generate_prepared_request
+
+LIB_VERSION = '0.2.4'
 
 
 class Response(object):
@@ -182,7 +184,10 @@ class Request(object):
             message = 'Invalid token_type or token.'
             raise UberIllegalState(message)
 
-        headers = {'Authorization': ' '.join([token_type, token])}
+        headers = {
+            'Authorization': ' '.join([token_type, token]),
+            'X-Uber-User-Agent': 'Python Rides SDK v{}'.format(LIB_VERSION),
+        }
 
         if method in http.BODY_METHODS:
             headers.update(http.DEFAULT_CONTENT_HEADERS)
