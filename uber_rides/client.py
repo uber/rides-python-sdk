@@ -144,6 +144,7 @@ class UberRidesClient(object):
         start_longitude,
         end_latitude,
         end_longitude,
+        seat_count=2,
     ):
         """Get price estimates for products at a given location.
 
@@ -156,6 +157,8 @@ class UberRidesClient(object):
                 The latitude component of a end location.
             end_longitude (float)
                 The longitude component of a end location.
+            seat_count (int)
+                The number of seats required for uberPOOL. Default and maximum value is 2.
 
         Returns
             (Response)
@@ -166,6 +169,7 @@ class UberRidesClient(object):
             ('start_longitude', start_longitude),
             ('end_latitude', end_latitude),
             ('end_longitude', end_longitude),
+            ('seat_count', seat_count),
         ])
 
         return self._api_call('GET', 'v1/estimates/price', args=args)
