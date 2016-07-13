@@ -144,7 +144,7 @@ class UberRidesClient(object):
         start_longitude,
         end_latitude,
         end_longitude,
-        seat_count=2,
+        seat_count=None,
     ):
         """Get price estimates for products at a given location.
 
