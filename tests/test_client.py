@@ -321,6 +321,7 @@ def test_get_price_estimates(authorized_sandbox_client, server_token_client):
             START_LNG,
             END_LAT,
             END_LNG,
+            SHARED_SEAT_COUNT,
         )
         assert response.status_code == codes.ok
 
