@@ -1,3 +1,7 @@
+v0.2.4 - 6/10/2016
+------------------
+ - Added SDK Version header
+
 v0.2.3 - 6/8/2016
 -----------------
  - Added Pool support
