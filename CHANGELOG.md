@@ -1,3 +1,7 @@
+v0.2.5 - 7/18/2016
+------------------
+ - Add seat_count support to get_price_estimates
+
 v0.2.4 - 6/10/2016
 ------------------
  - Added SDK Version header
