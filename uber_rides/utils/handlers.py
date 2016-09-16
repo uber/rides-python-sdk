@@ -49,9 +49,15 @@ def error_handler(response, **kwargs):
             The original HTTP response from the API request.
     """
     if 400 <= response.status_code <= 499:
-        raise ClientError(response)
+        error_status_code = response.status_code
+        error_body = response.json().get('message')
+        error_message = str(error_status_code) + ': ' + error_body
+        raise ClientError(response, error_message)
 
     elif 500 <= response.status_code <= 599:
-        raise ServerError(response)
+        error_status_code = response.status_code
+        error_body = response.json().get('message')
+        error_message = str(error_status_code) + ': ' + error_body
+        raise ServerError(response, error_message)
 
     return response
