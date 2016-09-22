@@ -26,6 +26,8 @@ from __future__ import unicode_literals
 from uber_rides.errors import ClientError
 from uber_rides.errors import ServerError
 
+from json import JSONDecodeError
+
 
 def error_handler(response, **kwargs):
     """Error Handler to surface 4XX and 5XX errors.
@@ -48,10 +50,18 @@ def error_handler(response, **kwargs):
         response (requests.Response)
             The original HTTP response from the API request.
     """
-    if 400 <= response.status_code <= 499:
-        raise ClientError(response)
+    try:
+        body = response.json()
+    except JSONDecodeError:
+        body = {}
+    status_code = response.status_code
+    message = body.get('message', '')
+    fields = body.get('fields', '')
+    error_message = str(status_code) + ': ' + message + ' ' + str(fields)
+    if 400 <= status_code <= 499:
+        raise ClientError(response, error_message)
 
-    elif 500 <= response.status_code <= 599:
-        raise ServerError(response)
+    elif 500 <= status_code <= 599:
+        raise ServerError(response, error_message)
 
     return response
