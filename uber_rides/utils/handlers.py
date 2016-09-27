@@ -26,8 +26,6 @@ from __future__ import unicode_literals
 from uber_rides.errors import ClientError
 from uber_rides.errors import ServerError
 
-from json import JSONDecodeError
-
 
 def error_handler(response, **kwargs):
     """Error Handler to surface 4XX and 5XX errors.
@@ -52,7 +50,7 @@ def error_handler(response, **kwargs):
     """
     try:
         body = response.json()
-    except JSONDecodeError:
+    except ValueError:
         body = {}
     status_code = response.status_code
     message = body.get('message', '')
