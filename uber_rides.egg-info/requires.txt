@@ -1,5 +1,0 @@
-requests
-pyyaml
-
-[:python_version == "2.7"]
-future

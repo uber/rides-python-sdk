@@ -6,6 +6,8 @@ env/
 ############################
 build/
 dist/
+*.egg-info/
+
 
 # Backup Generated Files #
 ##########################
