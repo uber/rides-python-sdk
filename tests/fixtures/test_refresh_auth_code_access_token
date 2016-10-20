@@ -1,27 +1,31 @@
 interactions:
 - request:
-    body: redirect_uri=https%3A%2F%2Fdeveloper.uber.com%2Fmy-redirect_url&client_id=clientID-28dh1&client_secret=clientSecret-hv783s&grant_type=refresh_token&refresh_token=refreshToken-14du3n
+    body: !!python/unicode redirect_uri=https%3A%2F%2Fuberapitester.com%2Fapi%2Fv1%2Fuber%2Foauth&client_id=xxx&client_secret=xxx&grant_type=refresh_token&refresh_token=xxx
     headers:
       Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      Content-Length: ['229']
+      Content-Length: ['238']
       Content-Type: [application/x-www-form-urlencoded]
-      User-Agent: [python-requests/2.7.0 CPython/2.7.6 Darwin/14.3.0]
+      User-Agent: [python-requests/2.11.1]
     method: POST
     uri: https://login.uber.com/oauth/token
   response:
-    body: {string: !!python/unicode 
-    '{"last_authenticated":1441746868,"access_token":"accessToken-34tns2","expires_in":2592000,"token_type":"Bearer","scope":"profile history","refresh_token":"refreshToken-xiw831"}'}
+    body: {string: !!python/unicode '{"last_authenticated":1476922316,"access_token":"xxx","expires_in":2592000,"token_type":"Bearer","scope":"profile
+        history","refresh_token":"xxx"}'}
     headers:
       cache-control: [no-store, max-age=0]
       connection: [keep-alive]
+      content-length: ['199']
       content-type: [application/json]
-      date: ['Thu, 10 Sep 2015 01:59:59 GMT']
+      date: ['Thu, 20 Oct 2016 04:32:40 GMT']
       pragma: [no-cache]
       server: [nginx]
-      set-cookie: [session=cb3aea24f3e039a5_55f0e41f.-art3SvWSBGql5hhRCHqceBuerY;
+      set-cookie: [session=xxx;
           Domain=login.uber.com; Secure; HttpOnly; Path=/]
       strict-transport-security: [max-age=0]
+      transfer-encoding: [chunked]
+      x-content-type-options: [nosniff]
       x-frame-options: [SAMEORIGIN]
       x-uber-app: [login]
       x-xss-protection: [1; mode=block]

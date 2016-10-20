@@ -46,16 +46,19 @@ from uber_rides.utils import auth
 
 
 # replace these with valid tokens and credentials to rerecord fixtures
-CLIENT_ID = 'clientID-28dh1'
-CLIENT_SECRET = 'clientSecret-hv783s'
-STATE_TOKEN = 'stateToken-se3jf'
-AUTHORIZATION_CODE = 'authCode-3x734'
-ACCESS_TOKEN = 'accessToken-194jd2'
-REFRESH_TOKEN = 'refreshToken-14du3n'
-REFRESHED_ACCESS_TOKEN = 'accessToken-34tns2'
-REDIRECT_URL = 'https://developer.uber.com/my-redirect_url'
+CLIENT_ID = 'xxx'
+CLIENT_SECRET = 'xxx'
+AUTHORIZATION_CODE = 'xxx'
+ACCESS_TOKEN = 'xxx'
+REFRESH_TOKEN = 'xxx'
+REFRESHED_ACCESS_TOKEN = 'xxx'
+STATE_TOKEN = 'rides-sdk'
+
+REDIRECT_URL = 'https://uberapitester.com/api/v1/uber/oauth'
 
 SCOPES = {'profile', 'history'}
+CLIENT_CREDENTIALS_SCOPES = {'partner.referrals'}
+
 EXPIRES_IN_SECONDS = 3000
 
 EXPECTED_QUERYSTRING = (
@@ -115,7 +118,7 @@ def implicit_oauth2credential():
 def client_credential_grant():
     return ClientCredentialGrant(
         client_id=CLIENT_ID,
-        scopes=SCOPES,
+        scopes=CLIENT_CREDENTIALS_SCOPES,
         client_secret=CLIENT_SECRET,
     )
 
@@ -128,7 +131,7 @@ def client_credential_oauth2credential():
         redirect_url=None,
         access_token=ACCESS_TOKEN,
         expires_in_seconds=EXPIRES_IN_SECONDS,
-        scopes=SCOPES,
+        scopes=CLIENT_CREDENTIALS_SCOPES,
         grant_type=auth.CLIENT_CREDENTIAL_GRANT,
         refresh_token=None,
     )
@@ -262,7 +265,7 @@ def test_client_credential_get_session(client_credential_grant):
     assert session.token_type == auth.OAUTH_TOKEN_TYPE
     credential = session.oauth2credential
     assert credential.access_token == ACCESS_TOKEN
-    assert credential.scopes == SCOPES
+    assert credential.scopes == CLIENT_CREDENTIALS_SCOPES
     assert credential.grant_type == auth.CLIENT_CREDENTIAL_GRANT
     assert credential.client_id == CLIENT_ID
     assert credential.client_secret == CLIENT_SECRET
@@ -281,7 +284,7 @@ def test_refresh_client_credential_access_token(
     assert session.token_type == auth.OAUTH_TOKEN_TYPE
     credential = session.oauth2credential
     assert credential.access_token == REFRESHED_ACCESS_TOKEN
-    assert credential.scopes == SCOPES
+    assert credential.scopes == CLIENT_CREDENTIALS_SCOPES
     assert credential.grant_type == auth.CLIENT_CREDENTIAL_GRANT
     assert credential.client_id == CLIENT_ID
     assert credential.client_secret == CLIENT_SECRET
