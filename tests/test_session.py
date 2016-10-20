@@ -32,16 +32,22 @@ from uber_rides.utils import auth
 from uber_rides.utils import http
 
 
-CLIENT_ID = 'clientID-28dh1'
-CLIENT_SECRET = 'clientSecret-hv783s'
-SERVER_TOKEN = 'serverToken-Y4lb2'
-ACCESS_TOKEN = 'accessToken-34f21'
+# replace these with valid tokens and credentials to rerecord fixtures
+CLIENT_ID = 'xxx'
+CLIENT_SECRET = 'xxx'
+SERVER_TOKEN = 'xxx'
+
+ACCESS_TOKEN = 'xxx'
+REFRESH_TOKEN = 'xxx'
+REDIRECT_URL = 'https://uberapitester.com/api/v1/uber/oauth'
+
 EXPIRES_IN_SECONDS = 3000
-REFRESH_TOKEN = 'refreshToken-vsh91'
+
 SCOPES_STRING = 'profile history'
 SCOPES_SET = {'profile', 'history'}
-REDIRECT_URL = 'https://developer.uber.com/my-redirect_url'
 
+CLIENT_CREDENTIALS_SCOPES_STRING = 'partner.referrals'
+CLIENT_CREDENTIALS_SCOPES_SET = {'partner.referrals'}
 
 @fixture
 def server_token_session():
@@ -131,7 +137,7 @@ def client_credentials_response():
     response_json = {
         'access_token': ACCESS_TOKEN,
         'expires_in': EXPIRES_IN_SECONDS,
-        'scope': SCOPES_STRING,
+        'scope': CLIENT_CREDENTIALS_SCOPES_STRING,
     }
 
     mock_response.json = Mock(return_value=response_json)
@@ -239,7 +245,7 @@ def test_make_session_from_client_credentials_response(
     )
 
     assert oauth2credential.access_token == ACCESS_TOKEN
-    assert oauth2credential.scopes == SCOPES_SET
+    assert oauth2credential.scopes == CLIENT_CREDENTIALS_SCOPES_SET
     assert oauth2credential.grant_type == auth.CLIENT_CREDENTIAL_GRANT
     assert oauth2credential.refresh_token is None
     assert oauth2credential.client_id == CLIENT_ID
