@@ -37,6 +37,9 @@ uber_vcr = vcr.VCR(
     serializer='yaml',
     cassette_library_dir='tests/fixtures',
 
+    # disable gzip
+    decode_compressed_response=True,
+
     # you can record_mode='all' to force re-record all cassettes
     record_mode='once',
 
