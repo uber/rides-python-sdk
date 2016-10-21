@@ -56,9 +56,6 @@ class Response(object):
         self.rate_reset = response.headers['X-Rate-Limit-Reset']
         self.headers = response.headers
 
-        # (TODO: request_id is not surfaced yet)
-        # self.request_id = response.headers['request_id']
-
         try:
             self.json = response.json()
         except:
@@ -88,7 +85,7 @@ class Request(object):
             method (str)
                 HTTP Method (e.g. 'POST').
             path (str)
-                The endpoint path. (e.g. 'v1/products')
+                The endpoint path. (e.g. 'v1.2/products')
             handlers (list[handler])
                 Optional list of error handlers to attach to the request.
             args (dict)
@@ -151,7 +148,7 @@ class Request(object):
                 to the server.
 
         Example
-            request = Request(session, 'api.uber.com', 'GET', 'v1/profile')
+            request = Request(session, 'api.uber.com', 'GET', 'v1.2/profile')
             response = request.execute()
         """
         prepared_request = self._prepare()
@@ -211,7 +208,7 @@ class Request(object):
         if token_type not in http.VALID_TOKEN_TYPES:
             return False
 
-        allowed_chars = ascii_letters + digits + '_' + '-'
+        allowed_chars = ascii_letters + digits + '.' + '_' + '-'
 
         # True if token only contains allowed_chars
         return all(characters in allowed_chars for characters in token)

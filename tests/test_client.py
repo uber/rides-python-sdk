@@ -39,46 +39,62 @@ from uber_rides.utils import http
 
 
 # replace these with valid tokens and credentials to rerecord fixtures
-CLIENT_ID = 'clientID-28dh1'
-CLIENT_SECRET = 'clientSecret-hv783s'
-SERVER_TOKEN = 'serverToken-Y4lb2'
-ACCESS_TOKEN = 'accessToken-34f21'
-REFRESH_TOKEN = 'refreshToken-vsh91'
-REDIRECT_URL = 'https://developer.uber.com/my-redirect_url'
-SCOPES = {'profile', 'history'}
+CLIENT_ID = 'xxx'
+CLIENT_SECRET = 'xxx'
+SERVER_TOKEN = 'xxx'
+
+ACCESS_TOKEN = 'xxx'
+REFRESH_TOKEN = 'xxx'
+REDIRECT_URL = 'https://uberapitester.com/api/v1/uber/oauth'
+
+SCOPES = {'profile', 'places', 'request', 'request_receipt', 'all_trips', 'history'}
 
 # replace these with valid identifiers to rerecord request-related fixtures
-RIDE_ID = 'rideID-14f1c'
+RIDE_ID = '0aec0061-1e20-4239-a0b7-78328e9afec8'
 SURGE_ID = 'hsg2k38b'
 
 # addresses to test places
-HOME_ADDRESS = 'Lombard Street, SF'
-FULL_HOME_ADDRESS = 'Lombard St, San Francisco, CA 94133, United States'
-WORK_ADDRESS = '1 Market Street, SF'
-FULL_WORK_ADDRESS = '1 Market St, San Francisco, CA 94105, USA'
+HOME_ADDRESS = '555 Market Street, SF'
+FULL_HOME_ADDRESS = '555 Market St, San Francisco, CA 94105, USA'
+WORK_ADDRESS = '1455 Market Street, SF'
+FULL_WORK_ADDRESS = '1455 Market St, San Francisco, CA 94103, USA'
 
 # ride details
 EXPIRES_IN_SECONDS = 3000
-START_LAT = 37.775
-START_LNG = -122.417
-END_LAT = 37.808
-END_LNG = -122.416
-UPDATE_LAT = 37.812
-UPDATE_LNG = -122.5
-PRODUCT_ID = 'd4abaae7-f4d6-4152-91cc-77523e8165a4'
-SHARED_PRODUCT_ID = '3eb15796-edd3-4297-80f1-02605442bb9e'
-SHARED_SEAT_COUNT = 1
-SHARED_FARE_ID = 'cd2d16cd3380b39796b53e2c3686d0cf1ef5262e71aaa2f6d8d0f7eacfd8e1a5'  # noqa
-PRODUCTS_AVAILABLE = 5
-SURGE_HREF = 'api.uber.com/v1/surge-confirmations/{}'
+START_LAT = 37.7899886
+START_LNG = -122.4021253
+END_LAT = 37.775232
+END_LNG = -122.4197513
+UPDATE_LAT = 37.775234
+UPDATE_LNG = -122.4197515
+NON_UFP_PRODUCT_ID = '3ab64887-4842-4c8e-9780-ccecd3a0391d'
+UFP_PRODUCT_ID = '821415d8-3bd5-4e27-9604-194e4359a449'
+UFP_FARE_ID = '7dad38f13eab3124621d16604c35fb26e30395e76937c507565fb1b4aa4a8264'
+UFP_SHARED_PRODUCT_ID = '26546650-e557-4a7b-86e7-6a3942445247'
+UFP_SHARED_SEAT_COUNT = 2
+UFP_SHARED_FARE_ID = 'd30e732b8bba22c9cdc10513ee86380087cb4a6f89e37ad21ba2a39f3a1ba960'
+PRODUCTS_AVAILABLE = 8
+
+NO_DESTINATION_PRODUCT_ID = '2541f77c-920a-45c4-8bf3-603ecd625195'
+
+NON_UFP_SURGE_PRODUCT_ID = 'd5ef01d9-7d54-413e-b265-425948d06e92'
+NON_UFP_SURGE_START_LAT = -22.9674153
+NON_UFP_SURGE_START_LNG = -43.1801978
+NON_UFP_SURGE_END_LAT = -22.9883286
+NON_UFP_SURGE_END_LNG = -43.1925661
+SURGE_HREF = 'api.uber.com/v1.2/surge-confirmations/{}'
 
 EXPECTED_PRODUCT_KEYS = set([
     'capacity',
     'description',
-    'price_details',
     'image',
     'display_name',
     'product_id',
+    'shared',
+    'short_description',
+    'product_group',
+    'cash_enabled',
+    'upfront_fare_enabled'
 ])
 
 EXPECTED_TIME_KEYS = set([
@@ -91,10 +107,11 @@ EXPECTED_TIME_KEYS = set([
 EXPECTED_PRICE_KEYS = set([
     'high_estimate',
     'low_estimate',
-    'minimum',
     'currency_code',
     'localized_display_name',
     'estimate',
+    'distance',
+    'duration',
     'display_name',
     'product_id',
 ])
@@ -124,28 +141,12 @@ EXPECTED_PROFILE_KEYS = set([
     'promo_code',
 ])
 
-EXPECTED_ESTIMATE_RIDE_PRICE_KEYS = set([
-    'high_estimate',
-    'low_estimate',
-    'minimum',
+EXPECTED_ESTIMATE_RIDE_FARE_KEYS = set([
+    'value',
+    'fare_id',
+    'expires_at',
     'currency_code',
-    'surge_confirmation_id',
-    'surge_confirmation_href',
-    'surge_multiplier',
-])
-
-EXPECTED_ESTIMATE_SHARED_RIDE_PRICE_KEYS = set([
-    "surge_confirmation_href",
-    "high_estimate",
-    "fare_id",
-    "surge_confirmation_id",
-    "minimum",
-    "expires_at",
-    "low_estimate",
-    "fare_breakdown",
-    "surge_multiplier",
-    "display",
-    "currency_code"
+    'display',
 ])
 
 EXPECTED_ESTIMATE_RIDE_TRIP_KEYS = set([
@@ -163,25 +164,26 @@ EXPECTED_ESTIMATE_SHARED_RIDE_TRIP_KEYS = set([
 EXPECTED_RIDE_DETAILS_KEYS = set([
     'status',
     'request_id',
+    'product_id',
     'driver',
-    'eta',
+    'pickup',
+    'destination',
     'location',
     'vehicle',
-    'surge_multiplier',
+    'shared',
 ])
 
 EXPECTED_SHARED_RIDE_DETAILS_KEYS = set([
     'status',
-    'waypoints',
     'request_id',
+    'product_id',
     'driver',
-    'eta',
+    'pickup',
+    'destination',
     'location',
     'vehicle',
-    'surge_multiplier',
-    'riders'
+    'shared'
 ])
-
 
 EXPECTED_RIDE_MAP_KEYS = set([
     'href',
@@ -195,10 +197,14 @@ EXPECTED_INDIVIDUAL_CHARGE_KEYS = set([
 ])
 
 EXPECTED_RECEIPT_KEYS = set([
-    'normal_fare',
-    'surge_charge',
+    'distance',
+    'charge_adjustments',
     'total_owed',
+    'total_fare',
     'total_charged',
+    'distance_label',
+    'request_id',
+    'duration',
     'subtotal',
 ])
 
@@ -301,7 +307,7 @@ def test_get_single_product(authorized_sandbox_client, server_token_client):
     clients = [authorized_sandbox_client, server_token_client]
 
     for client in clients:
-        response = client.get_product(PRODUCT_ID)
+        response = client.get_product(UFP_PRODUCT_ID)
         assert response.status_code == codes.ok
 
         # assert response looks like single product information
@@ -321,7 +327,7 @@ def test_get_price_estimates(authorized_sandbox_client, server_token_client):
             START_LNG,
             END_LAT,
             END_LNG,
-            SHARED_SEAT_COUNT,
+            UFP_SHARED_SEAT_COUNT,
         )
         assert response.status_code == codes.ok
 
@@ -411,8 +417,8 @@ def test_estimate_shared_ride(authorized_sandbox_client):
     """Test to estimate a shared ride."""
     try:
         response = authorized_sandbox_client.estimate_ride(
-            product_id=SHARED_PRODUCT_ID,
-            seat_count=SHARED_SEAT_COUNT,
+            product_id=UFP_SHARED_PRODUCT_ID,
+            seat_count=UFP_SHARED_SEAT_COUNT,
             start_latitude=START_LAT,
             start_longitude=START_LNG,
             end_latitude=END_LAT,
@@ -424,8 +430,8 @@ def test_estimate_shared_ride(authorized_sandbox_client):
 
     # assert response looks like price and time estimates
     response = response.json
-    price = response.get('price')
-    assert EXPECTED_ESTIMATE_SHARED_RIDE_PRICE_KEYS.issubset(price)
+    fare = response.get('fare')
+    assert EXPECTED_ESTIMATE_RIDE_FARE_KEYS.issubset(fare)
     trip = response.get('trip')
     assert EXPECTED_ESTIMATE_SHARED_RIDE_TRIP_KEYS.issubset(trip)
 
@@ -434,7 +440,7 @@ def test_estimate_shared_ride(authorized_sandbox_client):
 def test_estimate_ride(authorized_sandbox_client):
     """Test to fetch ride estimate with access token."""
     response = authorized_sandbox_client.estimate_ride(
-        product_id=PRODUCT_ID,
+        product_id=UFP_PRODUCT_ID,
         start_latitude=START_LAT,
         start_longitude=START_LNG,
         end_latitude=END_LAT,
@@ -444,8 +450,8 @@ def test_estimate_ride(authorized_sandbox_client):
 
     # assert response looks like price and time estimates
     response = response.json
-    price = response.get('price')
-    assert EXPECTED_ESTIMATE_RIDE_PRICE_KEYS.issubset(price)
+    fare = response.get('fare')
+    assert EXPECTED_ESTIMATE_RIDE_FARE_KEYS.issubset(fare)
     trip = response.get('trip')
     assert EXPECTED_ESTIMATE_RIDE_TRIP_KEYS.issubset(trip)
 
@@ -454,7 +460,7 @@ def test_estimate_ride(authorized_sandbox_client):
 def test_estimate_ride_with_places(authorized_sandbox_client):
     """Test to fetch ride estimate with place ids."""
     response = authorized_sandbox_client.estimate_ride(
-        product_id=PRODUCT_ID,
+        product_id=UFP_PRODUCT_ID,
         start_place_id='home',
         end_place_id='work',
     )
@@ -462,8 +468,8 @@ def test_estimate_ride_with_places(authorized_sandbox_client):
 
     # assert response looks like price and time estimates
     response = response.json
-    price = response.get('price')
-    assert EXPECTED_ESTIMATE_RIDE_PRICE_KEYS.issubset(price)
+    fare = response.get('fare')
+    assert EXPECTED_ESTIMATE_RIDE_FARE_KEYS.issubset(fare)
     trip = response.get('trip')
     assert EXPECTED_ESTIMATE_RIDE_TRIP_KEYS.issubset(trip)
 
@@ -472,7 +478,8 @@ def test_estimate_ride_with_places(authorized_sandbox_client):
 def test_request_ride(authorized_sandbox_client):
     """Test to request ride with access token."""
     response = authorized_sandbox_client.request_ride(
-        product_id=PRODUCT_ID,
+        product_id=UFP_PRODUCT_ID,
+        fare_id=UFP_FARE_ID,
         start_latitude=START_LAT,
         start_longitude=START_LNG,
         end_latitude=END_LAT,
@@ -490,9 +497,9 @@ def test_request_shared_ride(authorized_sandbox_client):
     """Test to request shared ride with access token."""
     try:
         response = authorized_sandbox_client.request_ride(
-            product_id=SHARED_PRODUCT_ID,
-            fare_id=SHARED_FARE_ID,
-            seat_count=SHARED_SEAT_COUNT,
+            product_id=UFP_SHARED_PRODUCT_ID,
+            fare_id=UFP_SHARED_FARE_ID,
+            seat_count=UFP_SHARED_SEAT_COUNT,
             start_latitude=START_LAT,
             start_longitude=START_LNG,
             end_latitude=END_LAT,
@@ -505,24 +512,10 @@ def test_request_shared_ride(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_request_ride_without_destination(authorized_sandbox_client):
-    """Test to request ride without a destination."""
-    response = authorized_sandbox_client.request_ride(
-        product_id=PRODUCT_ID,
-        start_latitude=START_LAT,
-        start_longitude=START_LNG,
-    )
-    assert response.status_code == codes.accepted
-
-    # assert response looks like ride details
-    response = response.json
-    assert EXPECTED_RIDE_DETAILS_KEYS.issubset(response)
-
-
-@uber_vcr.use_cassette()
 def test_request_ride_with_no_default_product(authorized_sandbox_client):
     """Test to request ride with no default product."""
     response = authorized_sandbox_client.request_ride(
+        fare_id=UFP_FARE_ID,
         start_latitude=START_LAT,
         start_longitude=START_LNG,
         end_latitude=END_LAT,
@@ -539,7 +532,8 @@ def test_request_ride_with_no_default_product(authorized_sandbox_client):
 def test_request_ride_with_places(authorized_sandbox_client):
     """Test to request ride with place ids."""
     response = authorized_sandbox_client.request_ride(
-        product_id=PRODUCT_ID,
+        product_id=UFP_PRODUCT_ID,
+        fare_id=UFP_FARE_ID,
         start_place_id='home',
         end_place_id='work',
     )
@@ -583,7 +577,7 @@ def test_get_current_shared_ride_details(authorized_sandbox_client):
     # assert response looks like ride details
     response = response.json
     assert EXPECTED_SHARED_RIDE_DETAILS_KEYS.issubset(response)
-    assert response.get('status') == 'accepted'
+    assert response.get('status') == 'processing'
 
 
 @uber_vcr.use_cassette()
@@ -651,7 +645,7 @@ def test_get_ride_receipt(authorized_sandbox_client):
     # assert response looks like ride receipt
     response = response.json
     assert EXPECTED_RECEIPT_KEYS.issubset(response)
-    charges = response.get('charges')
+    charges = response.get('charge_adjustments')
 
     for charge in charges:
         assert EXPECTED_INDIVIDUAL_CHARGE_KEYS.issubset(charge)
@@ -661,7 +655,7 @@ def test_get_ride_receipt(authorized_sandbox_client):
 def test_update_sandbox_product(authorized_sandbox_client):
     """Test to update sandbox ride status with access token."""
     response = authorized_sandbox_client.update_sandbox_product(
-        product_id=PRODUCT_ID,
+        product_id=NON_UFP_SURGE_PRODUCT_ID,
         surge_multiplier=2,
     )
     assert response.status_code == codes.no_content
@@ -672,11 +666,11 @@ def test_request_ride_with_surge(authorized_sandbox_client):
     """Test raising a SurgeError when requesting a ride with surge."""
     with raises(SurgeError):
         authorized_sandbox_client.request_ride(
-            PRODUCT_ID,
-            START_LAT,
-            START_LNG,
-            END_LAT,
-            END_LNG,
+            product_id=NON_UFP_SURGE_PRODUCT_ID,
+            start_latitude=NON_UFP_SURGE_START_LAT,
+            start_longitude=NON_UFP_SURGE_START_LNG,
+            end_latitude=NON_UFP_SURGE_END_LAT,
+            end_longitude=NON_UFP_SURGE_END_LNG,
         )
 
 

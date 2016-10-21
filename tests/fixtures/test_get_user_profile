@@ -1,24 +1,98 @@
 interactions:
 - request:
     body: null
-    headers: {}
-    method: !!python/unicode GET
-    uri: https://sandbox-api.uber.com/v1/me
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/me
   response:
-    body: {string: !!python/unicode '{"picture":"userprofile.jpeg","first_name":"User","last_name":"Profile","promo_code":"user-profile","email":"user@profile.com","uuid":"userprofileuuid"}'}
+    body: {string: !!python/unicode '{"picture":"https:\/\/d1w2poirtb3as9.cloudfront.net\/f3be498cb0bbf570aa3d.jpeg","first_name":"Uber","last_name":"Developer","uuid":"f4a416e3-6016-4623-8ec9-d5ee105a6e27","rider_id":"8OlTlUG1TyeAQf1JiBZZdkKxuSSOUwu2IkO0Hf9d2HV52Pm25A0NvsbmbnZr85tLVi-s8CckpBK8Eq0Nke4X-no3AcSHfeVh6J5O6LiQt5LsBZDSi4qyVUdSLeYDnTtirw==","email":"uberdevelopers@gmail.com","mobile_verified":true,"promo_code":"uberd340ue"}'}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['224']
+      content-length: ['400']
       content-type: [application/json]
-      date: ['Thu, 10 Sep 2015 19:56:52 GMT']
-      etag: ['"c1591a3187fca88443076db83e5b302ae479adc5"']
+      date: ['Thu, 20 Oct 2016 08:28:33 GMT']
+      etag: ['"97ce42cf42a0c9c030421237f8ce7a28c0c1494f"']
       server: [nginx]
       strict-transport-security: [max-age=0]
-      x-rate-limit-limit: ['1000']
-      x-rate-limit-remaining: ['995']
-      x-rate-limit-reset: ['1441915200']
-      x-uber-app: [uberex-sandbox]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1966']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/me
+  response:
+    body: {string: !!python/unicode '{"picture":"https:\/\/d1w2poirtb3as9.cloudfront.net\/f3be498cb0bbf570aa3d.jpeg","first_name":"Uber","last_name":"Developer","uuid":"f4a416e3-6016-4623-8ec9-d5ee105a6e27","rider_id":"8OlTlUG1TyeAQf1JiBZZdkKxuSSOUwu2IkO0Hf9d2HV52Pm25A0NvsbmbnZr85tLVi-s8CckpBK8Eq0Nke4X-no3AcSHfeVh6J5O6LiQt5LsBZDSi4qyVUdSLeYDnTtirw==","email":"uberdevelopers@gmail.com","mobile_verified":true,"promo_code":"uberd340ue"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['400']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:38 GMT']
+      etag: ['"97ce42cf42a0c9c030421237f8ce7a28c0c1494f"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1882']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/me
+  response:
+    body: {string: !!python/unicode '{"picture":"https:\/\/d1w2poirtb3as9.cloudfront.net\/f3be498cb0bbf570aa3d.jpeg","first_name":"Uber","last_name":"Developer","uuid":"f4a416e3-6016-4623-8ec9-d5ee105a6e27","rider_id":"8OlTlUG1TyeAQf1JiBZZdkKxuSSOUwu2IkO0Hf9d2HV52Pm25A0NvsbmbnZr85tLVi-s8CckpBK8Eq0Nke4X-no3AcSHfeVh6J5O6LiQt5LsBZDSi4qyVUdSLeYDnTtirw==","email":"uberdevelopers@gmail.com","mobile_verified":true,"promo_code":"uberd340ue"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['400']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:48:06 GMT']
+      etag: ['"97ce42cf42a0c9c030421237f8ce7a28c0c1494f"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1846']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/me
+  response:
+    body: {string: !!python/unicode '{"picture":"https:\/\/d1w2poirtb3as9.cloudfront.net\/f3be498cb0bbf570aa3d.jpeg","first_name":"Uber","last_name":"Developer","uuid":"f4a416e3-6016-4623-8ec9-d5ee105a6e27","rider_id":"8OlTlUG1TyeAQf1JiBZZdkKxuSSOUwu2IkO0Hf9d2HV52Pm25A0NvsbmbnZr85tLVi-s8CckpBK8Eq0Nke4X-no3AcSHfeVh6J5O6LiQt5LsBZDSi4qyVUdSLeYDnTtirw==","email":"uberdevelopers@gmail.com","mobile_verified":true,"promo_code":"uberd340ue"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['400']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:31 GMT']
+      etag: ['"97ce42cf42a0c9c030421237f8ce7a28c0c1494f"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1814']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 version: 1

@@ -1,25 +1,94 @@
 interactions:
 - request:
-    body: '{"end_place_id": "work"}'
+    body: !!python/unicode '{"end_place_id": "work"}'
     headers:
       Content-Length: ['24']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
       content-type: [application/json]
-    method: !!python/unicode PATCH
-    uri: https://sandbox-api.uber.com/v1/requests/rideID-14f1c
+    method: PATCH
+    uri: https://sandbox-api.uber.com/v1.2/requests/9bdb3278-21bd-46b8-90fa-51404b0d6acf
+  response:
+    body: {string: !!python/unicode '{"message":"Forbidden","code":"forbidden"}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-length: ['42']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:36:28 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 403, message: Forbidden}
+- request:
+    body: !!python/unicode '{"end_place_id": "work"}'
+    headers:
+      Content-Length: ['24']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: PATCH
+    uri: https://sandbox-api.uber.com/v1.2/requests/610d868b-e21c-483a-9932-97e61b852fd2
+  response:
+    body: {string: !!python/unicode '{"meta":{},"errors":[{"status":404,"code":"trip_not_found","title":"Trip
+        not found."}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-length: ['87']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:44 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 404, message: Not Found}
+- request:
+    body: !!python/unicode '{"end_place_id": "work"}'
+    headers:
+      Content-Length: ['24']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: PATCH
+    uri: https://sandbox-api.uber.com/v1.2/requests/0aec0061-1e20-4239-a0b7-78328e9afec8
   response:
     body: {string: !!python/unicode ''}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['0']
       content-type: [text/html; charset=UTF-8]
-      date: ['Tue, 16 Feb 2016 06:24:31 GMT']
+      date: ['Thu, 20 Oct 2016 08:48:13 GMT']
       server: [nginx]
       strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
       x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1980']
-      x-rate-limit-reset: ['1455606000']
-      x-uber-app: [uberex-sandbox]
+      x-rate-limit-remaining: ['1833']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 204, message: No Content}
+- request:
+    body: !!python/unicode '{"end_place_id": "work"}'
+    headers:
+      Content-Length: ['24']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: PATCH
+    uri: https://sandbox-api.uber.com/v1.2/requests/0aec0061-1e20-4239-a0b7-78328e9afec8
+  response:
+    body: {string: !!python/unicode '{"meta":{},"errors":[{"status":404,"code":"trip_not_found","title":"Trip
+        not found."}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-length: ['87']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:38 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 404, message: Not Found}
 version: 1

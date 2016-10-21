@@ -1,25 +1,98 @@
 interactions:
 - request:
-    body: '{"surge_multiplier": 2, "drivers_available": null}'
+    body: !!python/unicode '{"surge_multiplier": 2, "drivers_available": null}'
     headers:
       Content-Length: ['50']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
       content-type: [application/json]
-    method: !!python/unicode PUT
-    uri: https://sandbox-api.uber.com/v1/sandbox/products/d4abaae7-f4d6-4152-91cc-77523e8165a4
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1.2/sandbox/products/d5ef01d9-7d54-413e-b265-425948d06e92
   response:
     body: {string: !!python/unicode ''}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['0']
       content-type: [text/html; charset=UTF-8]
-      date: ['Thu, 10 Sep 2015 18:40:27 GMT']
+      date: ['Thu, 20 Oct 2016 08:36:30 GMT']
       server: [nginx]
       strict-transport-security: [max-age=0]
-      x-rate-limit-limit: ['1000']
-      x-rate-limit-remaining: ['982']
-      x-rate-limit-reset: ['1441911600']
-      x-uber-app: [uberex-sandbox]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1895']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 204, message: No Content}
+- request:
+    body: !!python/unicode '{"surge_multiplier": 2, "drivers_available": null}'
+    headers:
+      Content-Length: ['50']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1.2/sandbox/products/d5ef01d9-7d54-413e-b265-425948d06e92
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-type: [text/html; charset=UTF-8]
+      date: ['Thu, 20 Oct 2016 08:41:46 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1863']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 204, message: No Content}
+- request:
+    body: !!python/unicode '{"surge_multiplier": 2, "drivers_available": null}'
+    headers:
+      Content-Length: ['50']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1.2/sandbox/products/d5ef01d9-7d54-413e-b265-425948d06e92
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-type: [text/html; charset=UTF-8]
+      date: ['Thu, 20 Oct 2016 08:48:14 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1827']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 204, message: No Content}
+- request:
+    body: !!python/unicode '{"surge_multiplier": 2, "drivers_available": null}'
+    headers:
+      Content-Length: ['50']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1.2/sandbox/products/d5ef01d9-7d54-413e-b265-425948d06e92
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-type: [text/html; charset=UTF-8]
+      date: ['Thu, 20 Oct 2016 08:49:40 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1795']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 204, message: No Content}
 version: 1

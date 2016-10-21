@@ -110,7 +110,7 @@ def build_url(host, path, params=None):
         host (str)
             Base URL of the Uber Server that handles API calls.
         path (str)
-            Target path to add to the host (e.g. 'v1/products').
+            Target path to add to the host (e.g. 'v1.2/products').
         params (dict)
             Optional dictionary of parameters to add to the URL.
 

@@ -1,32 +1,119 @@
 interactions:
 - request:
-    body: '{"end_longitude": -122.416, "surge_confirmation_id": null, "start_address":
-      null, "end_place_id": null, "start_nickname": null, "end_latitude": 37.808,
-      "payment_method_id": null, "product_id": null, "end_address": null, "end_nickname":
-      null, "start_place_id": null, "start_longitude": -122.417, "start_latitude":
-      37.775}'
+    body: !!python/unicode '{"end_longitude": -122.4197513, "surge_confirmation_id":
+      null, "start_address": null, "end_place_id": null, "fare_id": "8692d3a4e304b6071b1f6a8b64efa9546e327e79de1ba428a4829a00246d527c",
+      "start_nickname": null, "end_latitude": 37.775232, "payment_method_id": null,
+      "product_id": null, "seat_count": null, "end_address": null, "end_nickname":
+      null, "start_place_id": null, "start_longitude": -122.4021253, "start_latitude":
+      37.7899886}'
     headers:
-      Content-Length: ['320']
+      Content-Length: ['434']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
       content-type: [application/json]
-    method: !!python/unicode POST
-    uri: https://sandbox-api.uber.com/v1/requests
+    method: POST
+    uri: https://sandbox-api.uber.com/v1.2/requests
   response:
-    body: {string: !!python/unicode '{"status":"processing","request_id":"rideID-14f1c","driver":null,"eta":null,"location":null,"vehicle":null,"surge_multiplier":1.0}'}
+    body: {string: !!python/unicode '{"status":"processing","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","destination":{"latitude":37.775232,"longitude":-122.4197513},"driver":null,"pickup":{"latitude":37.7899886,"longitude":-122.4021253},"request_id":"610d868b-e21c-483a-9932-97e61b852fd2","eta":null,"location":null,"vehicle":null,"shared":false}'}
     headers:
       connection: [keep-alive]
       content-geo-system: [wgs-84]
       content-language: [en]
-      content-length: ['154']
+      content-length: ['318']
       content-type: [application/json]
-      date: ['Tue, 16 Feb 2016 06:15:09 GMT']
+      date: ['Thu, 20 Oct 2016 08:36:26 GMT']
       server: [nginx]
       strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
       x-rate-limit-limit: ['2000']
       x-rate-limit-limit-concurrent-trips: ['10']
-      x-rate-limit-remaining: ['1985']
+      x-rate-limit-remaining: ['1907']
       x-rate-limit-remaining-concurrent-trips: ['10']
-      x-rate-limit-reset: ['1455606000']
-      x-uber-app: [uberex-sandbox]
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 202, message: Accepted}
+- request:
+    body: !!python/unicode '{"end_longitude": -122.4197513, "surge_confirmation_id":
+      null, "start_address": null, "end_place_id": null, "fare_id": "8692d3a4e304b6071b1f6a8b64efa9546e327e79de1ba428a4829a00246d527c",
+      "start_nickname": null, "end_latitude": 37.775232, "payment_method_id": null,
+      "product_id": null, "seat_count": null, "end_address": null, "end_nickname":
+      null, "start_place_id": null, "start_longitude": -122.4021253, "start_latitude":
+      37.7899886}'
+    headers:
+      Content-Length: ['434']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: POST
+    uri: https://sandbox-api.uber.com/v1.2/requests
+  response:
+    body: {string: !!python/unicode '{"meta":{},"errors":[{"status":422,"code":"invalid_fare_id","title":"Invalid
+        fare id: 8692d3a4e304b6071b1f6a8b64efa9546e327e79de1ba428a4829a00246d527c"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-length: ['154']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:42 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 422, message: Unprocessable Entity}
+- request:
+    body: !!python/unicode '{"end_longitude": -122.4197513, "surge_confirmation_id":
+      null, "start_address": null, "end_place_id": null, "fare_id": "7dad38f13eab3124621d16604c35fb26e30395e76937c507565fb1b4aa4a8264",
+      "start_nickname": null, "end_latitude": 37.775232, "payment_method_id": null,
+      "product_id": null, "seat_count": null, "end_address": null, "end_nickname":
+      null, "start_place_id": null, "start_longitude": -122.4021253, "start_latitude":
+      37.7899886}'
+    headers:
+      Content-Length: ['434']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: POST
+    uri: https://sandbox-api.uber.com/v1.2/requests
+  response:
+    body: {string: !!python/unicode '{"meta":{},"errors":[{"status":422,"code":"invalid_fare_id","title":"Invalid
+        fare id: 7dad38f13eab3124621d16604c35fb26e30395e76937c507565fb1b4aa4a8264"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-length: ['154']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:48:10 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 422, message: Unprocessable Entity}
+- request:
+    body: !!python/unicode '{"end_longitude": -122.4197513, "surge_confirmation_id":
+      null, "start_address": null, "end_place_id": null, "fare_id": "7dad38f13eab3124621d16604c35fb26e30395e76937c507565fb1b4aa4a8264",
+      "start_nickname": null, "end_latitude": 37.775232, "payment_method_id": null,
+      "product_id": null, "seat_count": null, "end_address": null, "end_nickname":
+      null, "start_place_id": null, "start_longitude": -122.4021253, "start_latitude":
+      37.7899886}'
+    headers:
+      Content-Length: ['434']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: POST
+    uri: https://sandbox-api.uber.com/v1.2/requests
+  response:
+    body: {string: !!python/unicode '{"meta":{},"errors":[{"status":422,"code":"invalid_fare_id","title":"Invalid
+        fare id: 7dad38f13eab3124621d16604c35fb26e30395e76937c507565fb1b4aa4a8264"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-length: ['154']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:36 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 422, message: Unprocessable Entity}
 version: 1

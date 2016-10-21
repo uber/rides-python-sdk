@@ -1,29 +1,126 @@
 interactions:
 - request:
-    body: '{"seat_count": 1, "start_longitude": 77.610969, "end_longitude": 77.64101,
-      "product_id": "3eb15796-edd3-4297-80f1-02605442bb9e", "end_latitude": 12.983619,
-      "end_place_id": null, "start_latitude": 12.935105, "start_place_id": null}'
+    body: !!python/unicode '{"seat_count": 2, "start_longitude": -122.4021253, "end_longitude":
+      -122.4197513, "product_id": "26546650-e557-4a7b-86e7-6a3942445247", "end_latitude":
+      37.775232, "end_place_id": null, "start_latitude": 37.7899886, "start_place_id":
+      null}'
     headers:
-      Content-Length: ['230']
+      Content-Length: ['238']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
       content-type: [application/json]
     method: POST
-    uri: https://sandbox-api.uber.com/v1/requests/estimate
+    uri: https://sandbox-api.uber.com/v1.2/requests/estimate
   response:
-    body: {string: !!python/unicode '{"price":{"surge_confirmation_href":null,"high_estimate":106,"fare_id":"80408ff851ab43bc277efa286a2251e5b5106ae68a513f0e2b8a87b8df8d3074","surge_confirmation_id":null,"minimum":null,"expires_at":1465290497,"low_estimate":105,"fare_breakdown":[],"surge_multiplier":1.0,"display":"\u20b9105.73","currency_code":"INR"},"trip":{"distance_unit":"mile","duration_estimate":1560,"distance_estimate":5.74},"pickup_estimate":1}'}
+    body: {string: !!python/unicode '{"fare":{"value":7.3,"fare_id":"edff5663d5f237d2998568c68018055cee3cea732eee6dfcc13004f78e04ba29","expires_at":1476952702,"display":"$7.30","currency_code":"USD"},"trip":{"distance_unit":"mile","duration_estimate":540,"distance_estimate":1.96},"pickup_estimate":3}'}
     headers:
       connection: [keep-alive]
       content-geo-system: [wgs-84]
       content-language: [en]
-      content-length: ['418']
+      content-length: ['264']
       content-type: [application/json]
-      date: ['Tue, 07 Jun 2016 09:06:17 GMT']
+      date: ['Thu, 20 Oct 2016 08:36:22 GMT']
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
       x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1970']
-      x-rate-limit-reset: ['1465293600']
-      x-uber-app: [uberex-sandbox]
+      x-rate-limit-limit-post_requests_estimate: ['100']
+      x-rate-limit-remaining: ['1914']
+      x-rate-limit-remaining-post_requests_estimate: ['88']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: !!python/unicode '{"seat_count": 2, "start_longitude": -122.4021253, "end_longitude":
+      -122.4197513, "product_id": "26546650-e557-4a7b-86e7-6a3942445247", "end_latitude":
+      37.775232, "end_place_id": null, "start_latitude": 37.7899886, "start_place_id":
+      null}'
+    headers:
+      Content-Length: ['238']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: POST
+    uri: https://sandbox-api.uber.com/v1.2/requests/estimate
+  response:
+    body: {string: !!python/unicode '{"fare":{"value":6.99,"fare_id":"ca2326c28949fec46f7002f2a502de7ad8c70fb838c9ee0e0ebc12b242c652a9","expires_at":1476953018,"display":"$6.99","currency_code":"USD"},"trip":{"distance_unit":"mile","duration_estimate":480,"distance_estimate":1.78},"pickup_estimate":3}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['265']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:38 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-limit-post_requests_estimate: ['100']
+      x-rate-limit-remaining: ['1881']
+      x-rate-limit-remaining-post_requests_estimate: ['85']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: !!python/unicode '{"seat_count": 2, "start_longitude": -122.4021253, "end_longitude":
+      -122.4197513, "product_id": "26546650-e557-4a7b-86e7-6a3942445247", "end_latitude":
+      37.775232, "end_place_id": null, "start_latitude": 37.7899886, "start_place_id":
+      null}'
+    headers:
+      Content-Length: ['238']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: POST
+    uri: https://sandbox-api.uber.com/v1.2/requests/estimate
+  response:
+    body: {string: !!python/unicode '{"fare":{"value":6.9,"fare_id":"eb2c7950c4165007a2be115c898fe81bef06a68f8049069c5d4476c00def1212","expires_at":1476953407,"display":"$6.90","currency_code":"USD"},"trip":{"distance_unit":"mile","duration_estimate":480,"distance_estimate":1.78},"pickup_estimate":4}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['264']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:48:07 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-limit-post_requests_estimate: ['100']
+      x-rate-limit-remaining: ['1845']
+      x-rate-limit-remaining-post_requests_estimate: ['80']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: !!python/unicode '{"seat_count": 2, "start_longitude": -122.4021253, "end_longitude":
+      -122.4197513, "product_id": "26546650-e557-4a7b-86e7-6a3942445247", "end_latitude":
+      37.775232, "end_place_id": null, "start_latitude": 37.7899886, "start_place_id":
+      null}'
+    headers:
+      Content-Length: ['238']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      content-type: [application/json]
+    method: POST
+    uri: https://sandbox-api.uber.com/v1.2/requests/estimate
+  response:
+    body: {string: !!python/unicode '{"fare":{"value":7.22,"fare_id":"c2bf8adcb8004a67022642d0f8dfceebd888f1929156a7ca4c00eaf63e0310a7","expires_at":1476953492,"display":"$7.22","currency_code":"USD"},"trip":{"distance_unit":"mile","duration_estimate":540,"distance_estimate":1.96},"pickup_estimate":5}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['265']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:32 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-limit-post_requests_estimate: ['100']
+      x-rate-limit-remaining: ['1813']
+      x-rate-limit-remaining-post_requests_estimate: ['77']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 version: 1
