@@ -14,7 +14,7 @@ To use the Uber Rides Python SDK:
     $ pip install uber_rides
 
 
-Head over to `pip-installer <http://www.pip-installer.org/en/latest/index.html>`_ for instructions on installing pip.
+Head over to `pip-installer <https://pip.pypa.io/en/latest/installing/>`_ for instructions on installing pip.
 
 To run from source, you can `download the source code <https://github.com/uber/rides-python-sdk/archive/master.zip>`_ for uber-rides, and then run:
 
@@ -47,7 +47,7 @@ Use this Session to create an UberRidesClient and fetch API resources:
 Authorization
 -------------
 
-If you need to access protected resources or modify resources (like getting a user’s ride history or requesting a ride), you will need the user to grant access to your application through the OAuth 2.0 Authorization Code flow. See `Uber API docs <https://developer.uber.com/docs/authentication>`_.
+If you need to access protected resources or modify resources (like getting a user’s ride history or requesting a ride), you will need the user to grant access to your application through the OAuth 2.0 Authorization Code flow. See `Uber API docs <https://developer.uber.com/docs/ride-requests/guides/authentication/introduction>`_.
 
 The Authorization Code flow is a two-step authorization process. The first step is having the user authorize your app and the second involves requesting an OAuth 2.0 access token from Uber. This process is mandatory if you want to take actions on behalf of a user or access their information.
 
@@ -62,7 +62,7 @@ The Authorization Code flow is a two-step authorization process. The first step 
     )
     auth_url = auth_flow.get_authorization_url()
 
-You can find `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` in the [developer dashboard](https://developer.uber.com/dashboard/) under the settings tab of your application.  `YOUR_PERMISSION_SCOPES` is the [list of scopes](https://developer.uber.com/docs/rides/scopes) you have requested in the authorizations tab. Note that `YOUR_REDIRECT_URL` must match the value you provided when you registered your application.
+You can find `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` in the [developer dashboard](https://developer.uber.com/dashboard/) under the settings tab of your application.  `YOUR_PERMISSION_SCOPES` is the [list of scopes](https://developer.uber.com/docs/ride-requests/guides/scopes) you have requested in the authorizations tab. Note that `YOUR_REDIRECT_URL` must match the value you provided when you registered your application.
 
 Navigate the user to the `auth_url` where they can grant access to your application. After, they will be redirected to a `redirect_url` with the format YOUR_REDIRECT_URL?code=UNIQUE_AUTH_CODE. Use this `redirect_url` to create a session and start UberRidesClient.
 
@@ -84,13 +84,13 @@ To get an UberRidesClient through the Authorization Code flow, run:
 
 .. code-block:: bash
 
-    $ python example/authorization_code_grant.py
+    $ python example/authorize_user.py
 
 The example above stores user credentials in `example/oauth2_session_store.yaml`. To create an UberRidesClient with these credentials and go through a surge ride request run:
 
 .. code-block:: bash
 
-    $ python example/request_surge_ride.py
+    $ python example/request_ride.py
 
 Get Available Products
 """"""""""""""""""""""
@@ -100,6 +100,17 @@ Get Available Products
     response = client.get_products(37.77, -122.41)
     products = response.json.get('products')
     product_id = products[0].get('product_id')
+
+
+Get Profile
+"""""""""""
+
+.. code-block::
+
+    response = client.get_user_profile()
+    profile = response.json
+    email = profile.get('email')
+
 
 Request a Ride
 """"""""""""""
@@ -126,7 +137,7 @@ To develop and test against request endpoints in a sandbox environment, make sur
     client = UberRidesClient(session, sandbox_mode=True)
 
 
-The default for `sandbox_mode` is set to `False`. See our `documentation <https://developer.uber.com/docs/sandbox>`_ to read more about using the Sandbox Environment.
+The default for `sandbox_mode` is set to `False`. See our `documentation <https://developer.uber.com/docs/ride-requests/guides/sandbox>`_ to read more about using the Sandbox Environment.
 
 Update Sandbox Ride
 """""""""""""""""""
@@ -136,6 +147,7 @@ If you are requesting sandbox rides, you will need to step through the different
 .. code-block::
 
     response = client.update_sandbox_ride(ride_id, 'accepted')
+    response = client.update_sandbox_ride(ride_id, 'in_progress')
 
 
 If the update is successful, `response.status_code` will be 204.
