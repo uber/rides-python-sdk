@@ -6,7 +6,7 @@ interactions:
       null}'
     headers:
       Content-Length: ['238']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests/estimate
@@ -37,7 +37,7 @@ interactions:
       null}'
     headers:
       Content-Length: ['238']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests/estimate
@@ -68,7 +68,7 @@ interactions:
       null}'
     headers:
       Content-Length: ['238']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests/estimate
@@ -99,7 +99,7 @@ interactions:
       null}'
     headers:
       Content-Length: ['238']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.2.7]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests/estimate
