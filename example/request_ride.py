@@ -57,8 +57,11 @@ from uber_rides.client import SurgeError
 from uber_rides.errors import ClientError
 from uber_rides.errors import ServerError
 
-# uberX
-PRODUCT_ID = 'a1111c8c-c720-46c3-8534-2fcdd730040d'
+# uber pool
+UFP_PRODUCT_ID = '26546650-e557-4a7b-86e7-6a3942445247'
+
+# uber black
+SURGE_PRODUCT_ID = 'd4abaae7-f4d6-4152-91cc-77523e8165a4'
 
 # California Academy of Sciences
 START_LAT = 37.770
@@ -78,7 +81,7 @@ def estimate_ride(api_client):
     """
     try:
         estimate = api_client.estimate_ride(
-            product_id=PRODUCT_ID,
+            product_id=SURGE_PRODUCT_ID,
             start_latitude=START_LAT,
             start_longitude=START_LNG,
             end_latitude=END_LAT,
@@ -105,7 +108,7 @@ def update_surge(api_client, surge_multiplier):
     """
     try:
         update_surge = api_client.update_sandbox_product(
-            PRODUCT_ID,
+            SURGE_PRODUCT_ID,
             surge_multiplier=surge_multiplier,
         )
 
@@ -139,7 +142,7 @@ def update_ride(api_client, ride_status, ride_id):
         success_print(message)
 
 
-def request_ride(api_client):
+def request_ufp_ride(api_client):
     """Use an UberRidesClient to request a ride and print the results.
 
     Parameters
@@ -152,23 +155,23 @@ def request_ride(api_client):
     try:
 
         estimate = api_client.estimate_ride(
-            product_id=PRODUCT_ID,
+            product_id=UFP_PRODUCT_ID,
             start_latitude=START_LAT,
             start_longitude=START_LNG,
             end_latitude=END_LAT,
             end_longitude=END_LNG,
             seat_count=2
         )
-        fare_id = estimate.json.get('fare_id')
+        fare = estimate.json.get('fare')
 
         request = api_client.request_ride(
-            product_id=PRODUCT_ID,
+            product_id=UFP_PRODUCT_ID,
             start_latitude=START_LAT,
             start_longitude=START_LNG,
             end_latitude=END_LAT,
             end_longitude=END_LNG,
             seat_count=2,
-            fare_id=fare_id
+            fare_id=fare['fare_id']
         )
 
     except (ClientError, ServerError) as error:
@@ -181,7 +184,7 @@ def request_ride(api_client):
         return request.json.get('request_id')
 
 
-def request_ride_surge(api_client, surge_confirmation_id=None):
+def request_surge_ride(api_client, surge_confirmation_id=None):
     """Use an UberRidesClient to request a ride and print the results.
 
     If the product has a surge_multiple greater than or equal to 2.0,
@@ -199,7 +202,7 @@ def request_ride_surge(api_client, surge_confirmation_id=None):
     """
     try:
         request = api_client.request_ride(
-            product_id=PRODUCT_ID,
+            product_id=SURGE_PRODUCT_ID,
             start_latitude=START_LAT,
             start_longitude=START_LNG,
             end_latitude=END_LAT,
@@ -221,7 +224,7 @@ def request_ride_surge(api_client, surge_confirmation_id=None):
         surge_id = query_params.get('surge_confirmation_id')[0]
 
         # automatically try request again
-        return request_ride_surge(api_client, surge_id)
+        return request_surge_ride(api_client, surge_id)
 
     except (ClientError, ServerError) as error:
         fail_print(error)
@@ -263,7 +266,7 @@ if __name__ == '__main__':
     # ride request with upfront pricing flow
 
     paragraph_print("Request a ride with upfront pricing product.")
-    ride_id = request_ride(api_client)
+    ride_id = request_ufp_ride(api_client)
 
     paragraph_print("Update ride status to accepted.")
     update_ride(api_client, 'accepted', ride_id)
@@ -293,7 +296,7 @@ if __name__ == '__main__':
     estimate_ride(api_client)
 
     paragraph_print("Request a ride with surging product.")
-    ride_id = request_ride_surge(api_client)
+    ride_id = request_surge_ride(api_client)
 
     paragraph_print("Update ride status to accepted.")
     update_ride(api_client, 'accepted', ride_id)
