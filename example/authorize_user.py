@@ -128,10 +128,22 @@ def hello_user(api_client):
     else:
         profile = response.json
         first_name = profile.get('first_name')
+        last_name = profile.get('last_name')
         email = profile.get('email')
-        message = 'Hello, {}. Successfully granted access token to {}.'
-        message = message.format(first_name, email)
+        message = 'Hello, {} {}. Successfully granted access token to {}.'
+        message = message.format(first_name, last_name, email)
         success_print(message)
+        success_print(profile)
+
+        success_print('---')
+        response = api_client.get_home_address()
+        address = response.json
+        success_print(address)
+
+        success_print('---')
+        response = api_client.get_user_activity()
+        history = response.json
+        success_print(history)
 
 
 if __name__ == '__main__':
