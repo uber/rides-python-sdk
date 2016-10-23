@@ -47,7 +47,14 @@ ACCESS_TOKEN = 'xxx'
 REFRESH_TOKEN = 'xxx'
 REDIRECT_URL = 'https://uberapitester.com/api/v1/uber/oauth'
 
-SCOPES = {'profile', 'places', 'request', 'request_receipt', 'all_trips', 'history'}
+SCOPES = {
+          'profile',
+          'places',
+          'request',
+          'request_receipt',
+          'all_trips',
+          'history'
+          }
 
 # replace these with valid identifiers to rerecord request-related fixtures
 RIDE_ID = '0aec0061-1e20-4239-a0b7-78328e9afec8'
@@ -69,10 +76,12 @@ UPDATE_LAT = 37.775234
 UPDATE_LNG = -122.4197515
 NON_UFP_PRODUCT_ID = '3ab64887-4842-4c8e-9780-ccecd3a0391d'
 UFP_PRODUCT_ID = '821415d8-3bd5-4e27-9604-194e4359a449'
-UFP_FARE_ID = '7dad38f13eab3124621d16604c35fb26e30395e76937c507565fb1b4aa4a8264'
+UFP_FARE_ID = '7dad38f13eab3124621d16604c35fb26e3' \
+              '0395e76937c507565fb1b4aa4a8264'
 UFP_SHARED_PRODUCT_ID = '26546650-e557-4a7b-86e7-6a3942445247'
 UFP_SHARED_SEAT_COUNT = 2
-UFP_SHARED_FARE_ID = 'd30e732b8bba22c9cdc10513ee86380087cb4a6f89e37ad21ba2a39f3a1ba960'
+UFP_SHARED_FARE_ID = 'd30e732b8bba22c9cdc10513ee86380087cb'\
+                     '4a6f89e37ad21ba2a39f3a1ba960'
 PRODUCTS_AVAILABLE = 8
 
 NO_DESTINATION_PRODUCT_ID = '2541f77c-920a-45c4-8bf3-603ecd625195'

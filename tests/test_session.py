@@ -49,6 +49,7 @@ SCOPES_SET = {'profile', 'history'}
 CLIENT_CREDENTIALS_SCOPES_STRING = 'partner.referrals'
 CLIENT_CREDENTIALS_SCOPES_SET = {'partner.referrals'}
 
+
 @fixture
 def server_token_session():
     """Create a Session with Server Token."""
