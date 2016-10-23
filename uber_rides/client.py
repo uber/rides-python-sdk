@@ -158,7 +158,8 @@ class UberRidesClient(object):
             end_longitude (float)
                 The longitude component of a end location.
             seat_count (int)
-                The number of seats required for uberPOOL. Default and maximum value is 2.
+                The number of seats required for uberPOOL.
+                Default and maximum value is 2.
 
         Returns
             (Response)
@@ -308,7 +309,7 @@ class UberRidesClient(object):
 
         Returns
             (Response)
-                A Response object containing time, price, and distance
+                A Response object containing fare id, time, price, and distance
                 estimates for a ride.
         """
         args = {
