@@ -27,7 +27,7 @@ ride status to 'completed' and deactivates surge.
 To run this example:
 
     (1) Run `python authorization_code_grant.py` to get OAuth 2.0 Credentials
-    (2) Run `python request_surge_ride.py`
+    (2) Run `python request_ride.py`
     (3) The UberRidesClient will make API calls and print the
         results to your terminal.
 """
@@ -64,9 +64,9 @@ PRODUCT_ID = 'a1111c8c-c720-46c3-8534-2fcdd730040d'
 START_LAT = 37.770
 START_LNG = -122.466
 
-# Pier 39
-END_LAT = 37.791
-END_LNG = -122.405
+# Uber HQ
+END_LAT = 37.7752315
+END_LNG = -122.418075
 
 
 def estimate_ride(api_client):
@@ -83,6 +83,7 @@ def estimate_ride(api_client):
             start_longitude=START_LNG,
             end_latitude=END_LAT,
             end_longitude=END_LNG,
+            seat_count=2
         )
 
     except (ClientError, ServerError) as error:
@@ -138,7 +139,49 @@ def update_ride(api_client, ride_status, ride_id):
         success_print(message)
 
 
-def request_ride(api_client, surge_confirmation_id=None):
+def request_ride(api_client):
+    """Use an UberRidesClient to request a ride and print the results.
+
+    Parameters
+        api_client (UberRidesClient)
+            An authorized UberRidesClient with 'request' scope.
+
+    Returns
+        The unique ID of the requested ride.
+    """
+    try:
+
+        estimate = api_client.estimate_ride(
+            product_id=PRODUCT_ID,
+            start_latitude=START_LAT,
+            start_longitude=START_LNG,
+            end_latitude=END_LAT,
+            end_longitude=END_LNG,
+            seat_count=2
+        )
+        fare_id = estimate.json.get('fare_id')
+
+        request = api_client.request_ride(
+            product_id=PRODUCT_ID,
+            start_latitude=START_LAT,
+            start_longitude=START_LNG,
+            end_latitude=END_LAT,
+            end_longitude=END_LNG,
+            seat_count=2,
+            fare_id=fare_id
+        )
+
+    except (ClientError, ServerError) as error:
+        fail_print(error)
+        return
+
+    else:
+        success_print(estimate.json)
+        success_print(request.json)
+        return request.json.get('request_id')
+
+
+def request_ride_surge(api_client, surge_confirmation_id=None):
     """Use an UberRidesClient to request a ride and print the results.
 
     If the product has a surge_multiple greater than or equal to 2.0,
@@ -162,6 +205,7 @@ def request_ride(api_client, surge_confirmation_id=None):
             end_latitude=END_LAT,
             end_longitude=END_LNG,
             surge_confirmation_id=surge_confirmation_id,
+            seat_count=2
         )
 
     except SurgeError as e:
@@ -177,7 +221,7 @@ def request_ride(api_client, surge_confirmation_id=None):
         surge_id = query_params.get('surge_confirmation_id')[0]
 
         # automatically try request again
-        return request_ride(api_client, surge_id)
+        return request_ride_surge(api_client, surge_id)
 
     except (ClientError, ServerError) as error:
         fail_print(error)
@@ -216,6 +260,29 @@ if __name__ == '__main__':
     credentials = import_oauth2_credentials()
     api_client = create_uber_client(credentials)
 
+    # ride request with upfront pricing flow
+
+    paragraph_print("Request a ride with upfront pricing product.")
+    ride_id = request_ride(api_client)
+
+    paragraph_print("Update ride status to accepted.")
+    update_ride(api_client, 'accepted', ride_id)
+
+    paragraph_print("Updated ride details.")
+    get_ride_details(api_client, ride_id)
+    update_ride(api_client, 'in_progress', ride_id)
+
+    paragraph_print("Updated ride details.")
+    get_ride_details(api_client, ride_id)
+
+    paragraph_print("Update ride status to completed.")
+    update_ride(api_client, 'completed', ride_id)
+
+    paragraph_print("Updated ride details.")
+    get_ride_details(api_client, ride_id)
+
+    # ride request with surge flow
+
     paragraph_print("Ride estimates before surge.")
     estimate_ride(api_client)
 
@@ -226,16 +293,19 @@ if __name__ == '__main__':
     estimate_ride(api_client)
 
     paragraph_print("Request a ride with surging product.")
-    ride_id = request_ride(api_client)
+    ride_id = request_ride_surge(api_client)
 
     paragraph_print("Update ride status to accepted.")
     update_ride(api_client, 'accepted', ride_id)
 
     paragraph_print("Updated ride details.")
     get_ride_details(api_client, ride_id)
+    update_ride(api_client, 'in_progress', ride_id)
+
+    paragraph_print("Updated ride details.")
+    get_ride_details(api_client, ride_id)
 
     paragraph_print("Update ride status to completed.")
-    update_ride(api_client, 'in_progress', ride_id)
     update_ride(api_client, 'completed', ride_id)
 
     paragraph_print("Updated ride details.")
