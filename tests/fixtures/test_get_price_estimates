@@ -1,46 +1,202 @@
 interactions:
 - request:
     body: null
-    headers: {}
-    method: !!python/unicode GET
-    uri: https://sandbox-api.uber.com/v1/estimates/price?start_latitude=37.775&start_longitude=-122.417&end_latitude=37.808&end_longitude=-122.416&seat_count=1
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/estimates/price?start_latitude=37.7899886&start_longitude=-122.4021253&end_latitude=37.775232&end_longitude=-122.4197513&seat_count=2
   response:
-    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"uberX","high_estimate":11,"minimum":5,"duration":577,"estimate":"$9-11","distance":3.07,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","low_estimate":9,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"uberXL","high_estimate":20,"minimum":8,"duration":577,"estimate":"$15-20","distance":3.07,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","low_estimate":15,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"UberBLACK","high_estimate":30,"minimum":15,"duration":577,"estimate":"$23-30","distance":3.07,"display_name":"UberBLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","low_estimate":23,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"UberSUV","high_estimate":40,"minimum":25,"duration":577,"estimate":"$33-40","distance":3.07,"display_name":"UberSUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","low_estimate":33,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"ASSIST","high_estimate":11,"minimum":5,"duration":577,"estimate":"$9-11","distance":3.07,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","low_estimate":9,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"uberWAV","high_estimate":20,"minimum":8,"duration":577,"estimate":"$15-20","distance":3.07,"display_name":"uberWAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","low_estimate":15,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"uberTAXI","high_estimate":null,"minimum":4,"duration":577,"estimate":"Metered","distance":3.07,"display_name":"uberTAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","low_estimate":null,"surge_multiplier":1.0,"currency_code":null}]}'}
+    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"POOL","distance":1.96,"display_name":"POOL","product_id":"26546650-e557-4a7b-86e7-6a3942445247","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-8","currency_code":"USD"},{"localized_display_name":"uberX","distance":1.96,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-9","currency_code":"USD"},{"localized_display_name":"uberXL","distance":1.96,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","high_estimate":13.0,"low_estimate":10.0,"duration":540,"estimate":"$10-13","currency_code":"USD"},{"localized_display_name":"SELECT","distance":1.96,"display_name":"SELECT","product_id":"57c0ff4e-1493-4ef9-a4df-6b961525cf92","high_estimate":19.0,"low_estimate":15.0,"duration":540,"estimate":"$15-19","currency_code":"USD"},{"localized_display_name":"BLACK","distance":1.96,"display_name":"BLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","high_estimate":21.0,"low_estimate":21.0,"duration":540,"estimate":"$21.03","currency_code":"USD"},{"localized_display_name":"SUV","distance":1.96,"display_name":"SUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","high_estimate":34.0,"low_estimate":29.0,"duration":540,"estimate":"$29-34","currency_code":"USD"},{"localized_display_name":"ASSIST","distance":1.96,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-9","currency_code":"USD"},{"localized_display_name":"WAV","distance":1.96,"display_name":"WAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","high_estimate":17.0,"low_estimate":14.0,"duration":540,"estimate":"$14-17","currency_code":"USD"},{"localized_display_name":"TAXI","distance":1.96,"display_name":"TAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","high_estimate":null,"low_estimate":null,"duration":540,"estimate":"Metered","currency_code":null}]}'}
     headers:
       connection: [keep-alive]
+      content-geo-system: [wgs-84]
       content-language: [en]
-      content-length: ['1825']
+      content-length: ['2010']
       content-type: [application/json]
-      date: ['Thu, 10 Sep 2015 19:52:07 GMT']
-      etag: ['"a0f51038c55e70fbd085ba85399f4b1060ecd51f"']
+      date: ['Thu, 20 Oct 2016 08:28:31 GMT']
+      etag: ['"c500717286a6b296360d394b809177d3796623be"']
       server: [nginx]
       strict-transport-security: [max-age=0]
-      x-rate-limit-limit: ['1000']
-      x-rate-limit-remaining: ['999']
-      x-rate-limit-reset: ['1441915200']
-      x-uber-app: [uberex-sandbox]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1969']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 - request:
     body: null
-    headers: {}
-    method: !!python/unicode GET
-    uri: https://api.uber.com/v1/estimates/price?start_latitude=37.775&start_longitude=-122.417&end_latitude=37.808&end_longitude=-122.416&seat_count=1
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://api.uber.com/v1.2/estimates/price?start_latitude=37.7899886&start_longitude=-122.4021253&end_latitude=37.775232&end_longitude=-122.4197513&seat_count=2
   response:
-    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"uberX","high_estimate":11,"minimum":5,"duration":577,"estimate":"$9-11","distance":3.07,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","low_estimate":9,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"uberXL","high_estimate":20,"minimum":8,"duration":577,"estimate":"$15-20","distance":3.07,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","low_estimate":15,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"UberBLACK","high_estimate":30,"minimum":15,"duration":577,"estimate":"$23-30","distance":3.07,"display_name":"UberBLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","low_estimate":23,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"UberSUV","high_estimate":40,"minimum":25,"duration":577,"estimate":"$33-40","distance":3.07,"display_name":"UberSUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","low_estimate":33,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"ASSIST","high_estimate":11,"minimum":5,"duration":577,"estimate":"$9-11","distance":3.07,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","low_estimate":9,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"uberWAV","high_estimate":20,"minimum":8,"duration":577,"estimate":"$15-20","distance":3.07,"display_name":"uberWAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","low_estimate":15,"surge_multiplier":1.0,"currency_code":"USD"},{"localized_display_name":"uberTAXI","high_estimate":null,"minimum":4,"duration":577,"estimate":"Metered","distance":3.07,"display_name":"uberTAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","low_estimate":null,"surge_multiplier":1.0,"currency_code":null}]}'}
+    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"POOL","distance":1.96,"display_name":"POOL","product_id":"26546650-e557-4a7b-86e7-6a3942445247","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-8","currency_code":"USD"},{"localized_display_name":"uberX","distance":1.96,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-9","currency_code":"USD"},{"localized_display_name":"uberXL","distance":1.96,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","high_estimate":13.0,"low_estimate":10.0,"duration":540,"estimate":"$10-13","currency_code":"USD"},{"localized_display_name":"SELECT","distance":1.96,"display_name":"SELECT","product_id":"57c0ff4e-1493-4ef9-a4df-6b961525cf92","high_estimate":19.0,"low_estimate":15.0,"duration":540,"estimate":"$15-19","currency_code":"USD"},{"localized_display_name":"BLACK","distance":1.96,"display_name":"BLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","high_estimate":21.0,"low_estimate":21.0,"duration":540,"estimate":"$21.03","currency_code":"USD"},{"localized_display_name":"SUV","distance":1.96,"display_name":"SUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","high_estimate":34.0,"low_estimate":29.0,"duration":540,"estimate":"$29-34","currency_code":"USD"},{"localized_display_name":"ASSIST","distance":1.96,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-9","currency_code":"USD"},{"localized_display_name":"WAV","distance":1.96,"display_name":"WAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","high_estimate":17.0,"low_estimate":14.0,"duration":540,"estimate":"$14-17","currency_code":"USD"},{"localized_display_name":"TAXI","distance":1.96,"display_name":"TAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","high_estimate":null,"low_estimate":null,"duration":540,"estimate":"Metered","currency_code":null}]}'}
     headers:
       connection: [keep-alive]
+      content-geo-system: [wgs-84]
       content-language: [en]
-      content-length: ['1825']
+      content-length: ['2010']
       content-type: [application/json]
-      date: ['Thu, 10 Sep 2015 19:52:07 GMT']
-      etag: ['"a0f51038c55e70fbd085ba85399f4b1060ecd51f"']
+      date: ['Thu, 20 Oct 2016 08:28:32 GMT']
+      etag: ['"c500717286a6b296360d394b809177d3796623be"']
       server: [nginx]
       strict-transport-security: [max-age=0]
-      x-rate-limit-limit: ['1000']
-      x-rate-limit-remaining: ['999']
-      x-rate-limit-reset: ['1441915200']
-      x-uber-app: [uberex-nonsandbox]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1994']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-nonsandbox, migrator-uberex-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/estimates/price?start_latitude=37.7899886&start_longitude=-122.4021253&end_latitude=37.775232&end_longitude=-122.4197513&seat_count=2
+  response:
+    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"POOL","distance":1.78,"display_name":"POOL","product_id":"26546650-e557-4a7b-86e7-6a3942445247","high_estimate":8.0,"low_estimate":7.0,"duration":480,"estimate":"$7","currency_code":"USD"},{"localized_display_name":"uberX","distance":1.78,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","high_estimate":9.0,"low_estimate":6.0,"duration":480,"estimate":"$6-9","currency_code":"USD"},{"localized_display_name":"uberXL","distance":1.78,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","high_estimate":12.0,"low_estimate":9.0,"duration":480,"estimate":"$9-12","currency_code":"USD"},{"localized_display_name":"SELECT","distance":1.78,"display_name":"SELECT","product_id":"57c0ff4e-1493-4ef9-a4df-6b961525cf92","high_estimate":18.0,"low_estimate":14.0,"duration":480,"estimate":"$14-18","currency_code":"USD"},{"localized_display_name":"BLACK","distance":1.78,"display_name":"BLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","high_estimate":19.0,"low_estimate":19.0,"duration":480,"estimate":"$19.70","currency_code":"USD"},{"localized_display_name":"SUV","distance":1.78,"display_name":"SUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","high_estimate":32.0,"low_estimate":27.0,"duration":480,"estimate":"$27-32","currency_code":"USD"},{"localized_display_name":"ASSIST","distance":1.78,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","high_estimate":9.0,"low_estimate":6.0,"duration":480,"estimate":"$6-9","currency_code":"USD"},{"localized_display_name":"WAV","distance":1.78,"display_name":"WAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","high_estimate":16.0,"low_estimate":13.0,"duration":480,"estimate":"$13-16","currency_code":"USD"},{"localized_display_name":"TAXI","distance":1.78,"display_name":"TAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","high_estimate":null,"low_estimate":null,"duration":480,"estimate":"Metered","currency_code":null}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['2006']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:35 GMT']
+      etag: ['"4d42cba432c71f9f655ec98200c94aad89dbca62"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1886']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://api.uber.com/v1.2/estimates/price?start_latitude=37.7899886&start_longitude=-122.4021253&end_latitude=37.775232&end_longitude=-122.4197513&seat_count=2
+  response:
+    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"POOL","distance":1.78,"display_name":"POOL","product_id":"26546650-e557-4a7b-86e7-6a3942445247","high_estimate":8.0,"low_estimate":7.0,"duration":480,"estimate":"$7","currency_code":"USD"},{"localized_display_name":"uberX","distance":1.78,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","high_estimate":9.0,"low_estimate":6.0,"duration":480,"estimate":"$6-9","currency_code":"USD"},{"localized_display_name":"uberXL","distance":1.78,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","high_estimate":12.0,"low_estimate":9.0,"duration":480,"estimate":"$9-12","currency_code":"USD"},{"localized_display_name":"SELECT","distance":1.78,"display_name":"SELECT","product_id":"57c0ff4e-1493-4ef9-a4df-6b961525cf92","high_estimate":18.0,"low_estimate":14.0,"duration":480,"estimate":"$14-18","currency_code":"USD"},{"localized_display_name":"BLACK","distance":1.78,"display_name":"BLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","high_estimate":19.0,"low_estimate":19.0,"duration":480,"estimate":"$19.69","currency_code":"USD"},{"localized_display_name":"SUV","distance":1.78,"display_name":"SUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","high_estimate":32.0,"low_estimate":27.0,"duration":480,"estimate":"$27-32","currency_code":"USD"},{"localized_display_name":"ASSIST","distance":1.78,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","high_estimate":9.0,"low_estimate":6.0,"duration":480,"estimate":"$6-9","currency_code":"USD"},{"localized_display_name":"WAV","distance":1.78,"display_name":"WAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","high_estimate":16.0,"low_estimate":13.0,"duration":480,"estimate":"$13-16","currency_code":"USD"},{"localized_display_name":"TAXI","distance":1.78,"display_name":"TAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","high_estimate":null,"low_estimate":null,"duration":480,"estimate":"Metered","currency_code":null}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['2006']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:36 GMT']
+      etag: ['"2d3c534debbaec561297bffc2eb1a9a5780863bc"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1990']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-nonsandbox, migrator-uberex-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/estimates/price?start_latitude=37.7899886&start_longitude=-122.4021253&end_latitude=37.775232&end_longitude=-122.4197513&seat_count=2
+  response:
+    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"POOL","distance":1.78,"display_name":"POOL","product_id":"26546650-e557-4a7b-86e7-6a3942445247","high_estimate":8.0,"low_estimate":7.0,"duration":480,"estimate":"$7","currency_code":"USD"},{"localized_display_name":"uberX","distance":1.78,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","high_estimate":9.0,"low_estimate":6.0,"duration":480,"estimate":"$6-9","currency_code":"USD"},{"localized_display_name":"uberXL","distance":1.78,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","high_estimate":12.0,"low_estimate":9.0,"duration":480,"estimate":"$9-12","currency_code":"USD"},{"localized_display_name":"SELECT","distance":1.78,"display_name":"SELECT","product_id":"57c0ff4e-1493-4ef9-a4df-6b961525cf92","high_estimate":18.0,"low_estimate":14.0,"duration":480,"estimate":"$14-18","currency_code":"USD"},{"localized_display_name":"BLACK","distance":1.78,"display_name":"BLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","high_estimate":19.0,"low_estimate":19.0,"duration":480,"estimate":"$19.77","currency_code":"USD"},{"localized_display_name":"SUV","distance":1.78,"display_name":"SUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","high_estimate":32.0,"low_estimate":27.0,"duration":480,"estimate":"$27-32","currency_code":"USD"},{"localized_display_name":"ASSIST","distance":1.78,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","high_estimate":9.0,"low_estimate":6.0,"duration":480,"estimate":"$6-9","currency_code":"USD"},{"localized_display_name":"WAV","distance":1.78,"display_name":"WAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","high_estimate":16.0,"low_estimate":13.0,"duration":480,"estimate":"$13-16","currency_code":"USD"},{"localized_display_name":"TAXI","distance":1.78,"display_name":"TAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","high_estimate":null,"low_estimate":null,"duration":480,"estimate":"Metered","currency_code":null}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['2006']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:48:04 GMT']
+      etag: ['"f2998a30beb935bbe9df4571bc50847cb4bcdeca"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1850']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://api.uber.com/v1.2/estimates/price?start_latitude=37.7899886&start_longitude=-122.4021253&end_latitude=37.775232&end_longitude=-122.4197513&seat_count=2
+  response:
+    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"POOL","distance":1.78,"display_name":"POOL","product_id":"26546650-e557-4a7b-86e7-6a3942445247","high_estimate":8.0,"low_estimate":7.0,"duration":480,"estimate":"$7","currency_code":"USD"},{"localized_display_name":"uberX","distance":1.78,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","high_estimate":9.0,"low_estimate":6.0,"duration":480,"estimate":"$6-9","currency_code":"USD"},{"localized_display_name":"uberXL","distance":1.78,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","high_estimate":12.0,"low_estimate":9.0,"duration":480,"estimate":"$9-12","currency_code":"USD"},{"localized_display_name":"SELECT","distance":1.78,"display_name":"SELECT","product_id":"57c0ff4e-1493-4ef9-a4df-6b961525cf92","high_estimate":18.0,"low_estimate":14.0,"duration":480,"estimate":"$14-18","currency_code":"USD"},{"localized_display_name":"BLACK","distance":1.78,"display_name":"BLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","high_estimate":19.0,"low_estimate":19.0,"duration":480,"estimate":"$19.77","currency_code":"USD"},{"localized_display_name":"SUV","distance":1.78,"display_name":"SUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","high_estimate":32.0,"low_estimate":27.0,"duration":480,"estimate":"$27-32","currency_code":"USD"},{"localized_display_name":"ASSIST","distance":1.78,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","high_estimate":9.0,"low_estimate":6.0,"duration":480,"estimate":"$6-9","currency_code":"USD"},{"localized_display_name":"WAV","distance":1.78,"display_name":"WAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","high_estimate":16.0,"low_estimate":13.0,"duration":480,"estimate":"$13-16","currency_code":"USD"},{"localized_display_name":"TAXI","distance":1.78,"display_name":"TAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","high_estimate":null,"low_estimate":null,"duration":480,"estimate":"Metered","currency_code":null}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['2006']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:48:05 GMT']
+      etag: ['"f2998a30beb935bbe9df4571bc50847cb4bcdeca"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1985']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-nonsandbox, migrator-uberex-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/estimates/price?start_latitude=37.7899886&start_longitude=-122.4021253&end_latitude=37.775232&end_longitude=-122.4197513&seat_count=2
+  response:
+    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"POOL","distance":1.96,"display_name":"POOL","product_id":"26546650-e557-4a7b-86e7-6a3942445247","high_estimate":8.0,"low_estimate":7.0,"duration":540,"estimate":"$7","currency_code":"USD"},{"localized_display_name":"uberX","distance":1.96,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-9","currency_code":"USD"},{"localized_display_name":"uberXL","distance":1.96,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","high_estimate":13.0,"low_estimate":10.0,"duration":540,"estimate":"$10-13","currency_code":"USD"},{"localized_display_name":"SELECT","distance":1.96,"display_name":"SELECT","product_id":"57c0ff4e-1493-4ef9-a4df-6b961525cf92","high_estimate":19.0,"low_estimate":15.0,"duration":540,"estimate":"$15-19","currency_code":"USD"},{"localized_display_name":"BLACK","distance":1.96,"display_name":"BLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","high_estimate":20.0,"low_estimate":20.0,"duration":540,"estimate":"$20.89","currency_code":"USD"},{"localized_display_name":"SUV","distance":1.96,"display_name":"SUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","high_estimate":34.0,"low_estimate":28.0,"duration":540,"estimate":"$28-34","currency_code":"USD"},{"localized_display_name":"ASSIST","distance":1.96,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-9","currency_code":"USD"},{"localized_display_name":"WAV","distance":1.96,"display_name":"WAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","high_estimate":17.0,"low_estimate":13.0,"duration":540,"estimate":"$13-17","currency_code":"USD"},{"localized_display_name":"TAXI","distance":1.96,"display_name":"TAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","high_estimate":null,"low_estimate":null,"duration":540,"estimate":"Metered","currency_code":null}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['2008']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:29 GMT']
+      etag: ['"4e0871e90c7f0be1ecad1002d6e1cf60cd05fdde"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1818']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://api.uber.com/v1.2/estimates/price?start_latitude=37.7899886&start_longitude=-122.4021253&end_latitude=37.775232&end_longitude=-122.4197513&seat_count=2
+  response:
+    body: {string: !!python/unicode '{"prices":[{"localized_display_name":"POOL","distance":1.96,"display_name":"POOL","product_id":"26546650-e557-4a7b-86e7-6a3942445247","high_estimate":8.0,"low_estimate":7.0,"duration":540,"estimate":"$7","currency_code":"USD"},{"localized_display_name":"uberX","distance":1.96,"display_name":"uberX","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-9","currency_code":"USD"},{"localized_display_name":"uberXL","distance":1.96,"display_name":"uberXL","product_id":"821415d8-3bd5-4e27-9604-194e4359a449","high_estimate":13.0,"low_estimate":10.0,"duration":540,"estimate":"$10-13","currency_code":"USD"},{"localized_display_name":"SELECT","distance":1.96,"display_name":"SELECT","product_id":"57c0ff4e-1493-4ef9-a4df-6b961525cf92","high_estimate":19.0,"low_estimate":15.0,"duration":540,"estimate":"$15-19","currency_code":"USD"},{"localized_display_name":"BLACK","distance":1.96,"display_name":"BLACK","product_id":"d4abaae7-f4d6-4152-91cc-77523e8165a4","high_estimate":20.0,"low_estimate":20.0,"duration":540,"estimate":"$20.89","currency_code":"USD"},{"localized_display_name":"SUV","distance":1.96,"display_name":"SUV","product_id":"8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0","high_estimate":34.0,"low_estimate":28.0,"duration":540,"estimate":"$28-34","currency_code":"USD"},{"localized_display_name":"ASSIST","distance":1.96,"display_name":"ASSIST","product_id":"ff5ed8fe-6585-4803-be13-3ca541235de3","high_estimate":9.0,"low_estimate":7.0,"duration":540,"estimate":"$7-9","currency_code":"USD"},{"localized_display_name":"WAV","distance":1.96,"display_name":"WAV","product_id":"2832a1f5-cfc0-48bb-ab76-7ea7a62060e7","high_estimate":17.0,"low_estimate":13.0,"duration":540,"estimate":"$13-17","currency_code":"USD"},{"localized_display_name":"TAXI","distance":1.96,"display_name":"TAXI","product_id":"3ab64887-4842-4c8e-9780-ccecd3a0391d","high_estimate":null,"low_estimate":null,"duration":540,"estimate":"Metered","currency_code":null}]}'}
+    headers:
+      connection: [keep-alive]
+      content-geo-system: [wgs-84]
+      content-language: [en]
+      content-length: ['2008']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:30 GMT']
+      etag: ['"4e0871e90c7f0be1ecad1002d6e1cf60cd05fdde"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1980']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-nonsandbox, migrator-uberex-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 version: 1

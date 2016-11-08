@@ -1,24 +1,98 @@
 interactions:
 - request:
     body: null
-    headers: {}
-    method: !!python/unicode GET
-    uri: https://sandbox-api.uber.com/v1/payment-methods
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/payment-methods
   response:
-    body: {string: !!python/unicode '{"last_used":"payment-e1f4","payment_methods":[{"type":"business_account","description":"Uber","payment_method_id":"payment-93c7"},{"type":"visa","description":"***13","payment_method_id":"payment-e1f4"}]}'}
+    body: {string: !!python/unicode '{"last_used":"517a6c29-3a2b-45cb-94a3-35d679909a71","payment_methods":[{"type":"american_express","description":"***05","payment_method_id":"517a6c29-3a2b-45cb-94a3-35d679909a71"}]}'}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['307']
+      content-length: ['181']
       content-type: [application/json]
-      date: ['Tue, 16 Feb 2016 06:13:49 GMT']
-      etag: ['"358afebb549438a9c3b8312e0e3947bfab0168d3"']
+      date: ['Thu, 20 Oct 2016 08:36:32 GMT']
+      etag: ['"2a24b71e77e897541be036fa1a578268e9df376c"']
       server: [nginx]
       strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
       x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1988']
-      x-rate-limit-reset: ['1455606000']
-      x-uber-app: [uberex-sandbox]
+      x-rate-limit-remaining: ['1889']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/payment-methods
+  response:
+    body: {string: !!python/unicode '{"last_used":"517a6c29-3a2b-45cb-94a3-35d679909a71","payment_methods":[{"type":"american_express","description":"***05","payment_method_id":"517a6c29-3a2b-45cb-94a3-35d679909a71"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['181']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:48 GMT']
+      etag: ['"2a24b71e77e897541be036fa1a578268e9df376c"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1857']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/payment-methods
+  response:
+    body: {string: !!python/unicode '{"last_used":"517a6c29-3a2b-45cb-94a3-35d679909a71","payment_methods":[{"type":"american_express","description":"***05","payment_method_id":"517a6c29-3a2b-45cb-94a3-35d679909a71"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['181']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:48:17 GMT']
+      etag: ['"2a24b71e77e897541be036fa1a578268e9df376c"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1821']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/payment-methods
+  response:
+    body: {string: !!python/unicode '{"last_used":"517a6c29-3a2b-45cb-94a3-35d679909a71","payment_methods":[{"type":"american_express","description":"***05","payment_method_id":"517a6c29-3a2b-45cb-94a3-35d679909a71"}]}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['181']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:43 GMT']
+      etag: ['"2a24b71e77e897541be036fa1a578268e9df376c"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1789']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 version: 1

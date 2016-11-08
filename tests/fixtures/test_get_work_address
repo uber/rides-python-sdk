@@ -1,25 +1,102 @@
 interactions:
 - request:
     body: null
-    headers: {}
-    method: !!python/unicode GET
-    uri: https://sandbox-api.uber.com/v1/places/work
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/places/work
   response:
-    body: {string: !!python/unicode '{"address":"1 Market St, San Francisco, CA 94105,
-        USA"}'}
+    body: {string: !!python/unicode '{"address":"1455 Market St, San Francisco, CA
+        94103, USA"}'}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['55']
+      content-length: ['58']
       content-type: [application/json]
-      date: ['Tue, 16 Feb 2016 06:13:36 GMT']
-      etag: ['"662d1a8710b0bc16cef2af9656e410a8a9ebe194"']
+      date: ['Thu, 20 Oct 2016 08:36:32 GMT']
+      etag: ['"9bc62a15a6f4b45bf80257930416c505b9cde3cd"']
       server: [nginx]
       strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
       x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1990']
-      x-rate-limit-reset: ['1455606000']
-      x-uber-app: [uberex-sandbox]
+      x-rate-limit-remaining: ['1890']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/places/work
+  response:
+    body: {string: !!python/unicode '{"address":"1455 Market St, San Francisco, CA
+        94103, USA"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['58']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:48 GMT']
+      etag: ['"9bc62a15a6f4b45bf80257930416c505b9cde3cd"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1858']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/places/work
+  response:
+    body: {string: !!python/unicode '{"address":"1455 Market St, San Francisco, CA
+        94103, USA"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['58']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:48:16 GMT']
+      etag: ['"9bc62a15a6f4b45bf80257930416c505b9cde3cd"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1822']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/places/work
+  response:
+    body: {string: !!python/unicode '{"address":"1455 Market St, San Francisco, CA
+        94103, USA"}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['58']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:42 GMT']
+      etag: ['"9bc62a15a6f4b45bf80257930416c505b9cde3cd"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1790']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 version: 1

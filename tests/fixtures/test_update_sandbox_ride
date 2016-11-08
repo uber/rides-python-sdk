@@ -1,25 +1,89 @@
 interactions:
 - request:
-    body: '{"status": "accepted"}'
+    body: !!python/unicode '{"status": "accepted"}'
     headers:
       Content-Length: ['22']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
       content-type: [application/json]
-    method: !!python/unicode PUT
-    uri: https://sandbox-api.uber.com/v1/sandbox/requests/rideID-14f1c
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1.2/sandbox/requests/9bdb3278-21bd-46b8-90fa-51404b0d6acf
+  response:
+    body: {string: !!python/unicode '{"message":"No trip with id=9bdb3278-21bd-46b8-90fa-51404b0d6acf","code":"not_found"}'}
+    headers:
+      connection: [keep-alive]
+      content-length: ['85']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:36:29 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 404, message: Not Found}
+- request:
+    body: !!python/unicode '{"status": "accepted"}'
+    headers:
+      Content-Length: ['22']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      content-type: [application/json]
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1.2/sandbox/requests/610d868b-e21c-483a-9932-97e61b852fd2
+  response:
+    body: {string: !!python/unicode '{"message":"No trip with id=610d868b-e21c-483a-9932-97e61b852fd2","code":"not_found"}'}
+    headers:
+      connection: [keep-alive]
+      content-length: ['85']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:45 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 404, message: Not Found}
+- request:
+    body: !!python/unicode '{"status": "accepted"}'
+    headers:
+      Content-Length: ['22']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      content-type: [application/json]
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1.2/sandbox/requests/0aec0061-1e20-4239-a0b7-78328e9afec8
   response:
     body: {string: !!python/unicode ''}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['0']
       content-type: [text/html; charset=UTF-8]
-      date: ['Thu, 10 Sep 2015 18:36:28 GMT']
+      date: ['Thu, 20 Oct 2016 08:48:13 GMT']
       server: [nginx]
       strict-transport-security: [max-age=0]
-      x-rate-limit-limit: ['1000']
-      x-rate-limit-remaining: ['985']
-      x-rate-limit-reset: ['1441911600']
-      x-uber-app: [uberex-sandbox]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1831']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 204, message: No Content}
+- request:
+    body: !!python/unicode '{"status": "accepted"}'
+    headers:
+      Content-Length: ['22']
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      content-type: [application/json]
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1.2/sandbox/requests/0aec0061-1e20-4239-a0b7-78328e9afec8
+  response:
+    body: {string: !!python/unicode '{"message":"No trip with id=0aec0061-1e20-4239-a0b7-78328e9afec8","code":"not_found"}'}
+    headers:
+      connection: [keep-alive]
+      content-length: ['85']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:39 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 404, message: Not Found}
 version: 1

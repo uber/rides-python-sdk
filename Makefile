@@ -8,5 +8,5 @@ clean:
 
 .PHONY: bootstrap
 bootstrap:
-	@pip install -r requirements-dev.txt
+	@pip install -r requirements.txt
 	@pip install -e .

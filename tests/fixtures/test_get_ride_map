@@ -1,24 +1,26 @@
 interactions:
 - request:
     body: null
-    headers: {}
-    method: !!python/unicode GET
-    uri: https://sandbox-api.uber.com/v1/requests/rideID-14f1c/map
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/requests/0aec0061-1e20-4239-a0b7-78328e9afec8/map
   response:
-    body: {string: !!python/unicode '{"href":"https:\/\/trip.uber.com\/-y-HO3YzT","request_id":"rideID-14f1c"}'}
+    body: {string: !!python/unicode '{"href":"https:\/\/sandbox-api.uber.com\/v1\/sandbox\/map","request_id":"0aec0061-1e20-4239-a0b7-78328e9afec8"}'}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['97']
+      content-length: ['111']
       content-type: [application/json]
-      date: ['Thu, 10 Sep 2015 18:35:52 GMT']
-      etag: ['"2e52b9024bd7207c719c7e8e8b4ef0a1dfc9174c"']
+      date: ['Fri, 21 Oct 2016 01:15:00 GMT']
+      etag: ['"0843ec9a5bf0314e51a0e83b2de31b5d3ac21f47"']
       server: [nginx]
       strict-transport-security: [max-age=0]
-      x-rate-limit-limit: ['1000']
-      x-rate-limit-remaining: ['986']
-      x-rate-limit-reset: ['1441911600']
-      x-uber-app: [uberex-sandbox]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1989']
+      x-rate-limit-reset: ['1477015200']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 version: 1

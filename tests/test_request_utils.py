@@ -31,13 +31,12 @@ from uber_rides.utils.request import build_url
 from uber_rides.utils.request import generate_data
 
 
-LAT = 37.7
-LNG = -122.4
+LAT = 37.775232
+LNG = -122.4197513
 HOST = 'api.uber.com'
-HTTPS_HOST = '{}{}'.format('https://', HOST)
-DEFAULT_TARGET = 'products'
-SPECIAL_CHAR_TARGET = '~products'
-DEFAULT_BASE_URL = 'https://api.uber.com/products'
+DEFAULT_TARGET = 'v1.2/products'
+SPECIAL_CHAR_TARGET = 'v1.2/~products'
+DEFAULT_BASE_URL = 'https://api.uber.com/v1.2/products'
 
 
 @fixture
@@ -105,14 +104,14 @@ def test_build_url_no_params():
 
 def test_build_url_with_scheme():
     """Build URL with https scheme."""
-    url = build_url(HTTPS_HOST, DEFAULT_TARGET)
+    url = build_url(HOST, DEFAULT_TARGET)
     assert url == DEFAULT_BASE_URL
 
 
 def test_build_special_char_url():
     """Build URL special characters."""
     url = build_url(HOST, SPECIAL_CHAR_TARGET)
-    assert url == 'https://api.uber.com/%7Eproducts'
+    assert url == 'https://api.uber.com/v1.2/%7Eproducts'
 
 
 def test_build_url_params(default_http_arguments_as_json):

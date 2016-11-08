@@ -1,26 +1,27 @@
 interactions:
 - request:
     body: null
-    headers: {}
-    method: !!python/unicode GET
-    uri: https://sandbox-api.uber.com/v1/requests/rideID-14f1c/receipt
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/requests/0aec0061-1e20-4239-a0b7-78328e9afec8/receipt
   response:
-    body: {string: !!python/unicode '{"distance":"1.87","normal_fare":"$10.56","charges":[{"amount":"2.25","type":"base_fare","name":"Base
-        Fare"},{"amount":"2.25","type":"distance","name":"Distance"},{"amount":"2.25","type":"time","name":"Time"}],"charge_adjustments":[{"amount":"2.25","type":"safe_ride_fee","name":"Safe
-        Rides Fee"}],"surge_charge":null,"total_owed":null,"distance_label":"miles","total_charged":"$10.56","request_id":"rideID-14f1c","duration":"00:11:32","subtotal":"$10.56","currency_code":"USD"}'}
+    body: {string: !!python/unicode '{"distance":"1.87","charge_adjustments":[{"amount":"2.25","type":"booking_fee","name":"Booking
+        Fee"}],"total_owed":null,"distance_label":"miles","total_charged":"$9.00","request_id":"0aec0061-1e20-4239-a0b7-78328e9afec8","duration":"00:11:32","total_fare":"$9.00","subtotal":"$9.00","currency_code":"USD"}'}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['502']
+      content-length: ['305']
       content-type: [application/json]
-      date: ['Thu, 10 Sep 2015 18:38:24 GMT']
-      etag: ['"7b104ec669a8a12bbba6801d5c712e91d07102e9"']
+      date: ['Fri, 21 Oct 2016 01:17:15 GMT']
+      etag: ['"7f5216c11382891ac55db6557ec37f174b17637f"']
       server: [nginx]
       strict-transport-security: [max-age=0]
-      x-rate-limit-limit: ['1000']
-      x-rate-limit-remaining: ['983']
-      x-rate-limit-reset: ['1441911600']
-      x-uber-app: [uberex-sandbox]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1987']
+      x-rate-limit-reset: ['1477015200']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 version: 1

@@ -144,7 +144,7 @@ def complex_409_surge_error():
     error_response = {
         'meta': {
             'surge_confirmation': {
-                'href': 'api.uber.com/v1/surge-confirmations/abc',
+                'href': 'api.uber.com/v1.2/surge-confirmations/abc',
                 'surge_confirmation_id': 'abc',
             },
         },
@@ -322,7 +322,7 @@ def test_complex_409_surge_error(complex_409_surge_error):
     surge_meta = client_error.meta['surge_confirmation']
 
     assert surge_meta['surge_confirmation_id'] == 'abc'
-    assert surge_meta['href'] == 'api.uber.com/v1/surge-confirmations/abc'
+    assert surge_meta['href'] == 'api.uber.com/v1.2/surge-confirmations/abc'
 
 
 def test_complex_422_same_pickup_dropoff_error(

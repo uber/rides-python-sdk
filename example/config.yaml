@@ -1,7 +1,10 @@
-client_id: INSERT_CLIENT_ID_HERE
-client_secret: INSERT_CLIENT_SECRET_HERE
-redirect_url: INSERT_REDIRECT_URL_HERE
+client_id: xxx
+client_secret: xxx
+redirect_url: https://localhost:8000/api/v1/uber/oauth
 scopes:
     - profile
     - history
+    - places
     - request
+    - request_receipt
+    - all_trips

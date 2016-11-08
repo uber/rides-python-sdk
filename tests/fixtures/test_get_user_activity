@@ -1,29 +1,118 @@
 interactions:
 - request:
     body: null
-    headers: {}
-    method: !!python/unicode GET
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
     uri: https://sandbox-api.uber.com/v1.2/history
   response:
-    body: {string: !!python/unicode '{"count":100,"offset":0,"limit":5,"history":[{"status":"completed","distance":12.1028921947,"request_time":1441513360,"start_time":1441513662,"start_city":{"latitude":37.7749295,"display_name":"San
-        Francisco","longitude":-122.4194155},"end_time":1441515066,"request_id":"5d41e768-5070-490b-8932-010befee810d","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d"},{"status":"completed","distance":15.0400157235,"request_time":1441498391,"start_time":1441498618,"start_city":{"latitude":37.7749295,"display_name":"San
-        Francisco","longitude":-122.4194155},"end_time":1441501148,"request_id":"2ef0a943-8a8d-4f33-9f81-de779881dca0","product_id":"04a497f5-380d-47f2-bf1b-ad4cfdcb51f2"},{"status":"completed","distance":0.0,"request_time":1441398368,"start_time":1441398631,"start_city":{"latitude":37.7749295,"display_name":"San
-        Francisco","longitude":-122.4194155},"end_time":1441398636,"request_id":"7a9a98c1-4653-4182-b94c-e8ed119b7b09","product_id":"ad6af33e-267d-4f38-9df5-f6e206966303"},{"status":"completed","distance":1.4394101455,"request_time":1441345761,"start_time":1441345897,"start_city":{"latitude":37.7749295,"display_name":"San
-        Francisco","longitude":-122.4194155},"end_time":1441346424,"request_id":"8f5e71e1-636c-4ea7-89b6-fa0293cb4f01","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d"},{"status":"completed","distance":37.3087829854,"request_time":1440830938,"start_time":1440831054,"start_city":{"latitude":37.7749295,"display_name":"San
-        Francisco","longitude":-122.4194155},"end_time":1440833917,"request_id":"d98e73a5-2497-423e-b7c2-75815f4e0868","product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d"}]}'}
+    body: {string: !!python/unicode '{"count":13,"history":[{"status":"completed","distance":1.4780860317,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475545183,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475545808,"request_id":"fb0a7c1f-2cf7-4310-bd27-8ba7737362fe","request_time":1475545095},{"status":"completed","distance":1.2792152568,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475513472,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475513898,"request_id":"d72338b0-394d-4f0e-a73c-78d469fa0c6d","request_time":1475513393},{"status":"completed","distance":1.5084526246,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475170251,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475171154,"request_id":"2b61e340-27bd-4937-8304-122009e4a393","request_time":1475170088},{"status":"completed","distance":1.4705337758,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475027766,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475028387,"request_id":"58cb7b3c-fe22-47b4-94c0-2cf08b34f4be","request_time":1475027705},{"status":"completed","distance":0.6489455763,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475002745,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475003150,"request_id":"57be6f97-e10f-411e-a87e-670011c46b55","request_time":1475002656}],"limit":5,"offset":0}'}
     headers:
       connection: [keep-alive]
       content-language: [en]
-      content-length: ['1619']
+      content-length: ['1595']
       content-type: [application/json]
-      date: ['Thu, 10 Sep 2015 19:56:30 GMT']
-      etag: ['"5257668175f002adb39151fc4c9e9529835055eb"']
+      date: ['Thu, 20 Oct 2016 08:28:33 GMT']
+      etag: ['"a592dd04ee9a6b3c81b7c96a47fddada5ba787aa"']
       server: [nginx]
       strict-transport-security: [max-age=0]
-      x-rate-limit-limit: ['1000']
-      x-rate-limit-remaining: ['996']
-      x-rate-limit-reset: ['1441915200']
-      x-uber-app: [uberex-sandbox]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1967']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/history
+  response:
+    body: {string: !!python/unicode '{"count":13,"history":[{"status":"completed","distance":1.4780860317,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475545183,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475545808,"request_id":"fb0a7c1f-2cf7-4310-bd27-8ba7737362fe","request_time":1475545095},{"status":"completed","distance":1.2792152568,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475513472,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475513898,"request_id":"d72338b0-394d-4f0e-a73c-78d469fa0c6d","request_time":1475513393},{"status":"completed","distance":1.5084526246,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475170251,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475171154,"request_id":"2b61e340-27bd-4937-8304-122009e4a393","request_time":1475170088},{"status":"completed","distance":1.4705337758,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475027766,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475028387,"request_id":"58cb7b3c-fe22-47b4-94c0-2cf08b34f4be","request_time":1475027705},{"status":"completed","distance":0.6489455763,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475002745,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475003150,"request_id":"57be6f97-e10f-411e-a87e-670011c46b55","request_time":1475002656}],"limit":5,"offset":0}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['1595']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:41:37 GMT']
+      etag: ['"a592dd04ee9a6b3c81b7c96a47fddada5ba787aa"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1883']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/history
+  response:
+    body: {string: !!python/unicode '{"count":13,"history":[{"status":"completed","distance":1.4780860317,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475545183,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475545808,"request_id":"fb0a7c1f-2cf7-4310-bd27-8ba7737362fe","request_time":1475545095},{"status":"completed","distance":1.2792152568,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475513472,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475513898,"request_id":"d72338b0-394d-4f0e-a73c-78d469fa0c6d","request_time":1475513393},{"status":"completed","distance":1.5084526246,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475170251,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475171154,"request_id":"2b61e340-27bd-4937-8304-122009e4a393","request_time":1475170088},{"status":"completed","distance":1.4705337758,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475027766,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475028387,"request_id":"58cb7b3c-fe22-47b4-94c0-2cf08b34f4be","request_time":1475027705},{"status":"completed","distance":0.6489455763,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475002745,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475003150,"request_id":"57be6f97-e10f-411e-a87e-670011c46b55","request_time":1475002656}],"limit":5,"offset":0}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['1595']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:48:06 GMT']
+      etag: ['"a592dd04ee9a6b3c81b7c96a47fddada5ba787aa"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1847']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/history
+  response:
+    body: {string: !!python/unicode '{"count":13,"history":[{"status":"completed","distance":1.4780860317,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475545183,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475545808,"request_id":"fb0a7c1f-2cf7-4310-bd27-8ba7737362fe","request_time":1475545095},{"status":"completed","distance":1.2792152568,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475513472,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475513898,"request_id":"d72338b0-394d-4f0e-a73c-78d469fa0c6d","request_time":1475513393},{"status":"completed","distance":1.5084526246,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475170251,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475171154,"request_id":"2b61e340-27bd-4937-8304-122009e4a393","request_time":1475170088},{"status":"completed","distance":1.4705337758,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475027766,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475028387,"request_id":"58cb7b3c-fe22-47b4-94c0-2cf08b34f4be","request_time":1475027705},{"status":"completed","distance":0.6489455763,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1475002745,"start_city":{"latitude":37.7749,"display_name":"San
+        Francisco","longitude":-122.4194},"end_time":1475003150,"request_id":"57be6f97-e10f-411e-a87e-670011c46b55","request_time":1475002656}],"limit":5,"offset":0}'}
+    headers:
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['1595']
+      content-type: [application/json]
+      date: ['Thu, 20 Oct 2016 08:49:31 GMT']
+      etag: ['"a592dd04ee9a6b3c81b7c96a47fddada5ba787aa"']
+      server: [nginx]
+      strict-transport-security: [max-age=0]
+      x-content-type-options: [nosniff]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1815']
+      x-rate-limit-reset: ['1476954000']
+      x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
 version: 1
