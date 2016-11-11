@@ -51,9 +51,6 @@ class Response(object):
         """
         self.status_code = response.status_code
         self.request = response.request
-        self.rate_limit = response.headers['X-Rate-Limit-Limit']
-        self.rate_remaining = response.headers['X-Rate-Limit-Remaining']
-        self.rate_reset = response.headers['X-Rate-Limit-Reset']
         self.headers = response.headers
 
         try:

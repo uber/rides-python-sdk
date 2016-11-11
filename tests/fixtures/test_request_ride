@@ -24,11 +24,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-limit-concurrent-trips: ['10']
-      x-rate-limit-remaining: ['1911']
-      x-rate-limit-remaining-concurrent-trips: ['10']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 202, message: Accepted}

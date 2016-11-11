@@ -27,9 +27,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1998']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
@@ -61,9 +58,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1999']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-nonsandbox, migrator-uberex-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
@@ -95,9 +89,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1888']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
@@ -129,9 +120,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1992']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-nonsandbox, migrator-uberex-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
@@ -163,9 +151,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1852']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
@@ -197,9 +182,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1987']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-nonsandbox, migrator-uberex-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
@@ -231,9 +213,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1820']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
@@ -265,9 +244,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1982']
-      x-rate-limit-reset: ['1476954000']
       x-uber-app: [uberex-nonsandbox, migrator-uberex-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
