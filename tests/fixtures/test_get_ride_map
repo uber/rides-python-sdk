@@ -17,9 +17,6 @@ interactions:
       server: [nginx]
       strict-transport-security: [max-age=0]
       x-content-type-options: [nosniff]
-      x-rate-limit-limit: ['2000']
-      x-rate-limit-remaining: ['1989']
-      x-rate-limit-reset: ['1477015200']
       x-uber-app: [uberex-sandbox, migrator-uberex-sandbox-optimus]
       x-xss-protection: [1; mode=block]
     status: {code: 200, message: OK}
