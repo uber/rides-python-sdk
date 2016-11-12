@@ -161,6 +161,8 @@ Uber developers actively monitor the `Uber Tag <http://stackoverflow.com/questio
 
 For full documentation about our API, visit our `Developer Site <https://developer.uber.com/>`_.
 
+See the `Getting Started Tutorial <https://developer.uber.com/docs/riders/ride-requests/tutorials/api/python>`_.
+
 Contributing
 ------------
 
