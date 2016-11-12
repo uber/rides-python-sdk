@@ -1,3 +1,21 @@
+
+v0.3.1 - 11/12/2016
+-------------------
+- Removal of rate limiting headers. The headers are deprecated with v1.2: X-Rate-Limit-Limit, X-Rate-Limit-Remaining, X-Rate-Limit-Reset.
+
+v0.3.0 - 11/12/2016
+-------------------
+- Release of v1.2 endpoints for the Riders API.
+- API base URL would need to reflect the version bump: https://api.uber.com/v1.2/.
+
+v0.2.7 - 9/28/2016
+-------------------
+- Added support for Python wheels
+
+v0.2.6 - 9/28/2016
+------------------
+ - Added better support for python 2.
+
 v0.2.5 - 7/18/2016
 ------------------
  - Add seat_count support to get_price_estimates
