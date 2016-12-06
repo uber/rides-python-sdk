@@ -268,6 +268,26 @@ class UberRidesClient(object):
         """
         return self._api_call('GET', 'v1.2/me')
 
+    def apply_promotion_code(
+        self,
+        promotion_code=None,
+    ):
+        """Apply a promotion code to an Uber user.
+
+        Parameters
+            promotion_code (str)
+                The unique promotion code to apply.
+
+        Returns
+            (Response)
+                A Response object containing the applied promotion codes.
+        """
+        args = {
+            'applied_promotions_codes': promotion_code
+        }
+
+        return self._api_call('PATCH', 'v1.2/me', args=args)
+
     def estimate_ride(
         self,
         product_id=None,
