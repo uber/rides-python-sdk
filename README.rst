@@ -62,7 +62,7 @@ The Authorization Code flow is a two-step authorization process. The first step 
     )
     auth_url = auth_flow.get_authorization_url()
 
-You can find `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` in the [developer dashboard](https://developer.uber.com/dashboard/) under the settings tab of your application.  `YOUR_PERMISSION_SCOPES` is the [list of scopes](https://developer.uber.com/docs/ride-requests/guides/scopes) you have requested in the authorizations tab. Note that `YOUR_REDIRECT_URL` must match the value you provided when you registered your application.
+You can find `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` in the `developer dashboard <https://developer.uber.com/dashboard/>`_ under the settings tab of your application.  `YOUR_PERMISSION_SCOPES` is the `list of scopes <https://developer.uber.com/docs/ride-requests/guides/scopes>`_ you have requested in the authorizations tab. Note that `YOUR_REDIRECT_URL` must match the value you provided when you registered your application.
 
 Navigate the user to the `auth_url` where they can grant access to your application. After, they will be redirected to a `redirect_url` with the format YOUR_REDIRECT_URL?code=UNIQUE_AUTH_CODE. Use this `redirect_url` to create a session and start UberRidesClient.
 
