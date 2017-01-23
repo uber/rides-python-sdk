@@ -1,4 +1,8 @@
 
+v0.4.0 - 1/23/2016
+-------------------
+- Upgrade OAuth endpoints to use v2.
+
 v0.3.1 - 11/12/2016
 -------------------
 - Removal of rate limiting headers. The headers are deprecated with v1.2: X-Rate-Limit-Limit, X-Rate-Limit-Remaining, X-Rate-Limit-Reset.
