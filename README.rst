@@ -153,7 +153,7 @@ Request a Ride
         start_latitude=37.77,
         start_longitude=-122.41,
         end_latitude=37.79,
-        end_longitude=-122.41
+        end_longitude=-122.41,
         seat_count=2
     )
     fare = estimate.json.get('fare')
@@ -164,7 +164,7 @@ Request a Ride
         start_latitude=37.77,
         start_longitude=-122.41,
         end_latitude=37.79,
-        end_longitude=-122.41
+        end_longitude=-122.41,
         seat_count=2,
         fare_id=fare['fare_id']
     )
