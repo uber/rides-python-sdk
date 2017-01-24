@@ -62,7 +62,7 @@ The Authorization Code flow is a two-step authorization process. The first step 
     )
     auth_url = auth_flow.get_authorization_url()
 
-You can find `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` in the [developer dashboard](https://developer.uber.com/dashboard/) under the settings tab of your application.  `YOUR_PERMISSION_SCOPES` is the [list of scopes](https://developer.uber.com/docs/ride-requests/guides/scopes) you have requested in the authorizations tab. Note that `YOUR_REDIRECT_URL` must match the value you provided when you registered your application.
+You can find `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` in the `developer dashboard <https://developer.uber.com/dashboard/>`_ under the settings tab of your application.  `YOUR_PERMISSION_SCOPES` is the `list of scopes <https://developer.uber.com/docs/ride-requests/guides/scopes>`_ you have requested in the authorizations tab. Note that `YOUR_REDIRECT_URL` must match the value you provided when you registered your application.
 
 Navigate the user to the `auth_url` where they can grant access to your application. After, they will be redirected to a `redirect_url` with the format YOUR_REDIRECT_URL?code=UNIQUE_AUTH_CODE. Use this `redirect_url` to create a session and start UberRidesClient.
 
@@ -101,31 +101,84 @@ Get Available Products
     products = response.json.get('products')
     product_id = products[0].get('product_id')
 
+Get Price Estimates
+"""""""""""""""""""
 
-Get Profile
-"""""""""""
+.. code-block::
+
+    response = client.get_price_estimates(
+        start_latitude=37.770,
+        start_longitude=-122.411,
+        end_latitude=37.791,
+        end_longitude=-122.405,
+        seat_count=2
+    )
+
+    estimate = response.json.get('prices')
+
+Get User Profile
+""""""""""""""""
 
 .. code-block::
 
     response = client.get_user_profile()
     profile = response.json
+
+    first_name = profile.get('first_name')
+    last_name = profile.get('last_name')
     email = profile.get('email')
 
+Get User History
+""""""""""""""""
+
+.. code-block::
+
+    response = client.get_user_activity()
+    history = response.json
 
 Request a Ride
 """"""""""""""
 
 .. code-block::
 
+    # Get products for location
+    response = client.get_products(37.77, -122.41)
+    products = response.json.get('products')
+
+    product_id = products[0].get('product_id')
+
+    # Get upfront fare for product with start/end location
+    estimate = client.estimate_ride(
+        product_id=product_id,
+        start_latitude=37.77,
+        start_longitude=-122.41,
+        end_latitude=37.79,
+        end_longitude=-122.41
+        seat_count=2
+    )
+    fare = estimate.json.get('fare')
+
+    # Request ride with upfront fare for product with start/end location
     response = client.request_ride(
         product_id=product_id,
         start_latitude=37.77,
         start_longitude=-122.41,
         end_latitude=37.79,
-        end_longitude=-122.41,
+        end_longitude=-122.41
+        seat_count=2,
+        fare_id=fare['fare_id']
     )
-    ride_details = response.json
-    ride_id = ride_details.get('request_id')
+
+    request = response.json
+    request_id = request.get('request_id')
+
+    # Request ride details from request_id
+    response = client.get_ride_details(request_id)
+    ride = response.json
+
+    # Cancel a ride
+    response = client.cancel_ride(request_id)
+    ride = response.json
 
 
 This makes a real-world request and send an Uber driver to the specified start location.
