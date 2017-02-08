@@ -182,10 +182,14 @@ class AuthorizationCodeGrant(OAuth2):
         super(AuthorizationCodeGrant, self).__init__(client_id, scopes)
         self.redirect_url = redirect_url
         self.client_secret = client_secret
-        if state_token is not None:
-            self.state_token = state_token
-        else:
+
+        # generate or set state token if not false
+        self.state_token = False
+        if state_token is None:
             self.state_token = self._generate_state_token()
+        else:
+            if state_token is not False:
+                self.state_token = state_token
 
     def _generate_state_token(self, length=32):
         """Generate CSRF State Token.
@@ -235,23 +239,20 @@ class AuthorizationCodeGrant(OAuth2):
         """
         error_message = None
 
-        # Check CSRF State Token against returned state token from GET request
-        received_state_token = query_params.get('state')
-        if received_state_token is None:
-            error_message = 'Bad Request. Missing state parameter.'
-            raise UberIllegalState(error_message)
+        if self.state_token is not False:
+            # Check CSRF State Token against state token from GET request
+            received_state_token = query_params.get('state')
+            if received_state_token is None:
+                error_message = 'Bad Request. Missing state parameter.'
+                raise UberIllegalState(error_message)
 
-        if self.state_token is None:
-            error_message = 'Missing CSRF State Token in session.'
-            raise UberIllegalState(error_message)
-
-        if self.state_token != received_state_token:
-            error_message = 'CSRF Error. Expected {}, got {}'
-            error_message = error_message.format(
-                self.state_token,
-                received_state_token,
-            )
-            raise UberIllegalState(error_message)
+            if self.state_token != received_state_token:
+                error_message = 'CSRF Error. Expected {}, got {}'
+                error_message = error_message.format(
+                    self.state_token,
+                    received_state_token,
+                )
+                raise UberIllegalState(error_message)
 
         # Verify either 'code' or 'error' parameter exists
         error = query_params.get('error')
