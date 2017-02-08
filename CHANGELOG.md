@@ -1,5 +1,9 @@
 
-v0.4.0 - 1/23/2016
+v0.4.1 - 2/8/2017
+-------------------
+- Made state token optional in authorization code grant
+
+v0.4.0 - 1/23/2017
 -------------------
 - Upgrade OAuth endpoints to use v2.
 
