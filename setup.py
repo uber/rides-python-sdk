@@ -12,7 +12,7 @@ with open('README.rst') as f:
 
 setup(
     name='uber_rides',
-    version='0.4.0',
+    version='0.4.1',
     packages=find_packages(),
     description='Official Uber Rides API Python SDK',
     long_description=readme,
