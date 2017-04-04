@@ -713,9 +713,12 @@ def surge_handler(response, **kwargs):
     """
     if response.status_code == codes.conflict:
         json = response.json()
-        error = json['errors'][0]
+        # try to get errors, then the first, if so
+        errors = json.get('errors', [])
+        error = errors[0] if errors else json.get('error')  # might find an `error` key if `errors` was not there
 
-        if error['code'] == 'surge':
+        # safe check in case `code` isn't present
+        if error and error.get('code') == 'surge':
             raise SurgeError(response)
 
     return response
