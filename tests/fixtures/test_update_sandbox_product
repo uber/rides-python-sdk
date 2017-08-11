@@ -3,7 +3,7 @@ interactions:
     body: !!python/unicode '{"surge_multiplier": 2, "drivers_available": null}'
     headers:
       Content-Length: ['50']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/sandbox/products/d5ef01d9-7d54-413e-b265-425948d06e92
@@ -24,7 +24,7 @@ interactions:
     body: !!python/unicode '{"surge_multiplier": 2, "drivers_available": null}'
     headers:
       Content-Length: ['50']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/sandbox/products/d5ef01d9-7d54-413e-b265-425948d06e92
@@ -45,7 +45,7 @@ interactions:
     body: !!python/unicode '{"surge_multiplier": 2, "drivers_available": null}'
     headers:
       Content-Length: ['50']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/sandbox/products/d5ef01d9-7d54-413e-b265-425948d06e92
@@ -66,7 +66,7 @@ interactions:
     body: !!python/unicode '{"surge_multiplier": 2, "drivers_available": null}'
     headers:
       Content-Length: ['50']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/sandbox/products/d5ef01d9-7d54-413e-b265-425948d06e92

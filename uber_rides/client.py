@@ -699,6 +699,42 @@ class UberRidesClient(object):
         credential = self.session.oauth2credential
         revoke_access_token(credential)
 
+    def get_rider_profile(self):
+        """Get information about the authorized Uber user.
+
+        Returns
+            (Response)
+                A Response object containing account information.
+        """
+        return self.get_user_profile()
+
+    def get_driver_profile(self):
+        """Get profile about the authorized Uber driver.
+
+        Returns
+            (Response)
+                A Response object containing account information.
+        """
+        return self._api_call('GET', 'v1/partners/me')
+
+    def get_driver_trips(self):
+        """Get trips about the authorized Uber driver.
+
+        Returns
+            (Response)
+                A Response object containing trip information.
+        """
+        return self._api_call('GET', 'v1/partners/trips')
+
+    def get_driver_payments(self):
+        """Get payment about the authorized Uber driver.
+
+        Returns
+            (Response)
+                A Response object containing payment information.
+        """
+        return self._api_call('GET', 'v1/partners/payments')
+
 
 def surge_handler(response, **kwargs):
     """Error Handler to surface 409 Surge Conflict errors.
@@ -713,11 +749,9 @@ def surge_handler(response, **kwargs):
     """
     if response.status_code == codes.conflict:
         json = response.json()
-        # try to get errors, then the first, if so
         errors = json.get('errors', [])
-        error = errors[0] if errors else json.get('error')  # might find an `error` key if `errors` was not there
+        error = errors[0] if errors else json.get('error')
 
-        # safe check in case `code` isn't present
         if error and error.get('code') == 'surge':
             raise SurgeError(response)
 

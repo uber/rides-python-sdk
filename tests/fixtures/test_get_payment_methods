@@ -2,7 +2,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/payment-methods
   response:
@@ -23,7 +23,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/payment-methods
   response:
@@ -44,7 +44,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/payment-methods
   response:
@@ -65,7 +65,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/payment-methods
   response:

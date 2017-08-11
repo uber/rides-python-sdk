@@ -8,7 +8,7 @@ interactions:
       "start_latitude": -22.9674153}'
     headers:
       Content-Length: ['407']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests

@@ -225,6 +225,42 @@ EXPECTED_PAYMENT_KEYS = set([
     'description',
 ])
 
+EXPECTED_DRIVER_PROFILE_KEYS = set([
+    'driver_id',
+    'activation_status',
+    'first_name',
+    'last_name',
+    'driver_id',
+    'email',
+    'phone_number',
+    'picture',
+    'promo_code',
+    'rating',
+])
+
+EXPECTED_DRIVER_TRIPS_KEYS = set([
+    'dropoff',
+    'distance',
+    'status_changes',
+    'pickup',
+    'driver_id',
+    'status',
+    'trip_id'
+])
+
+EXPECTED_DRIVER_PAYMENTS_KEYS = set([
+    'category',
+    'breakdown',
+    'rider_fees',
+    'event_time',
+    'trip_id',
+    'payment_id',
+    'amount',
+    'driver_id',
+    'partner_id',
+    'currency_code'
+])
+
 
 @fixture
 def oauth2credential():
@@ -416,7 +452,7 @@ def test_get_user_profile(authorized_sandbox_client):
     response = authorized_sandbox_client.get_user_profile()
     assert response.status_code == codes.ok
 
-    # assert response looks like use profile
+    # assert response looks like user profile
     response = response.json
     assert EXPECTED_PROFILE_KEYS.issubset(response)
 
@@ -763,3 +799,40 @@ def test_get_payment_methods(authorized_sandbox_client):
 
     for payment in payments:
         assert EXPECTED_PAYMENT_KEYS.issubset(payment)
+
+
+@uber_vcr.use_cassette()
+def test_get_driver_profile(authorized_production_client):
+    """Test to fetch driver profile with access token."""
+    response = authorized_production_client.get_driver_profile()
+    assert response.status_code == codes.ok
+
+    # assert response looks like driver profile
+    response = response.json
+    assert EXPECTED_DRIVER_PROFILE_KEYS.issubset(response)
+
+
+@uber_vcr.use_cassette()
+def test_get_driver_trips(authorized_production_client):
+    """Test to fetch driver trips with access token."""
+    response = authorized_production_client.get_driver_trips()
+    assert response.status_code == codes.ok
+
+    response = response.json
+    trips = response.get('trips')
+
+    for trip in trips:
+        assert EXPECTED_DRIVER_TRIPS_KEYS.issubset(trip)
+
+
+@uber_vcr.use_cassette()
+def test_get_driver_payments(authorized_production_client):
+    """Test to fetch driver payments with access token."""
+    response = authorized_production_client.get_driver_payments()
+    assert response.status_code == codes.ok
+
+    response = response.json
+    payments = response.get('payments')
+
+    for payment in payments:
+        assert EXPECTED_DRIVER_PAYMENTS_KEYS.issubset(payment)
