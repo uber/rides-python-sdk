@@ -456,9 +456,9 @@ class UberRidesClient(object):
         """Get status details for an ongoing ride.
 
         This method behaves like get_ride_details by default (only returns
-        details about trips your app requested). If your app has the `all_trips`
-        scope, however, trip details will be returned for trips irrespective
-        of which application initiated them.
+        details about trips your app requested). If your app has the
+        `all_trips` scope, however, trip details will be returned for trips
+        irrespective of which application initiated them.
 
         Returns
             (Response)

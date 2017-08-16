@@ -382,7 +382,9 @@ def test_get_products(authorized_rider_sandbox_client, server_token_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_single_product(authorized_rider_sandbox_client, server_token_client):
+def test_get_single_product(authorized_rider_sandbox_client,
+                            server_token_client
+                            ):
     """Test fetch product by ID with access token and server token."""
     clients = [authorized_rider_sandbox_client, server_token_client]
 
@@ -397,7 +399,9 @@ def test_get_single_product(authorized_rider_sandbox_client, server_token_client
 
 
 @uber_vcr.use_cassette()
-def test_get_price_estimates(authorized_rider_sandbox_client, server_token_client):
+def test_get_price_estimates(authorized_rider_sandbox_client,
+                             server_token_client
+                             ):
     """Test to fetch price estimates with access token and server token."""
     clients = [authorized_rider_sandbox_client, server_token_client]
 
