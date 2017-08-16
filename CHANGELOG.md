@@ -1,4 +1,8 @@
 
+v0.5.0 - 2/8/2017
+-------------------
+- Added support Driver APIs
+
 v0.4.1 - 2/8/2017
 -------------------
 - Made state token optional in authorization code grant
