@@ -717,23 +717,73 @@ class UberRidesClient(object):
         """
         return self._api_call('GET', 'v1/partners/me')
 
-    def get_driver_trips(self):
+    def get_driver_trips(self,
+                         offset=None,
+                         limit=None,
+                         from_time=None,
+                         to_time=None
+                         ):
         """Get trips about the authorized Uber driver.
+
+        Parameters
+            offset (int)
+                The integer offset for activity results. Offset the list of
+                returned results by this amount. Default is zero.
+            limit (int)
+                Integer amount of results to return. Number of items to
+                retrieve per page. Default is 10, maximum is 50.
+            from_time (int)
+                Unix timestamp of the start time to query. Queries starting
+                from the first trip if omitted.
+            to_time (int)
+                Unix timestamp of the end time to query. Queries starting
+                from the last trip if omitted.
 
         Returns
             (Response)
                 A Response object containing trip information.
         """
-        return self._api_call('GET', 'v1/partners/trips')
+        args = {
+            'offset': offset,
+            'limit': limit,
+            'from_time': from_time,
+            'to_time': to_time,
+        }
+        return self._api_call('GET', 'v1/partners/trips', args=args)
 
-    def get_driver_payments(self):
-        """Get payment about the authorized Uber driver.
+    def get_driver_payments(self,
+                            offset=None,
+                            limit=None,
+                            from_time=None,
+                            to_time=None
+                            ):
+        """Get payments about the authorized Uber driver.
+
+        Parameters
+            offset (int)
+                The integer offset for activity results. Offset the list of
+                returned results by this amount. Default is zero.
+            limit (int)
+                Integer amount of results to return. Number of items to
+                retrieve per page. Default is 10, maximum is 50.
+            from_time (int)
+                Unix timestamp of the start time to query. Queries starting
+                from the first trip if omitted.
+            to_time (int)
+                Unix timestamp of the end time to query. Queries starting
+                from the last trip if omitted.
 
         Returns
             (Response)
-                A Response object containing payment information.
+                A Response object containing trip information.
         """
-        return self._api_call('GET', 'v1/partners/payments')
+        args = {
+            'offset': offset,
+            'limit': limit,
+            'from_time': from_time,
+            'to_time': to_time,
+        }
+        return self._api_call('GET', 'v1/partners/payments', args=args)
 
 
 def surge_handler(response, **kwargs):

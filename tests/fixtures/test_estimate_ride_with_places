@@ -5,7 +5,7 @@ interactions:
       null, "end_place_id": "work", "start_latitude": null, "start_place_id": "home"}'
     headers:
       Content-Length: ['218']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests/estimate
@@ -30,7 +30,7 @@ interactions:
       null, "end_place_id": "work", "start_latitude": null, "start_place_id": "home"}'
     headers:
       Content-Length: ['218']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests/estimate
@@ -55,7 +55,7 @@ interactions:
       null, "end_place_id": "work", "start_latitude": null, "start_place_id": "home"}'
     headers:
       Content-Length: ['218']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests/estimate
@@ -80,7 +80,7 @@ interactions:
       null, "end_place_id": "work", "start_latitude": null, "start_place_id": "home"}'
     headers:
       Content-Length: ['218']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
       content-type: [application/json]
     method: POST
     uri: https://sandbox-api.uber.com/v1.2/requests/estimate

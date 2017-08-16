@@ -2,7 +2,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.4.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/requests/0aec0061-1e20-4239-a0b7-78328e9afec8/receipt
   response:

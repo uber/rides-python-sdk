@@ -47,13 +47,19 @@ ACCESS_TOKEN = 'xxx'
 REFRESH_TOKEN = 'xxx'
 REDIRECT_URL = 'https://uberapitester.com/api/v1/uber/oauth'
 
-SCOPES = {
+RIDER_SCOPES = {
           'profile',
           'places',
           'request',
           'request_receipt',
           'all_trips',
           'history'
+          }
+
+DRIVER_SCOPES = {
+          'partner.accounts',
+          'partner.trips',
+          'partner.payments'
           }
 
 # replace these with valid identifiers to rerecord request-related fixtures
@@ -263,14 +269,14 @@ EXPECTED_DRIVER_PAYMENTS_KEYS = set([
 
 
 @fixture
-def oauth2credential():
+def rider_oauth2credential():
     """Create OAuth2Credential class to hold access token information."""
     return OAuth2Credential(
         client_id=CLIENT_ID,
         redirect_url=REDIRECT_URL,
         access_token=ACCESS_TOKEN,
         expires_in_seconds=EXPIRES_IN_SECONDS,
-        scopes=SCOPES,
+        scopes=RIDER_SCOPES,
         grant_type=auth.AUTHORIZATION_CODE_GRANT,
         client_secret=CLIENT_SECRET,
         refresh_token=REFRESH_TOKEN,
@@ -278,16 +284,45 @@ def oauth2credential():
 
 
 @fixture
-def authorized_sandbox_client(oauth2credential):
+def driver_oauth2credential():
+    """Create OAuth2Credential class to hold access token information."""
+    return OAuth2Credential(
+        client_id=CLIENT_ID,
+        redirect_url=REDIRECT_URL,
+        access_token=ACCESS_TOKEN,
+        expires_in_seconds=EXPIRES_IN_SECONDS,
+        scopes=DRIVER_SCOPES,
+        grant_type=auth.AUTHORIZATION_CODE_GRANT,
+        client_secret=CLIENT_SECRET,
+        refresh_token=REFRESH_TOKEN,
+    )
+
+
+@fixture
+def authorized_rider_sandbox_client(rider_oauth2credential):
     """Create an UberRidesClient in Sandbox Mode with OAuth 2.0 Credentials."""
-    session = Session(oauth2credential=oauth2credential)
+    session = Session(oauth2credential=rider_oauth2credential)
     return UberRidesClient(session, sandbox_mode=True)
 
 
 @fixture
-def authorized_production_client(oauth2credential):
+def authorized_rider_production_client(rider_oauth2credential):
     """Create an UberRidesClient in Production with OAuth 2.0 Credentials."""
-    session = Session(oauth2credential=oauth2credential)
+    session = Session(oauth2credential=rider_oauth2credential)
+    return UberRidesClient(session)
+
+
+@fixture
+def authorized_driver_sandbox_client(driver_oauth2credential):
+    """Create an UberRidesClient in Sandbox Mode with OAuth 2.0 Credentials."""
+    session = Session(oauth2credential=driver_oauth2credential)
+    return UberRidesClient(session, sandbox_mode=True)
+
+
+@fixture
+def authorized_driver_production_client(driver_oauth2credential):
+    """Create an UberRidesClient in Production with OAuth 2.0 Credentials."""
+    session = Session(oauth2credential=driver_oauth2credential)
     return UberRidesClient(session)
 
 
@@ -328,9 +363,9 @@ def http_surge_error():
 
 
 @uber_vcr.use_cassette()
-def test_get_products(authorized_sandbox_client, server_token_client):
+def test_get_products(authorized_rider_sandbox_client, server_token_client):
     """Test to fetch products with access token and server token."""
-    clients = [authorized_sandbox_client, server_token_client]
+    clients = [authorized_rider_sandbox_client, server_token_client]
 
     for client in clients:
         response = client.get_products(START_LAT, START_LNG)
@@ -347,9 +382,9 @@ def test_get_products(authorized_sandbox_client, server_token_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_single_product(authorized_sandbox_client, server_token_client):
+def test_get_single_product(authorized_rider_sandbox_client, server_token_client):
     """Test fetch product by ID with access token and server token."""
-    clients = [authorized_sandbox_client, server_token_client]
+    clients = [authorized_rider_sandbox_client, server_token_client]
 
     for client in clients:
         response = client.get_product(UFP_PRODUCT_ID)
@@ -362,9 +397,9 @@ def test_get_single_product(authorized_sandbox_client, server_token_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_price_estimates(authorized_sandbox_client, server_token_client):
+def test_get_price_estimates(authorized_rider_sandbox_client, server_token_client):
     """Test to fetch price estimates with access token and server token."""
-    clients = [authorized_sandbox_client, server_token_client]
+    clients = [authorized_rider_sandbox_client, server_token_client]
 
     for client in clients:
         response = client.get_price_estimates(
@@ -388,11 +423,11 @@ def test_get_price_estimates(authorized_sandbox_client, server_token_client):
 
 @uber_vcr.use_cassette()
 def test_get_pickup_time_estimates(
-    authorized_sandbox_client,
+    authorized_rider_sandbox_client,
     server_token_client,
 ):
     """Test to fetch time estimates with access token and server token."""
-    clients = [authorized_sandbox_client, server_token_client]
+    clients = [authorized_rider_sandbox_client, server_token_client]
 
     for client in clients:
         response = client.get_pickup_time_estimates(
@@ -412,9 +447,9 @@ def test_get_pickup_time_estimates(
 
 
 @uber_vcr.use_cassette()
-def test_get_promotions(authorized_sandbox_client, server_token_client):
+def test_get_promotions(authorized_rider_sandbox_client, server_token_client):
     """Test to fetch promotions with access token and server token."""
-    clients = [authorized_sandbox_client, server_token_client]
+    clients = [authorized_rider_sandbox_client, server_token_client]
 
     for client in clients:
         response = client.get_promotions(
@@ -431,9 +466,9 @@ def test_get_promotions(authorized_sandbox_client, server_token_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_user_activity(authorized_sandbox_client):
+def test_get_user_activity(authorized_rider_sandbox_client):
     """Test to fetch user activity with access token."""
-    response = authorized_sandbox_client.get_user_activity()
+    response = authorized_rider_sandbox_client.get_user_activity()
     assert response.status_code == codes.ok
 
     # assert response looks like user activity
@@ -447,9 +482,9 @@ def test_get_user_activity(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_user_profile(authorized_sandbox_client):
+def test_get_user_profile(authorized_rider_sandbox_client):
     """Test to fetch user profile with access token."""
-    response = authorized_sandbox_client.get_user_profile()
+    response = authorized_rider_sandbox_client.get_user_profile()
     assert response.status_code == codes.ok
 
     # assert response looks like user profile
@@ -458,10 +493,10 @@ def test_get_user_profile(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_estimate_shared_ride(authorized_sandbox_client):
+def test_estimate_shared_ride(authorized_rider_sandbox_client):
     """Test to estimate a shared ride."""
     try:
-        response = authorized_sandbox_client.estimate_ride(
+        response = authorized_rider_sandbox_client.estimate_ride(
             product_id=UFP_SHARED_PRODUCT_ID,
             seat_count=UFP_SHARED_SEAT_COUNT,
             start_latitude=START_LAT,
@@ -482,9 +517,9 @@ def test_estimate_shared_ride(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_estimate_ride(authorized_sandbox_client):
+def test_estimate_ride(authorized_rider_sandbox_client):
     """Test to fetch ride estimate with access token."""
-    response = authorized_sandbox_client.estimate_ride(
+    response = authorized_rider_sandbox_client.estimate_ride(
         product_id=UFP_PRODUCT_ID,
         start_latitude=START_LAT,
         start_longitude=START_LNG,
@@ -502,9 +537,9 @@ def test_estimate_ride(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_estimate_ride_with_places(authorized_sandbox_client):
+def test_estimate_ride_with_places(authorized_rider_sandbox_client):
     """Test to fetch ride estimate with place ids."""
-    response = authorized_sandbox_client.estimate_ride(
+    response = authorized_rider_sandbox_client.estimate_ride(
         product_id=UFP_PRODUCT_ID,
         start_place_id='home',
         end_place_id='work',
@@ -520,9 +555,9 @@ def test_estimate_ride_with_places(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_request_ride(authorized_sandbox_client):
+def test_request_ride(authorized_rider_sandbox_client):
     """Test to request ride with access token."""
-    response = authorized_sandbox_client.request_ride(
+    response = authorized_rider_sandbox_client.request_ride(
         product_id=UFP_PRODUCT_ID,
         fare_id=UFP_FARE_ID,
         start_latitude=START_LAT,
@@ -538,10 +573,10 @@ def test_request_ride(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_request_shared_ride(authorized_sandbox_client):
+def test_request_shared_ride(authorized_rider_sandbox_client):
     """Test to request shared ride with access token."""
     try:
-        response = authorized_sandbox_client.request_ride(
+        response = authorized_rider_sandbox_client.request_ride(
             product_id=UFP_SHARED_PRODUCT_ID,
             fare_id=UFP_SHARED_FARE_ID,
             seat_count=UFP_SHARED_SEAT_COUNT,
@@ -557,9 +592,9 @@ def test_request_shared_ride(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_request_ride_with_no_default_product(authorized_sandbox_client):
+def test_request_ride_with_no_default_product(authorized_rider_sandbox_client):
     """Test to request ride with no default product."""
-    response = authorized_sandbox_client.request_ride(
+    response = authorized_rider_sandbox_client.request_ride(
         fare_id=UFP_FARE_ID,
         start_latitude=START_LAT,
         start_longitude=START_LNG,
@@ -574,9 +609,9 @@ def test_request_ride_with_no_default_product(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_request_ride_with_places(authorized_sandbox_client):
+def test_request_ride_with_places(authorized_rider_sandbox_client):
     """Test to request ride with place ids."""
-    response = authorized_sandbox_client.request_ride(
+    response = authorized_rider_sandbox_client.request_ride(
         product_id=UFP_PRODUCT_ID,
         fare_id=UFP_FARE_ID,
         start_place_id='home',
@@ -590,9 +625,9 @@ def test_request_ride_with_places(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_ride_details(authorized_sandbox_client):
+def test_get_ride_details(authorized_rider_sandbox_client):
     """Test to fetch ride details with access token."""
-    response = authorized_sandbox_client.get_ride_details(RIDE_ID)
+    response = authorized_rider_sandbox_client.get_ride_details(RIDE_ID)
     assert response.status_code == codes.ok
 
     # assert response looks like ride details
@@ -602,9 +637,9 @@ def test_get_ride_details(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_current_ride_details(authorized_sandbox_client):
+def test_get_current_ride_details(authorized_rider_sandbox_client):
     """Test to fetch current ride details with access token."""
-    response = authorized_sandbox_client.get_current_ride_details()
+    response = authorized_rider_sandbox_client.get_current_ride_details()
     assert response.status_code == codes.ok
 
     # assert response looks like ride details
@@ -614,9 +649,9 @@ def test_get_current_ride_details(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_current_shared_ride_details(authorized_sandbox_client):
+def test_get_current_shared_ride_details(authorized_rider_sandbox_client):
     """Test to fetch current shared ride details with access token."""
-    response = authorized_sandbox_client.get_current_ride_details()
+    response = authorized_rider_sandbox_client.get_current_ride_details()
     assert response.status_code == codes.ok
 
     # assert response looks like ride details
@@ -626,9 +661,9 @@ def test_get_current_shared_ride_details(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_update_ride_destination(authorized_sandbox_client):
+def test_update_ride_destination(authorized_rider_sandbox_client):
     """Test to update the trip destination."""
-    response = authorized_sandbox_client.update_ride(
+    response = authorized_rider_sandbox_client.update_ride(
         RIDE_ID,
         end_latitude=UPDATE_LAT,
         end_longitude=UPDATE_LNG,
@@ -637,9 +672,9 @@ def test_update_ride_destination(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_update_ride_destination_with_places(authorized_sandbox_client):
+def test_update_ride_destination_with_places(authorized_rider_sandbox_client):
     """Test to update the trip destination with a place ID."""
-    response = authorized_sandbox_client.update_ride(
+    response = authorized_rider_sandbox_client.update_ride(
         RIDE_ID,
         end_place_id='work',
     )
@@ -647,9 +682,9 @@ def test_update_ride_destination_with_places(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_ride_map(authorized_sandbox_client):
+def test_get_ride_map(authorized_rider_sandbox_client):
     """Test to fetch ride map with access token."""
-    response = authorized_sandbox_client.get_ride_map(RIDE_ID)
+    response = authorized_rider_sandbox_client.get_ride_map(RIDE_ID)
     assert response.status_code == codes.ok
 
     # assert response looks like map
@@ -658,9 +693,9 @@ def test_get_ride_map(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_update_sandbox_ride(authorized_sandbox_client):
+def test_update_sandbox_ride(authorized_rider_sandbox_client):
     """Test to update sandbox ride status with access token."""
-    response = authorized_sandbox_client.update_sandbox_ride(
+    response = authorized_rider_sandbox_client.update_sandbox_ride(
         ride_id=RIDE_ID,
         new_status='accepted',
     )
@@ -668,23 +703,23 @@ def test_update_sandbox_ride(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_cancel_ride(authorized_sandbox_client):
+def test_cancel_ride(authorized_rider_sandbox_client):
     """Test to cancel ride with access token."""
-    response = authorized_sandbox_client.cancel_ride(RIDE_ID)
+    response = authorized_rider_sandbox_client.cancel_ride(RIDE_ID)
     assert response.status_code == codes.no_content
 
 
 @uber_vcr.use_cassette()
-def test_cancel_current_ride(authorized_sandbox_client):
+def test_cancel_current_ride(authorized_rider_sandbox_client):
     """Test to cancel the current ride with access token."""
-    response = authorized_sandbox_client.cancel_current_ride()
+    response = authorized_rider_sandbox_client.cancel_current_ride()
     assert response.status_code == codes.no_content
 
 
 @uber_vcr.use_cassette()
-def test_get_ride_receipt(authorized_sandbox_client):
+def test_get_ride_receipt(authorized_rider_sandbox_client):
     """Test to fetch ride receipt with access token."""
-    response = authorized_sandbox_client.get_ride_receipt(RIDE_ID)
+    response = authorized_rider_sandbox_client.get_ride_receipt(RIDE_ID)
     assert response.status_code == codes.ok
 
     # assert response looks like ride receipt
@@ -697,9 +732,9 @@ def test_get_ride_receipt(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_update_sandbox_product(authorized_sandbox_client):
+def test_update_sandbox_product(authorized_rider_sandbox_client):
     """Test to update sandbox ride status with access token."""
-    response = authorized_sandbox_client.update_sandbox_product(
+    response = authorized_rider_sandbox_client.update_sandbox_product(
         product_id=NON_UFP_SURGE_PRODUCT_ID,
         surge_multiplier=2,
     )
@@ -707,10 +742,10 @@ def test_update_sandbox_product(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_request_ride_with_surge(authorized_sandbox_client):
+def test_request_ride_with_surge(authorized_rider_sandbox_client):
     """Test raising a SurgeError when requesting a ride with surge."""
     with raises(SurgeError):
-        authorized_sandbox_client.request_ride(
+        authorized_rider_sandbox_client.request_ride(
             product_id=NON_UFP_SURGE_PRODUCT_ID,
             start_latitude=NON_UFP_SURGE_START_LAT,
             start_longitude=NON_UFP_SURGE_START_LNG,
@@ -741,9 +776,9 @@ def test_surge_error_formation(http_surge_error):
 
 
 @uber_vcr.use_cassette()
-def test_set_home_address(authorized_sandbox_client):
+def test_set_home_address(authorized_rider_sandbox_client):
     """Test to update a user's home address with an access token."""
-    response = authorized_sandbox_client.set_home_address(HOME_ADDRESS)
+    response = authorized_rider_sandbox_client.set_home_address(HOME_ADDRESS)
     assert response.status_code == codes.ok
 
     # assert response looks like places details
@@ -753,9 +788,9 @@ def test_set_home_address(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_home_address(authorized_sandbox_client):
+def test_get_home_address(authorized_rider_sandbox_client):
     """Test to fetch a user's home address with an access token."""
-    response = authorized_sandbox_client.get_home_address()
+    response = authorized_rider_sandbox_client.get_home_address()
     assert response.status_code == codes.ok
 
     # assert response looks like places details
@@ -765,9 +800,9 @@ def test_get_home_address(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_set_work_address(authorized_sandbox_client):
+def test_set_work_address(authorized_rider_sandbox_client):
     """Test to update a user's work address with an access token."""
-    response = authorized_sandbox_client.set_work_address(WORK_ADDRESS)
+    response = authorized_rider_sandbox_client.set_work_address(WORK_ADDRESS)
     assert response.status_code == codes.ok
 
     # assert response looks like places details
@@ -777,9 +812,9 @@ def test_set_work_address(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_work_address(authorized_sandbox_client):
+def test_get_work_address(authorized_rider_sandbox_client):
     """Test to fetch a user's work address with an access token."""
-    response = authorized_sandbox_client.get_work_address()
+    response = authorized_rider_sandbox_client.get_work_address()
     assert response.status_code == codes.ok
 
     # assert response looks like places details
@@ -789,9 +824,9 @@ def test_get_work_address(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_payment_methods(authorized_sandbox_client):
+def test_get_payment_methods(authorized_rider_sandbox_client):
     """Test to get a list of payment methods with an access token."""
-    response = authorized_sandbox_client.get_payment_methods()
+    response = authorized_rider_sandbox_client.get_payment_methods()
     assert response.status_code == codes.ok
 
     response = response.json
@@ -802,9 +837,9 @@ def test_get_payment_methods(authorized_sandbox_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_driver_profile(authorized_production_client):
+def test_get_driver_profile(authorized_driver_production_client):
     """Test to fetch driver profile with access token."""
-    response = authorized_production_client.get_driver_profile()
+    response = authorized_driver_production_client.get_driver_profile()
     assert response.status_code == codes.ok
 
     # assert response looks like driver profile
@@ -813,9 +848,9 @@ def test_get_driver_profile(authorized_production_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_driver_trips(authorized_production_client):
+def test_get_driver_trips(authorized_driver_production_client):
     """Test to fetch driver trips with access token."""
-    response = authorized_production_client.get_driver_trips()
+    response = authorized_driver_production_client.get_driver_trips()
     assert response.status_code == codes.ok
 
     response = response.json
@@ -826,9 +861,9 @@ def test_get_driver_trips(authorized_production_client):
 
 
 @uber_vcr.use_cassette()
-def test_get_driver_payments(authorized_production_client):
+def test_get_driver_payments(authorized_driver_production_client):
     """Test to fetch driver payments with access token."""
-    response = authorized_production_client.get_driver_payments()
+    response = authorized_driver_production_client.get_driver_payments()
     assert response.status_code == codes.ok
 
     response = response.json
