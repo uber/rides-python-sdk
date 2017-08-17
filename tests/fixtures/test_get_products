@@ -2,7 +2,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/products?latitude=37.7899886&longitude=-122.4021253
   response:
@@ -33,7 +33,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://api.uber.com/v1.2/products?latitude=37.7899886&longitude=-122.4021253
   response:
@@ -64,7 +64,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/products?latitude=37.7899886&longitude=-122.4021253
   response:
@@ -95,7 +95,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://api.uber.com/v1.2/products?latitude=37.7899886&longitude=-122.4021253
   response:
@@ -126,7 +126,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/products?latitude=37.7899886&longitude=-122.4021253
   response:
@@ -157,7 +157,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://api.uber.com/v1.2/products?latitude=37.7899886&longitude=-122.4021253
   response:
@@ -188,7 +188,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/products?latitude=37.7899886&longitude=-122.4021253
   response:
@@ -219,7 +219,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://api.uber.com/v1.2/products?latitude=37.7899886&longitude=-122.4021253
   response:

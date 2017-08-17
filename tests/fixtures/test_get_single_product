@@ -2,7 +2,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/products/821415d8-3bd5-4e27-9604-194e4359a449
   response:
@@ -25,7 +25,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://api.uber.com/v1.2/products/821415d8-3bd5-4e27-9604-194e4359a449
   response:
@@ -48,7 +48,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/products/821415d8-3bd5-4e27-9604-194e4359a449
   response:
@@ -71,7 +71,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://api.uber.com/v1.2/products/821415d8-3bd5-4e27-9604-194e4359a449
   response:
@@ -94,7 +94,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/products/821415d8-3bd5-4e27-9604-194e4359a449
   response:
@@ -117,7 +117,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://api.uber.com/v1.2/products/821415d8-3bd5-4e27-9604-194e4359a449
   response:
@@ -140,7 +140,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://sandbox-api.uber.com/v1.2/products/821415d8-3bd5-4e27-9604-194e4359a449
   response:
@@ -163,7 +163,7 @@ interactions:
 - request:
     body: null
     headers:
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
     method: GET
     uri: https://api.uber.com/v1.2/products/821415d8-3bd5-4e27-9604-194e4359a449
   response:

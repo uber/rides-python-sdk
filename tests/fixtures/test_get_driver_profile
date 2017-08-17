@@ -1,0 +1,28 @@
+interactions:
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
+    method: GET
+    uri: https://api.uber.com/v1/partners/me
+  response:
+    body: {string: !!python/unicode '{"phone_number":"+14075550001","picture":"https:\/\/d1w2poirtb3as9.cloudfront.net\/16ce502f4767f17b120e.jpeg","first_name":"Uber","last_name":"Tester","promo_code":"ubert4544ue","rating":5.0,"activation_status":"active","driver_id":"8LvWuRAq2511gmr8EMkovekFNa2848lyMaQevIto-aXmnK9oKNRtfTxYLgPq9OSt8EzAu5pDB7XiaQIrcp-zXgOA5EyK4h00U6D1o7aZpXIQah--U77Eh7LEBiksj2rahB==","email":"uber.developer+tester@example.com"}'}
+    headers:
+      cache-control: [max-age=0]
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['419']
+      content-type: [application/json]
+      date: ['Wed, 16 Aug 2017 22:54:50 GMT']
+      etag: [W/"d76d91610e42a7b0d6e551766905af177b466447"]
+      server: [nginx]
+      strict-transport-security: [max-age=604800, max-age=2592000]
+      x-content-type-options: [nosniff]
+      x-frame-options: [SAMEORIGIN]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1997']
+      x-rate-limit-reset: ['1502924400']
+      x-uber-app: [uberex-nonsandbox, optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

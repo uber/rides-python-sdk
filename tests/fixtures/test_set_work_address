@@ -3,7 +3,7 @@ interactions:
     body: !!python/unicode '{"address": "1455 Market Street, SF"}'
     headers:
       Content-Length: ['37']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/places/work
@@ -26,7 +26,7 @@ interactions:
     body: !!python/unicode '{"address": "1455 Market Street, SF"}'
     headers:
       Content-Length: ['37']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/places/work
@@ -49,7 +49,7 @@ interactions:
     body: !!python/unicode '{"address": "1455 Market Street, SF"}'
     headers:
       Content-Length: ['37']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/places/work
@@ -72,7 +72,7 @@ interactions:
     body: !!python/unicode '{"address": "1455 Market Street, SF"}'
     headers:
       Content-Length: ['37']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.3.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/places/work

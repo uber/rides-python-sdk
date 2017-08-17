@@ -1,4 +1,4 @@
-# Copyright (c) 2016 Uber Technologies, Inc.
+# Copyright (c) 2017 Uber Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -456,9 +456,9 @@ class UberRidesClient(object):
         """Get status details for an ongoing ride.
 
         This method behaves like get_ride_details by default (only returns
-        details about trips your app requested). If your app has the `all_trips`
-        scope, however, trip details will be returned for trips irrespective
-        of which application initiated them.
+        details about trips your app requested). If your app has the
+        `all_trips` scope, however, trip details will be returned for trips
+        irrespective of which application initiated them.
 
         Returns
             (Response)
@@ -699,6 +699,92 @@ class UberRidesClient(object):
         credential = self.session.oauth2credential
         revoke_access_token(credential)
 
+    def get_rider_profile(self):
+        """Get information about the authorized Uber user.
+
+        Returns
+            (Response)
+                A Response object containing account information.
+        """
+        return self.get_user_profile()
+
+    def get_driver_profile(self):
+        """Get profile about the authorized Uber driver.
+
+        Returns
+            (Response)
+                A Response object containing account information.
+        """
+        return self._api_call('GET', 'v1/partners/me')
+
+    def get_driver_trips(self,
+                         offset=None,
+                         limit=None,
+                         from_time=None,
+                         to_time=None
+                         ):
+        """Get trips about the authorized Uber driver.
+
+        Parameters
+            offset (int)
+                The integer offset for activity results. Offset the list of
+                returned results by this amount. Default is zero.
+            limit (int)
+                Integer amount of results to return. Number of items to
+                retrieve per page. Default is 10, maximum is 50.
+            from_time (int)
+                Unix timestamp of the start time to query. Queries starting
+                from the first trip if omitted.
+            to_time (int)
+                Unix timestamp of the end time to query. Queries starting
+                from the last trip if omitted.
+
+        Returns
+            (Response)
+                A Response object containing trip information.
+        """
+        args = {
+            'offset': offset,
+            'limit': limit,
+            'from_time': from_time,
+            'to_time': to_time,
+        }
+        return self._api_call('GET', 'v1/partners/trips', args=args)
+
+    def get_driver_payments(self,
+                            offset=None,
+                            limit=None,
+                            from_time=None,
+                            to_time=None
+                            ):
+        """Get payments about the authorized Uber driver.
+
+        Parameters
+            offset (int)
+                The integer offset for activity results. Offset the list of
+                returned results by this amount. Default is zero.
+            limit (int)
+                Integer amount of results to return. Number of items to
+                retrieve per page. Default is 10, maximum is 50.
+            from_time (int)
+                Unix timestamp of the start time to query. Queries starting
+                from the first trip if omitted.
+            to_time (int)
+                Unix timestamp of the end time to query. Queries starting
+                from the last trip if omitted.
+
+        Returns
+            (Response)
+                A Response object containing trip information.
+        """
+        args = {
+            'offset': offset,
+            'limit': limit,
+            'from_time': from_time,
+            'to_time': to_time,
+        }
+        return self._api_call('GET', 'v1/partners/payments', args=args)
+
 
 def surge_handler(response, **kwargs):
     """Error Handler to surface 409 Surge Conflict errors.
@@ -713,11 +799,9 @@ def surge_handler(response, **kwargs):
     """
     if response.status_code == codes.conflict:
         json = response.json()
-        # try to get errors, then the first, if so
         errors = json.get('errors', [])
-        error = errors[0] if errors else json.get('error')  # might find an `error` key if `errors` was not there
+        error = errors[0] if errors else json.get('error')
 
-        # safe check in case `code` isn't present
         if error and error.get('code') == 'surge':
             raise SurgeError(response)
 
