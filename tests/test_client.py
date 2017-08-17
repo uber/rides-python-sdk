@@ -116,7 +116,7 @@ EXPECTED_TIME_KEYS = set([
     'localized_display_name',
     'estimate',
     'display_name',
-    'product_id',
+    'product_id'
 ])
 
 EXPECTED_PRICE_KEYS = set([
@@ -128,13 +128,13 @@ EXPECTED_PRICE_KEYS = set([
     'distance',
     'duration',
     'display_name',
-    'product_id',
+    'product_id'
 ])
 
 EXPECTED_PROMOTION_KEYS = set([
     'display_text',
     'localized_value',
-    'type',
+    'type'
 ])
 
 EXPECTED_ACTIVITY_KEYS = set([
@@ -144,7 +144,7 @@ EXPECTED_ACTIVITY_KEYS = set([
     'start_city',
     'end_time',
     'request_id',
-    'product_id',
+    'product_id'
 ])
 
 EXPECTED_PROFILE_KEYS = set([
@@ -153,7 +153,7 @@ EXPECTED_PROFILE_KEYS = set([
     'last_name',
     'uuid',
     'email',
-    'promo_code',
+    'promo_code'
 ])
 
 EXPECTED_ESTIMATE_RIDE_FARE_KEYS = set([
@@ -161,19 +161,19 @@ EXPECTED_ESTIMATE_RIDE_FARE_KEYS = set([
     'fare_id',
     'expires_at',
     'currency_code',
-    'display',
+    'display'
 ])
 
 EXPECTED_ESTIMATE_RIDE_TRIP_KEYS = set([
     'distance_unit',
     'duration_estimate',
-    'distance_estimate',
+    'distance_estimate'
 ])
 
 EXPECTED_ESTIMATE_SHARED_RIDE_TRIP_KEYS = set([
     'distance_unit',
     'duration_estimate',
-    'distance_estimate',
+    'distance_estimate'
 ])
 
 EXPECTED_RIDE_DETAILS_KEYS = set([
@@ -185,7 +185,7 @@ EXPECTED_RIDE_DETAILS_KEYS = set([
     'destination',
     'location',
     'vehicle',
-    'shared',
+    'shared'
 ])
 
 EXPECTED_SHARED_RIDE_DETAILS_KEYS = set([
@@ -202,13 +202,13 @@ EXPECTED_SHARED_RIDE_DETAILS_KEYS = set([
 
 EXPECTED_RIDE_MAP_KEYS = set([
     'href',
-    'request_id',
+    'request_id'
 ])
 
 EXPECTED_INDIVIDUAL_CHARGE_KEYS = set([
     'amount',
     'type',
-    'name',
+    'name'
 ])
 
 EXPECTED_RECEIPT_KEYS = set([
@@ -220,7 +220,7 @@ EXPECTED_RECEIPT_KEYS = set([
     'distance_label',
     'request_id',
     'duration',
-    'subtotal',
+    'subtotal'
 ])
 
 EXPECTED_PLACE_KEYS = set(['address'])
@@ -228,7 +228,7 @@ EXPECTED_PLACE_KEYS = set(['address'])
 EXPECTED_PAYMENT_KEYS = set([
     'payment_method_id',
     'type',
-    'description',
+    'description'
 ])
 
 EXPECTED_DRIVER_PROFILE_KEYS = set([
@@ -241,7 +241,7 @@ EXPECTED_DRIVER_PROFILE_KEYS = set([
     'phone_number',
     'picture',
     'promo_code',
-    'rating',
+    'rating'
 ])
 
 EXPECTED_DRIVER_TRIPS_KEYS = set([
