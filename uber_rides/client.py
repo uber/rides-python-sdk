@@ -39,6 +39,9 @@ from __future__ import unicode_literals
 from collections import OrderedDict
 from requests import codes
 
+import hashlib
+import hmac
+
 from uber_rides.auth import refresh_access_token
 from uber_rides.auth import revoke_access_token
 from uber_rides.errors import ClientError
@@ -259,14 +262,39 @@ class UberRidesClient(object):
 
         return self._api_call('GET', 'v1.2/history', args=args)
 
+    def get_rider_trips(self, offset=None, limit=None):
+        """Get activity about the user's lifetime activity with Uber.
+
+        Parameters
+            offset (int)
+                The integer offset for activity results. Default is 0.
+            limit (int)
+                Integer amount of results to return. Maximum is 50.
+                Default is 5.
+
+        Returns
+            (Response)
+                A Response object containing ride history.
+        """
+        return self.get_user_activity(offset, limit)
+
     def get_user_profile(self):
-        """Get information about the authorized Uber user.
+        """Get profile about the authorized Uber user.
 
         Returns
             (Response)
                 A Response object containing account information.
         """
         return self._api_call('GET', 'v1.2/me')
+
+    def get_rider_profile(self):
+        """Get profile about the authorized Uber rider.
+
+        Returns
+            (Response)
+                A Response object containing account information.
+        """
+        return self.get_user_profile()
 
     def apply_promotion_code(
         self,
@@ -699,15 +727,6 @@ class UberRidesClient(object):
         credential = self.session.oauth2credential
         revoke_access_token(credential)
 
-    def get_rider_profile(self):
-        """Get information about the authorized Uber user.
-
-        Returns
-            (Response)
-                A Response object containing account information.
-        """
-        return self.get_user_profile()
-
     def get_driver_profile(self):
         """Get profile about the authorized Uber driver.
 
@@ -784,6 +803,21 @@ class UberRidesClient(object):
             'to_time': to_time,
         }
         return self._api_call('GET', 'v1/partners/payments', args=args)
+
+    def validiate_webhook_signature(self, webhook, signature):
+        """Validates a webhook signature from a webhook body + client secret
+
+        Parameters
+            webhook (string)
+                The request body of the webhook.
+            signature (string)
+                The webhook signature specified in X-Uber-Signature header.
+        """
+        digester = hmac.new(self.session.oauth2credential.client_secret,
+                            webhook,
+                            hashlib.sha256
+                            )
+        return (signature == digester.hexdigest())
 
 
 def surge_handler(response, **kwargs):
