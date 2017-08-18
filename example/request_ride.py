@@ -26,7 +26,7 @@ ride status to 'completed' and deactivates surge.
 
 To run this example:
 
-    (1) Run `python authorize_user.py` to get OAuth 2.0 Credentials
+    (1) Run `python authorize_rider.py` to get OAuth 2.0 Credentials
     (2) Run `python request_ride.py`
     (3) The UberRidesClient will make API calls and print the
         results to your terminal.

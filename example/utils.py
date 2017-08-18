@@ -34,7 +34,7 @@ from uber_rides.session import Session
 
 
 # set your app credentials here
-CREDENTIALS_FILENAME = 'example/config.yaml'
+CREDENTIALS_FILENAME = 'example/config.rider.yaml'
 
 # where your OAuth 2.0 credentials are stored
 STORAGE_FILENAME = 'example/oauth2_session_store.yaml'
