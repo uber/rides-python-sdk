@@ -3,7 +3,7 @@ interactions:
     body: null
     headers:
       Content-Length: ['0']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.1]
     method: DELETE
     uri: https://sandbox-api.uber.com/v1.2/requests/current
   response:
@@ -23,7 +23,7 @@ interactions:
     body: null
     headers:
       Content-Length: ['0']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.1]
     method: DELETE
     uri: https://sandbox-api.uber.com/v1.2/requests/current
   response:
@@ -43,7 +43,7 @@ interactions:
     body: null
     headers:
       Content-Length: ['0']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.1]
     method: DELETE
     uri: https://sandbox-api.uber.com/v1.2/requests/current
   response:
@@ -63,7 +63,7 @@ interactions:
     body: null
     headers:
       Content-Length: ['0']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.0]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.1]
     method: DELETE
     uri: https://sandbox-api.uber.com/v1.2/requests/current
   response:

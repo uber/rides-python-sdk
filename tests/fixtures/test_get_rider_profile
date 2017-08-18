@@ -1,0 +1,25 @@
+interactions:
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode 'Python Rides SDK v0.5.1']
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/me
+  response:
+    body: {string: !!python/unicode '{"picture":"https:\/\/d1w2poirtb3as9.cloudfront.net\/16ce502f4767f17b120e.png","first_name":"Uber","last_name":"Tester","promo_code":"uber_tester","rider_id":"8LvXuRBq254Ogmr8EMkovekFNa2848lyMaQevIto-aXmdbbwlDSvy50HMoiAHsFc8N7WW3gdo6smNKnmT2uJIlirAkhUmtNdzDytTda9qGwWHQiswLMo5jHET7k4RQsEPw==","email":"uber.developer+tester@example.com","mobile_verified":true,"uuid":"5cbc8ff1-29bb-469d-b31d-71126648bbb0"}'}
+    headers:
+      cache-control: [max-age=0]
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['395']
+      content-type: [application/json]
+      date: ['Fri, 18 Aug 2017 00:04:24 GMT']
+      etag: [W/"bbb14deefec4704ee540ccc25c838f833f9f9689"]
+      server: [nginx]
+      strict-transport-security: [max-age=604800, max-age=2592000]
+      x-content-type-options: [nosniff]
+      x-frame-options: [SAMEORIGIN]
+      x-uber-app: [uberex-sandbox, optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1
