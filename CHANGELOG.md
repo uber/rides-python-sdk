@@ -1,4 +1,10 @@
 
+v0.5.1 - 18/8/2017
+-------------------
+- Added better examples for Driver APIs
+- Added backwards compatibility proxies for legacy rider methods
+- Fixed SDK version # to v0.5.1
+
 v0.5.0 - 17/8/2017
 -------------------
 - Added support Driver APIs
