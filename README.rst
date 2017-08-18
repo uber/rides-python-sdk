@@ -228,19 +228,6 @@ Get Driver Profile
     email = profile.get('email')
 
 
-Get Driver Profile
-""""""""""""""""""
-
-.. code-block:: python
-
-    response = client.get_driver_profile()
-    profile = response.json
-
-    first_name = profile.get('first_name')
-    last_name = profile.get('last_name')
-    email = profile.get('email')
-
-
 Get Driver Trips
 """"""""""""""""
 
