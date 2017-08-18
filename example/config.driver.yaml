@@ -1,0 +1,7 @@
+client_id: xxx
+client_secret: xxx
+redirect_url: http://localhost:8000/uber/connect
+scopes:
+    - partner.accounts
+    - partner.trips
+    - partner.payments

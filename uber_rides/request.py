@@ -36,7 +36,7 @@ from uber_rides.utils.request import generate_data
 from uber_rides.utils.request import generate_prepared_request
 
 
-LIB_VERSION = '0.4.1'
+LIB_VERSION = '0.5.1'
 
 
 class Response(object):
@@ -205,7 +205,7 @@ class Request(object):
         if token_type not in http.VALID_TOKEN_TYPES:
             return False
 
-        allowed_chars = ascii_letters + digits + '.' + '_' + '-'
+        allowed_chars = ascii_letters + digits + '.' + '_' + '-' + '='
 
         # True if token only contains allowed_chars
         return all(characters in allowed_chars for characters in token)

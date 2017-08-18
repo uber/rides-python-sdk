@@ -27,10 +27,10 @@ an UberRidesClient.
 To run this example:
 
     (1) Set your app credentials in config.yaml
-    (2) Run `python authorization_code_grant.py`
+    (2) Run `python authorize_rider.py`
     (3) A success message will print, 'Hello {YOUR_NAME}'
     (4) User OAuth 2.0 credentials are recorded in
-        'oauth2_session_store.yaml'
+        'oauth_rider_session_store.yaml'
 """
 
 from __future__ import absolute_import
@@ -42,7 +42,7 @@ from builtins import input
 
 from yaml import safe_dump
 
-from example import utils
+from example import utils  # NOQA
 from example.utils import fail_print
 from example.utils import response_print
 from example.utils import success_print
@@ -77,11 +77,11 @@ def authorization_code_grant_flow(credentials, storage_filename):
     )
 
     auth_url = auth_flow.get_authorization_url()
-    login_message = 'Login and grant access by going to:\n{}\n'
+    login_message = 'Login as a rider and grant access by going to:\n\n{}\n'
     login_message = login_message.format(auth_url)
     response_print(login_message)
 
-    redirect_url = 'Copy the URL you are redirected to and paste here: \n'
+    redirect_url = 'Copy the URL you are redirected to and paste here: \n\n'
     result = input(redirect_url).strip()
 
     try:
@@ -152,11 +152,11 @@ if __name__ == '__main__':
     Get an access token through the OAuth 2.0 Authorization Code Grant
     and use credentials to create an UberRidesClient.
     """
-    credentials = import_app_credentials()
+    credentials = import_app_credentials('config.rider.yaml')
 
     api_client = authorization_code_grant_flow(
         credentials,
-        utils.STORAGE_FILENAME,
+        'oauth_rider_session_store.yaml',
     )
 
     hello_user(api_client)

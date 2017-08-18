@@ -30,14 +30,14 @@ Read-Only Use
 
 If you just need read-only access to Uber API resources, like getting a location’s available products, create a Session with the server token you received after `registering your app <https://developer.uber.com/dashboard>`_.
 
-.. code-block::
+.. code-block:: python
 
     from uber_rides.session import Session
     session = Session(server_token=YOUR_SERVER_TOKEN)
 
 Use this Session to create an UberRidesClient and fetch API resources:
 
-.. code-block::
+.. code-block:: python
 
     from uber_rides.client import UberRidesClient
     client = UberRidesClient(session)
@@ -51,7 +51,7 @@ If you need to access protected resources or modify resources (like getting a us
 
 The Authorization Code flow is a two-step authorization process. The first step is having the user authorize your app and the second involves requesting an OAuth 2.0 access token from Uber. This process is mandatory if you want to take actions on behalf of a user or access their information.
 
-.. code-block::
+.. code-block:: python
 
     from uber_rides.auth import AuthorizationCodeGrant
     auth_flow = AuthorizationCodeGrant(
@@ -66,7 +66,7 @@ You can find `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` in the `developer dashboa
 
 Navigate the user to the `auth_url` where they can grant access to your application. After, they will be redirected to a `redirect_url` with the format YOUR_REDIRECT_URL?code=UNIQUE_AUTH_CODE. Use this `redirect_url` to create a session and start UberRidesClient.
 
-.. code-block::
+.. code-block:: python
 
     session = auth_flow.get_session(redirect_url)
     client = UberRidesClient(session)
@@ -84,18 +84,26 @@ To get an UberRidesClient through the Authorization Code flow, run:
 
 .. code-block:: bash
 
-    $ python example/authorize_user.py
+    $ python example/authorize_rider.py
 
-The example above stores user credentials in `example/oauth2_session_store.yaml`. To create an UberRidesClient with these credentials and go through a surge ride request run:
+The example above stores user credentials in `example/oauth2_rider_session_store.yaml`. To create an UberRidesClient with these credentials and go through a surge ride request run:
 
 .. code-block:: bash
 
     $ python example/request_ride.py
 
+To get an UberRidesClient authorized for driver endpoints, run:
+
+
+.. code-block:: bash
+
+    $ python example/authorize_driver.py
+
+
 Get Available Products
 """"""""""""""""""""""
 
-.. code-block::
+.. code-block:: python
 
     response = client.get_products(37.77, -122.41)
     products = response.json.get('products')
@@ -104,7 +112,7 @@ Get Available Products
 Get Price Estimates
 """""""""""""""""""
 
-.. code-block::
+.. code-block:: python
 
     response = client.get_price_estimates(
         start_latitude=37.770,
@@ -116,12 +124,12 @@ Get Price Estimates
 
     estimate = response.json.get('prices')
 
-Get User Profile
-""""""""""""""""
+Get Rider Profile
+"""""""""""""""""
 
-.. code-block::
+.. code-block:: python
 
-    response = client.get_user_profile()
+    response = client.get_rider_profile()
     profile = response.json
 
     first_name = profile.get('first_name')
@@ -131,7 +139,7 @@ Get User Profile
 Get User History
 """"""""""""""""
 
-.. code-block::
+.. code-block:: python
 
     response = client.get_user_activity()
     history = response.json
@@ -139,7 +147,7 @@ Get User History
 Request a Ride
 """"""""""""""
 
-.. code-block::
+.. code-block:: python
 
     # Get products for location
     response = client.get_products(37.77, -122.41)
@@ -185,7 +193,7 @@ This makes a real-world request and send an Uber driver to the specified start l
 
 To develop and test against request endpoints in a sandbox environment, make sure to instantiate your UberRidesClient with
 
-.. code-block::
+.. code-block:: python
 
     client = UberRidesClient(session, sandbox_mode=True)
 
@@ -197,7 +205,7 @@ Update Sandbox Ride
 
 If you are requesting sandbox rides, you will need to step through the different states of a ride.
 
-.. code-block::
+.. code-block:: python
 
     response = client.update_sandbox_ride(ride_id, 'accepted')
     response = client.update_sandbox_ride(ride_id, 'in_progress')
@@ -206,6 +214,37 @@ If you are requesting sandbox rides, you will need to step through the different
 If the update is successful, `response.status_code` will be 204.
 
 The `update_sandbox_ride` method is not valid in normal mode, where the ride status will change automatically.
+
+Get Driver Profile
+""""""""""""""""""
+
+.. code-block:: python
+
+    response = client.get_driver_profile()
+    profile = response.json
+
+    first_name = profile.get('first_name')
+    last_name = profile.get('last_name')
+    email = profile.get('email')
+
+
+Get Driver Trips
+""""""""""""""""
+
+.. code-block:: python
+
+    response = client.get_driver_trips()
+    trips = response.json
+
+
+Get Driver Payments
+"""""""""""""""""""
+
+.. code-block:: python
+
+    response = client.get_driver_payments()
+    payments = response.json
+
 
 Getting help
 ------------

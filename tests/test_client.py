@@ -45,7 +45,7 @@ SERVER_TOKEN = 'xxx'
 
 ACCESS_TOKEN = 'xxx'
 REFRESH_TOKEN = 'xxx'
-REDIRECT_URL = 'https://uberapitester.com/api/v1/uber/oauth'
+REDIRECT_URL = 'http://localhost:8000/uber/connect'
 
 RIDER_SCOPES = {
           'profile',
@@ -486,9 +486,36 @@ def test_get_user_activity(authorized_rider_sandbox_client):
 
 
 @uber_vcr.use_cassette()
+def test_get_rider_trips(authorized_rider_sandbox_client):
+    """Test to fetch user activity with access token."""
+    response = authorized_rider_sandbox_client.get_rider_trips()
+    assert response.status_code == codes.ok
+
+    # assert response looks like user activity
+    response = response.json
+    trips = response.get('history')
+    assert len(trips) == 5
+    assert isinstance(trips, list)
+
+    for trip in trips:
+        assert EXPECTED_ACTIVITY_KEYS.issubset(trip)
+
+
+@uber_vcr.use_cassette()
 def test_get_user_profile(authorized_rider_sandbox_client):
     """Test to fetch user profile with access token."""
     response = authorized_rider_sandbox_client.get_user_profile()
+    assert response.status_code == codes.ok
+
+    # assert response looks like user profile
+    response = response.json
+    assert EXPECTED_PROFILE_KEYS.issubset(response)
+
+
+@uber_vcr.use_cassette()
+def test_get_rider_profile(authorized_rider_sandbox_client):
+    """Test to fetch user profile with access token."""
+    response = authorized_rider_sandbox_client.get_rider_profile()
     assert response.status_code == codes.ok
 
     # assert response looks like user profile

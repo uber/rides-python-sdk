@@ -1,0 +1,33 @@
+interactions:
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode 'Python Rides SDK v0.5.1']
+    method: GET
+    uri: https://sandbox-api.uber.com/v1.2/history
+  response:
+    body: {string: !!python/unicode '{"count":1678,"history":[{"status":"completed","distance":1.2917022901,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1502994399,"start_city":{"latitude":37.7749295,"display_name":"San
+        Francisco","longitude":-122.4194155},"fare":8.02,"end_time":1502994827,"request_id":"d903203a-da02-45a3-964d-dd402174e3ae","currency_code":"USD","request_time":1502994212},{"status":"completed","distance":1.4490403973,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1502935226,"start_city":{"latitude":37.7749295,"display_name":"San
+        Francisco","longitude":-122.4194155},"fare":7.34,"end_time":1502935773,"request_id":"f09af6aa-816d-4356-b5ed-98749cbcb145","currency_code":"USD","request_time":1502935075},{"status":"completed","distance":1.2886012532,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1502908015,"start_city":{"latitude":37.7749295,"display_name":"San
+        Francisco","longitude":-122.4194155},"fare":8.1,"end_time":1502908400,"request_id":"dafa189b-747e-4273-bbc6-178a62b8046c","currency_code":"USD","request_time":1502907880},{"status":"completed","distance":1.4457831309,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1502845436,"start_city":{"latitude":37.7749295,"display_name":"San
+        Francisco","longitude":-122.4194155},"fare":1.23,"end_time":1502846061,"request_id":"5f40ed6a-2654-4b1b-802c-80b578bb14cd","currency_code":"USD","request_time":1502845218},{"status":"completed","distance":1.3627998333,"product_id":"a1111c8c-c720-46c3-8534-2fcdd730040d","start_time":1502819334,"start_city":{"latitude":37.7749295,"display_name":"San
+        Francisco","longitude":-122.4194155},"fare":6.89,"end_time":1502819720,"request_id":"ad1f6cff-3587-41d9-905e-c80d7b0b9de1","currency_code":"USD","request_time":1502819209}],"limit":5,"offset":0}'}
+    headers:
+      cache-control: [max-age=0]
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['1796']
+      content-type: [application/json]
+      date: ['Fri, 18 Aug 2017 00:04:24 GMT']
+      etag: [W/"710a1952efbc2724739c986c6b34c9e5ae3eaf46"]
+      server: [nginx]
+      strict-transport-security: [max-age=604800, max-age=2592000]
+      x-content-type-options: [nosniff]
+      x-frame-options: [SAMEORIGIN]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1999']
+      x-rate-limit-reset: ['1503018000']
+      x-uber-app: [uberex-sandbox, optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1
