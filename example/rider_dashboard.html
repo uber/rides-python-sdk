@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Uber Rider Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+
+  <style type="text/css">
+   body { font-family: 'Patua One', cursive; }
+   main ul li { font-family: 'Patua One', sans-serif; }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="header" role="banner">
+      <h2 class="display-2">
+        <a href="https://riders.uber.com/">
+          {{ profile.first_name }} {{ profile.last_name }}'s Dashboard
+        </a>
+      </h2>
+    </header>
+
+    <nav class="nav" role="navigation">
+    </nav>
+
+    <main class="main" role="main">
+
+      <h4>You have traveled <i>{{ total_distance_traveled|round|int }}</i> miles in <i>{{ total_rides }}</i> Uber
+          rides across <i>{{ total_cities }}</i> cities.</h4>
+
+      <ul>
+        {% for location in locations %}
+            <li>{{ location }} ({{ locations[location] }}x)</li>
+        {% endfor %}
+      </ul>
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+    </footer>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</body>
+</html>
