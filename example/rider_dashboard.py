@@ -78,7 +78,7 @@ def connect():
             total_cities += 1
             locations[city] = cities.count(city)
 
-    return render_template('./rider_dashboard.html',
+    return render_template('rider_dashboard.html',
                            profile=profile,
                            trips=trips,
                            locations=locations,
