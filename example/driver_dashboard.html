@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Uber Driver Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+
+  <style type="text/css">
+   body { font-family: 'Patua One' }
+   main ul li { list-style-type: none; font-family: 'Patua One', sans-serif; }
+   main ul li a { color: #000; }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="header" role="banner">
+      <h1 class="display-2">
+        <a href="https://partners.uber.com/p3/drivers/profile">
+          {{ profile.first_name }} {{ profile.last_name }}'s Dashboard
+        </a>
+      </h1>
+    </header>
+
+    <nav class="nav" role="navigation">
+    </nav>
+
+    <main class="main" role="main">
+
+      <p>Rating: {{ profile.rating }}</p>
+
+      {% if trips.0 %}
+      <ul>
+        {% for trip in trips %}
+          <li>#{{ loop.index }} - <a href="https://partners.uber.com/p3/payments/trips/{{ trip.trip_id }}">Drove {{ trip.distance }} miles on {{ trip.pickup.timestamp|date }} in {{ trip.start_city.display_name }}</a></li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        <p>No trips yet!</p>
+      {% endif %}
+
+      {% if payments.0 %}
+      <h3><a href="https://partners.uber.com/p3/money/statements/index">Earnings</a></h3>
+      <p>
+        Made {{ payments | sum(attribute='amount') }}{{ payments.0.currency_code }} for driving {{ trips | sum(attribute='distance') }} miles.
+      </p>
+      {% endif %}
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+    </footer>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</body>
+</html>
