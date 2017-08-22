@@ -1,4 +1,8 @@
 
+v0.5.2 - 22/8/2017
+-------------------
+- Added flask example apps for Rider + Driver Dashboards
+
 v0.5.1 - 18/8/2017
 -------------------
 - Added better examples for Driver APIs
