@@ -9,7 +9,7 @@ dist/
 *.egg-info/
 
 # Examples
-example/oauth2_session_store.yaml
+example/oauth*_session_store.yaml
 
 
 # Backup Generated Files #

@@ -75,10 +75,10 @@ Navigate the user to the `auth_url` where they can grant access to your applicat
 Keep `credentials` information in a secure data store and reuse them to make API calls on behalf of your user. The SDK will handle the token refresh for you automatically when it makes API requests with an UberRidesClient.
 
 
-Example Usage
--------------
+Example Apps
+------------
 
-Navigate to the `example` folder to access the python scripts examples.  Before you can run an example, you must edit the `example/config.yaml` file and add your app credentials.
+Navigate to the `example` folder to access the python example apps. Before you can run an example, you must edit the `example/config.*.yaml` file and add your app credentials from the Uber developer dashboard.
 
 To get an UberRidesClient through the Authorization Code flow, run:
 
@@ -92,12 +92,36 @@ The example above stores user credentials in `example/oauth2_rider_session_store
 
     $ python example/request_ride.py
 
+---
+
 To get an UberRidesClient authorized for driver endpoints, run:
 
 
 .. code-block:: bash
 
     $ python example/authorize_driver.py
+
+The example above stores user credentials in `example/oauth2_driver_session_store.yaml`.
+
+
+Flask Demo Apps
+"""""""""""""""
+
+To get an understanding of how the sdk can be use in an example app see the flask examples for rider and driver dashboards:
+
+.. code-block:: bash
+
+    $ pip install flask
+
+
+.. code-block:: bash
+
+    $ python example/rider_dashboard.py
+
+
+.. code-block:: bash
+
+    $ python example/driver_dashboard.py
 
 
 Get Available Products
