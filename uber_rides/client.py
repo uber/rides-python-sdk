@@ -804,6 +804,48 @@ class UberRidesClient(object):
         }
         return self._api_call('GET', 'v1/partners/payments', args=args)
 
+    def get_business_trip_receipt(self, trip_id):
+        """Get a receipt for a business trip.
+
+        Params
+            trip_id (str)
+                The unique ID of the Uber business trip.
+
+        Returns
+            (Response)
+                A Response object with the receipt details.
+        """
+        endpoint = 'v1/business/trips/{}/receipt'.format(trip_id)
+        return self._api_call('GET', endpoint)
+
+    def get_business_trip_receipt_pdf_url(self, trip_id):
+        """Get a receipt pdf url for a business trip.
+
+        Params
+            trip_id (str)
+                The unique ID of the Uber business trip.
+
+        Returns
+            (Response)
+                A Response object with the receipt pdf url details.
+        """
+        endpoint = 'v1/business/trips/{}/pdf_url'.format(trip_id)
+        return self._api_call('GET', endpoint)
+
+    def get_business_trip_invoice_urls(self, trip_id):
+        """Get a receipt for a business trip.
+
+        Params
+            trip_id (str)
+                The unique ID of the Uber business trip.
+
+        Returns
+            (Response)
+                A Response object with the invoice url details.
+        """
+        endpoint = 'v1/business/trips/{}/invoice_urls'.format(trip_id)
+        return self._api_call('GET', endpoint)
+
     def validiate_webhook_signature(self, webhook, signature):
         """Validates a webhook signature from a webhook body + client secret
 
