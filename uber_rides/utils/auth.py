@@ -21,7 +21,7 @@
 SERVER_TOKEN_TYPE = 'Token'
 OAUTH_TOKEN_TYPE = 'Bearer'
 AUTHORIZATION_CODE_GRANT = 'authorization_code'
-CLIENT_CREDENTIAL_GRANT = 'client_credentials'
+CLIENT_CREDENTIALS_GRANT = 'client_credentials'
 IMPLICIT_GRANT = 'implicit'
 REFRESH_TOKEN = 'refresh_token'
 AUTH_HOST = 'login.uber.com'
