@@ -1,0 +1,32 @@
+interactions:
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode 'Python Rides SDK v0.5.3']
+    method: GET
+    uri: https://api.uber.com/v1/business/trips/5152dcc5-b88d-4754-8b33-975f4067c942/receipt
+  response:
+    body: {string: !!python/unicode '{"family_name":"Developer","employee_id":"UUID-01-UD","trip_uuid":"5152dcc5-b88d-4754-8b33-975f4067c942","transaction_history":[{"amount":6.61,"short_reference":"GYYTK","currency_code":"USD","utc_timestamp":"2017-05-07T01:32:39.740Z","transaction_type":"SALE"}],"vat_amount":null,"distance":1.65,"expense_memo":"Jam
+        on life","distance_unit":"miles","dropoff":{"location":{"city":"San Francisco","country":"US","longitude":-122.4203,"state":"CA","address":"1255
+        Polk St, San Francisco, CA 94109, USA","latitude":37.7886},"time":{"unix_timestamp":1494120748,"utc_offset":"-07:00","utc_timestamp":"2017-05-07T01:32:28.000Z"}},"total_owed":0.0,"email":"uber.developer@example.com","organization_uuid":"c615e84c-72ea-490e-a060-823f14532632","pickup":{"location":{"city":"San
+        Francisco","country":"US","longitude":-122.3994,"state":"CA","address":"141
+        New Montgomery St, San Francisco, CA 94105, USA","latitude":37.7865},"time":{"unix_timestamp":1494120043,"utc_offset":"-07:00","utc_timestamp":"2017-05-07T01:20:43.000Z"}},"expense_code":"JAM","given_name":"Uber","total_charged":6.61,"duration":"00:11:46","product_name":"uberX","currency_code":"USD"}'}
+    headers:
+      cache-control: [max-age=0]
+      connection: [keep-alive]
+      content-language: [en]
+      content-length: ['1145']
+      content-type: [application/json]
+      date: ['Thu, 14 Sep 2017 23:07:04 GMT']
+      etag: [W/"18e7d9bd82ca47a8ab264d1b0b2433eaef3b3c92"]
+      server: [nginx]
+      strict-transport-security: [max-age=604800, max-age=2592000]
+      x-content-type-options: [nosniff]
+      x-frame-options: [SAMEORIGIN]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1999']
+      x-rate-limit-reset: ['1505433600']
+      x-uber-app: [uberex-nonsandbox, optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

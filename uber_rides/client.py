@@ -829,7 +829,7 @@ class UberRidesClient(object):
             (Response)
                 A Response object with the receipt pdf url details.
         """
-        endpoint = 'v1/business/trips/{}/pdf_url'.format(trip_id)
+        endpoint = 'v1/business/trips/{}/receipt/pdf_url'.format(trip_id)
         return self._api_call('GET', endpoint)
 
     def get_business_trip_invoice_urls(self, trip_id):

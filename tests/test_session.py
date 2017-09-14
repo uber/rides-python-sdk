@@ -101,7 +101,7 @@ def client_credential_grant_session():
         access_token=ACCESS_TOKEN,
         expires_in_seconds=EXPIRES_IN_SECONDS,
         scopes=SCOPES_SET,
-        grant_type=auth.CLIENT_CREDENTIAL_GRANT,
+        grant_type=auth.CLIENT_CREDENTIALS_GRANT,
         client_secret=None,
         refresh_token=None,
     )
@@ -240,14 +240,14 @@ def test_make_session_from_client_credentials_response(
     """Test classmethod to build OAuth2Credential from HTTP Response."""
     oauth2credential = OAuth2Credential.make_from_response(
         response=client_credentials_response,
-        grant_type=auth.CLIENT_CREDENTIAL_GRANT,
+        grant_type=auth.CLIENT_CREDENTIALS_GRANT,
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
     )
 
     assert oauth2credential.access_token == ACCESS_TOKEN
     assert oauth2credential.scopes == CLIENT_CREDENTIALS_SCOPES_SET
-    assert oauth2credential.grant_type == auth.CLIENT_CREDENTIAL_GRANT
+    assert oauth2credential.grant_type == auth.CLIENT_CREDENTIALS_GRANT
     assert oauth2credential.refresh_token is None
     assert oauth2credential.client_id == CLIENT_ID
     assert oauth2credential.client_secret == CLIENT_SECRET
