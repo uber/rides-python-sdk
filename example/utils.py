@@ -82,7 +82,6 @@ def fail_print(error):
             Error object to print.
     """
     print(COLORS.fail, error.message, COLORS.end)
-    print(COLORS.fail, error.errors, COLORS.end)
 
 
 def paragraph_print(message):
