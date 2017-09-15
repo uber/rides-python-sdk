@@ -270,6 +270,26 @@ Get Driver Payments
     payments = response.json
 
 
+Get Uber for Business Receipts
+""""""""""""""""""""""""""""""
+
+.. code-block:: python
+
+    from uber_rides.auth import ClientCredentialGrant
+    from uber_rides.client import UberRidesClient
+
+    auth_flow = ClientCredentialGrant(
+    <CLIENT_ID>,
+    <SCOPES>,
+    <CLIENT_SECRET>
+    )
+    session = auth_flow.get_session()
+
+    client = UberRidesClient(session)
+    receipt = client.get_business_trip_receipt('2a2f3da4-asdad-ds-12313asd')
+    pdf_url = client.get_business_trip_receipt_pdf_url('2a2f3da4-asdad-ds-12313asd')
+
+
 Getting help
 ------------
 
@@ -278,6 +298,7 @@ Uber developers actively monitor the `Uber Tag <http://stackoverflow.com/questio
 For full documentation about our API, visit our `Developer Site <https://developer.uber.com/>`_.
 
 See the `Getting Started Tutorial <https://developer.uber.com/docs/riders/ride-requests/tutorials/api/python>`_.
+
 
 Contributing
 ------------

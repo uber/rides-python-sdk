@@ -39,6 +39,7 @@ from uber_rides.utils import http
 
 
 # replace these with valid tokens and credentials to rerecord fixtures
+
 CLIENT_ID = 'xxx'
 CLIENT_SECRET = 'xxx'
 SERVER_TOKEN = 'xxx'
@@ -61,6 +62,10 @@ DRIVER_SCOPES = {
           'partner.trips',
           'partner.payments'
           }
+
+BUSINESS_SCOPES = {
+          'business.receipts',
+}
 
 # replace these with valid identifiers to rerecord request-related fixtures
 RIDE_ID = '0aec0061-1e20-4239-a0b7-78328e9afec8'
@@ -98,6 +103,8 @@ NON_UFP_SURGE_START_LNG = -43.1801978
 NON_UFP_SURGE_END_LAT = -22.9883286
 NON_UFP_SURGE_END_LNG = -43.1925661
 SURGE_HREF = 'api.uber.com/v1.2/surge-confirmations/{}'
+
+BUSINESS_TRIP_ID = '5152dcc5-b88d-4754-8b33-975f4067c942'
 
 EXPECTED_PRODUCT_KEYS = set([
     'capacity',
@@ -267,6 +274,33 @@ EXPECTED_DRIVER_PAYMENTS_KEYS = set([
     'currency_code'
 ])
 
+EXPECTED_BUSINESS_TRIP_RECEIPT_KEYS = set([
+    'given_name',
+    'family_name',
+    'email',
+    'product_name',
+    'duration',
+    'organization_uuid',
+    'trip_uuid',
+    'employee_id',
+    'transaction_history',
+    'pickup',
+    'dropoff',
+    'expense_memo'
+])
+
+EXPECTED_BUSINESS_TRIP_RECEIPT_PDF_KEYS = set([
+    'trip_uuid',
+    'organization_uuid',
+    'resource_url'
+])
+
+EXPECTED_BUSINESS_TRIP_INVOICE_URLS_KEYS = set([
+    'trip_uuid',
+    'organization_uuid',
+    'invoices'
+])
+
 
 @fixture
 def rider_oauth2credential():
@@ -299,6 +333,19 @@ def driver_oauth2credential():
 
 
 @fixture
+def business_oauth2credential():
+    """Create OAuth2Credential class to hold access token information."""
+    return OAuth2Credential(
+        client_id=CLIENT_ID,
+        access_token=ACCESS_TOKEN,
+        expires_in_seconds=EXPIRES_IN_SECONDS,
+        scopes=BUSINESS_SCOPES,
+        grant_type=auth.CLIENT_CREDENTIALS_GRANT,
+        client_secret=CLIENT_SECRET
+    )
+
+
+@fixture
 def authorized_rider_sandbox_client(rider_oauth2credential):
     """Create an UberRidesClient in Sandbox Mode with OAuth 2.0 Credentials."""
     session = Session(oauth2credential=rider_oauth2credential)
@@ -309,6 +356,13 @@ def authorized_rider_sandbox_client(rider_oauth2credential):
 def authorized_rider_production_client(rider_oauth2credential):
     """Create an UberRidesClient in Production with OAuth 2.0 Credentials."""
     session = Session(oauth2credential=rider_oauth2credential)
+    return UberRidesClient(session)
+
+
+@fixture
+def authorized_business_production_client(business_oauth2credential):
+    """Create an UberRidesClient in Production with OAuth 2.0 Credentials."""
+    session = Session(oauth2credential=business_oauth2credential)
     return UberRidesClient(session)
 
 
@@ -902,3 +956,40 @@ def test_get_driver_payments(authorized_driver_production_client):
 
     for payment in payments:
         assert EXPECTED_DRIVER_PAYMENTS_KEYS.issubset(payment)
+
+
+@uber_vcr.use_cassette()
+def test_get_business_receipt(authorized_business_production_client):
+    """Test to fetch business trip with access token."""
+    response = authorized_business_production_client. \
+        get_business_trip_receipt(BUSINESS_TRIP_ID)
+    assert response.status_code == codes.ok
+
+    response = response.json
+
+    assert EXPECTED_BUSINESS_TRIP_RECEIPT_KEYS.issubset(response)
+
+
+@uber_vcr.use_cassette()
+def test_get_business_trip_receipt_pdf_url(
+        authorized_business_production_client):
+    """Test to fetch business trip with access token."""
+    response = authorized_business_production_client. \
+        get_business_trip_receipt_pdf_url(BUSINESS_TRIP_ID)
+    assert response.status_code == codes.ok
+
+    response = response.json
+
+    assert EXPECTED_BUSINESS_TRIP_RECEIPT_PDF_KEYS.issubset(response)
+
+
+@uber_vcr.use_cassette()
+def test_get_business_trip_invoice_urls(authorized_business_production_client):
+    """Test to fetch business trip with access token."""
+    response = authorized_business_production_client. \
+        get_business_trip_invoice_urls(BUSINESS_TRIP_ID)
+    assert response.status_code == codes.ok
+
+    response = response.json
+
+    assert EXPECTED_BUSINESS_TRIP_INVOICE_URLS_KEYS.issubset(response)

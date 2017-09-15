@@ -1,4 +1,8 @@
 
+v0.5.3 - 11/9/2017
+-------------------
+- Added support for Uber for Business APIs
+
 v0.5.2 - 22/8/2017
 -------------------
 - Added flask example apps for Rider + Driver Dashboards

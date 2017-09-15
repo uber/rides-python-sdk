@@ -132,7 +132,7 @@ def client_credential_oauth2credential():
         access_token=ACCESS_TOKEN,
         expires_in_seconds=EXPIRES_IN_SECONDS,
         scopes=CLIENT_CREDENTIALS_SCOPES,
-        grant_type=auth.CLIENT_CREDENTIAL_GRANT,
+        grant_type=auth.CLIENT_CREDENTIALS_GRANT,
         refresh_token=None,
     )
 
@@ -266,7 +266,7 @@ def test_client_credential_get_session(client_credential_grant):
     credential = session.oauth2credential
     assert credential.access_token == ACCESS_TOKEN
     assert credential.scopes == CLIENT_CREDENTIALS_SCOPES
-    assert credential.grant_type == auth.CLIENT_CREDENTIAL_GRANT
+    assert credential.grant_type == auth.CLIENT_CREDENTIALS_GRANT
     assert credential.client_id == CLIENT_ID
     assert credential.client_secret == CLIENT_SECRET
     assert credential.refresh_token is None
@@ -285,7 +285,7 @@ def test_refresh_client_credential_access_token(
     credential = session.oauth2credential
     assert credential.access_token == REFRESHED_ACCESS_TOKEN
     assert credential.scopes == CLIENT_CREDENTIALS_SCOPES
-    assert credential.grant_type == auth.CLIENT_CREDENTIAL_GRANT
+    assert credential.grant_type == auth.CLIENT_CREDENTIALS_GRANT
     assert credential.client_id == CLIENT_ID
     assert credential.client_secret == CLIENT_SECRET
     assert credential.redirect_url is None

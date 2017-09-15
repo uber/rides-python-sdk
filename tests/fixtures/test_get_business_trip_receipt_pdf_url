@@ -1,0 +1,27 @@
+interactions:
+- request:
+    body: null
+    headers:
+      X-Uber-User-Agent: [!!python/unicode 'Python Rides SDK v0.5.3']
+    method: GET
+    uri: https://api.uber.com/v1/business/trips/5152dcc5-b88d-4754-8b33-975f4067c942/receipt/pdf_url
+  response:
+    body: {string: !!python/unicode '{"trip_uuid":"5152dcc5-b88d-4754-8b33-975f4067c942","organization_uuid":"c615e84c-72ea-490e-a060-823f14532632","resource_url": "https://uber-common-public.s3.amazonaws.com/hamlet/b0ecf463.pdf"}'}
+    headers:
+      cache-control: [max-age=0]
+      connection: [keep-alive]
+      content-language: [en]
+      content-type: [application/json]
+      date: ['Thu, 14 Sep 2017 23:11:14 GMT']
+      etag: [W/"5fee7563ff5c9f335807fc73a9b4dcb7ef9d5964"]
+      server: [nginx]
+      strict-transport-security: [max-age=604800, max-age=2592000]
+      x-content-type-options: [nosniff]
+      x-frame-options: [SAMEORIGIN]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1994']
+      x-rate-limit-reset: ['1505433400']
+      x-uber-app: [uberex-nonsandbox, optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

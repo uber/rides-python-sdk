@@ -428,7 +428,7 @@ class ClientCredentialGrant(OAuth2):
                 A Session object with OAuth 2.0 credentials.
         """
         response = _request_access_token(
-            grant_type=auth.CLIENT_CREDENTIAL_GRANT,
+            grant_type=auth.CLIENT_CREDENTIALS_GRANT,
             client_id=self.client_id,
             client_secret=self.client_secret,
             scopes=self.scopes,
@@ -436,7 +436,7 @@ class ClientCredentialGrant(OAuth2):
 
         oauth2credential = OAuth2Credential.make_from_response(
             response=response,
-            grant_type=auth.CLIENT_CREDENTIAL_GRANT,
+            grant_type=auth.CLIENT_CREDENTIALS_GRANT,
             client_id=self.client_id,
             client_secret=self.client_secret,
         )
@@ -546,9 +546,9 @@ def refresh_access_token(credential):
 
         return Session(oauth2credential=oauth2credential)
 
-    elif credential.grant_type == auth.CLIENT_CREDENTIAL_GRANT:
+    elif credential.grant_type == auth.CLIENT_CREDENTIALS_GRANT:
         response = _request_access_token(
-            grant_type=auth.CLIENT_CREDENTIAL_GRANT,
+            grant_type=auth.CLIENT_CREDENTIALS_GRANT,
             client_id=credential.client_id,
             client_secret=credential.client_secret,
             scopes=credential.scopes,
