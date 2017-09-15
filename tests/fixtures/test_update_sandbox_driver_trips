@@ -1,0 +1,28 @@
+interactions:
+- request:
+    body: !!python/unicode '{"trips": []}'
+    headers:
+      Content-Length: ['13']
+      X-Uber-User-Agent: [!!python/unicode 'Python Rides SDK v0.6.0']
+      content-type: [application/json]
+    method: PUT
+    uri: https://sandbox-api.uber.com/v1/sandbox/partners/trips
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      cache-control: [max-age=0]
+      connection: [keep-alive]
+      content-language: [en]
+      content-type: [text/html; charset=UTF-8]
+      date: ['Fri, 15 Sep 2017 00:09:51 GMT']
+      server: [nginx]
+      strict-transport-security: [max-age=604800, max-age=2592000]
+      x-content-type-options: [nosniff]
+      x-frame-options: [SAMEORIGIN]
+      x-rate-limit-limit: ['2000']
+      x-rate-limit-remaining: ['1992']
+      x-rate-limit-reset: ['1505437200']
+      x-uber-app: [uberex-sandbox, optimus]
+      x-xss-protection: [1; mode=block]
+    status: {code: 204, message: No Content}
+version: 1

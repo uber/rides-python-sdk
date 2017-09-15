@@ -993,3 +993,12 @@ def test_get_business_trip_invoice_urls(authorized_business_production_client):
     response = response.json
 
     assert EXPECTED_BUSINESS_TRIP_INVOICE_URLS_KEYS.issubset(response)
+
+
+@uber_vcr.use_cassette()
+def test_update_sandbox_driver_trips(authorized_driver_sandbox_client):
+    """Test to update driver trips in sandbox with access token."""
+    trips = {"trips": []}
+    response = authorized_driver_sandbox_client.update_sandbox_driver_trips(
+        trips)
+    assert response.status_code == codes.no_content

@@ -36,7 +36,7 @@ from uber_rides.utils.request import generate_data
 from uber_rides.utils.request import generate_prepared_request
 
 
-LIB_VERSION = '0.5.3'
+LIB_VERSION = '0.6.0'
 
 
 class Response(object):
