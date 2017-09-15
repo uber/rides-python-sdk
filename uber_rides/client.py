@@ -846,6 +846,20 @@ class UberRidesClient(object):
         endpoint = 'v1/business/trips/{}/invoice_urls'.format(trip_id)
         return self._api_call('GET', endpoint)
 
+    def update_sandbox_driver_trips(self, trips):
+        """Update the driver sandbox with trips.
+
+        Params
+            trips (str)
+                The json payload of trips.
+
+        Returns
+            (Response)
+                A Response object with successful status_code
+                if driver sandbox was updated.
+        """
+        return self._api_call('PUT', 'v1/sandbox/partners/trips', args=trips)
+
     def validiate_webhook_signature(self, webhook, signature):
         """Validates a webhook signature from a webhook body + client secret
 
