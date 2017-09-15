@@ -3,7 +3,7 @@ interactions:
     body: !!python/unicode '{"trips": []}'
     headers:
       Content-Length: ['13']
-      X-Uber-User-Agent: [!!python/unicode 'Python Rides SDK v0.5.2']
+      X-Uber-User-Agent: [!!python/unicode 'Python Rides SDK v0.6.0']
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1/sandbox/partners/trips

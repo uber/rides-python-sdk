@@ -3,7 +3,7 @@ interactions:
     body: !!python/unicode '{"status": "accepted"}'
     headers:
       Content-Length: ['22']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.6.0]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/sandbox/requests/9bdb3278-21bd-46b8-90fa-51404b0d6acf
@@ -24,7 +24,7 @@ interactions:
     body: !!python/unicode '{"status": "accepted"}'
     headers:
       Content-Length: ['22']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.6.0]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/sandbox/requests/610d868b-e21c-483a-9932-97e61b852fd2
@@ -45,7 +45,7 @@ interactions:
     body: !!python/unicode '{"status": "accepted"}'
     headers:
       Content-Length: ['22']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.6.0]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/sandbox/requests/0aec0061-1e20-4239-a0b7-78328e9afec8
@@ -66,7 +66,7 @@ interactions:
     body: !!python/unicode '{"status": "accepted"}'
     headers:
       Content-Length: ['22']
-      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.5.1]
+      X-Uber-User-Agent: [!!python/unicode Python Rides SDK v0.6.0]
       content-type: [application/json]
     method: PUT
     uri: https://sandbox-api.uber.com/v1.2/sandbox/requests/0aec0061-1e20-4239-a0b7-78328e9afec8

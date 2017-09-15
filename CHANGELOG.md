@@ -1,4 +1,9 @@
 
+v0.6.0 - 14/9/2017
+-------------------
+- Added support for Uber Driver Sandbox
+- BC Break: Renamed auth.CLIENT_CREDENTIAL_GRANT to auth.CLIENT_CREDENTIALS_GRANT
+
 v0.5.3 - 11/9/2017
 -------------------
 - Added support for Uber for Business APIs
