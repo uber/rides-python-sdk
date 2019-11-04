@@ -12,7 +12,7 @@ pbr==3.1.1
 py==1.4.34
 pyparsing==2.2.0
 pytest==3.2.1
-PyYAML==3.12
+PyYAML==5.1
 requests==2.18.4
 six==1.10.0
 urllib3==1.22
