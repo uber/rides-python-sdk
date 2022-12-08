@@ -1,5 +1,5 @@
 appdirs==1.4.3
-certifi==2017.7.27.1
+certifi==2022.12.7
 chardet==3.0.4
 contextlib2==0.5.5
 funcsigs==1.0.2
